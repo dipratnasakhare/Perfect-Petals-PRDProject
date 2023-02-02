@@ -1,0 +1,56 @@
+.boxdata {
+  width: 0px;
+  height: auto;
+
+  border: 1px solid rgb(0, 0, 0);
+  padding: 15px;
+  padding-bottom: 4rem;
+}
+
+.Login > div {
+  border-bottom: 1px solid;
+  padding: 1rem;
+  text-align: left;
+}
+.Login P {
+  color: blue;
+}
+
+.Login P:hover {
+  text-decoration: underline;
+}
+
+.flexbox {
+  display: flex;
+  width: 100%;
+  /* margin: auto; */
+}
+
+.flexbox > div > input {
+  /* width: 100%; */
+  text-decoration: overline;
+  border: 1px solid;
+}
+
+.flexbox > div {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.flexbox > div:nth-child(2) {
+  margin-left: -5rem;
+}
+
+/* .imgphone > div {
+  margin: auto;
+}
+
+
+.imgphone {
+  display: flex;
+  margin: auto;
+}
+.imgphone > div:nth-child(1) {
+  width: 30%;
+} */
+
