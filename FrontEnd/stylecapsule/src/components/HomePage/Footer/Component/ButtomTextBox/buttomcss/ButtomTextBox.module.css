@@ -1,0 +1,31 @@
+.box {
+  display: flex;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+.box > div > p:hover {
+    text-decoration: underline;
+  }
+.buttom {
+ display: flex;
+ width: 95%;
+ margin: auto;
+ margin-top: 1rem;
+}
+.buttom > div {
+  margin-left: 1rem;
+}
+
+.buttom > div > p {
+  color: blue;
+}
+
+.buttom > div > p:hover {
+  text-decoration: underline;
+}
+
+.text{
+    width: 95%;
+    margin: auto;
+    margin-top: 1rem;
+}

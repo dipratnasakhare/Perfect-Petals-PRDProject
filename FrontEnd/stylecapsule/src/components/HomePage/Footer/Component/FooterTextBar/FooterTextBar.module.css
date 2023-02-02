@@ -1,0 +1,22 @@
+
+
+.box > div p {
+  text-align: left;
+  line-height: 38px;
+  color: blue;
+}
+
+.box > h1{
+  color: black;
+}
+
+.box > div > div p:hover {
+  text-decoration: underline;
+}
+.social {
+  display: flex;
+}
+.social > div > img {
+  width: 60px;
+  margin: auto;
+}
