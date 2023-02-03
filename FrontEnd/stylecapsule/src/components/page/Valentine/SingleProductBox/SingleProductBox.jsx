@@ -9,15 +9,15 @@ export const SingleProductBox = ({product, i}) => {
     return (
         <div>
    <Box key={i/Date.now()} boxShadow='lg'  rounded='md' bg='white'>
-      <Box bg="white" h={["26rem", "26rem", "26rem"]} >
+      <Box bg="white" h={["25rem", "25rem", "25rem"]} >
         <Box  h="13.5rem"
           overflow="hidden"
           >
-           <Image src={product.ImgList[1]}  />
+           <Image src={product.ImgUrlList[0]}  />
         </Box>
         <Box
           p='15px'
-          pt={["34px", "20px", "20px"]}
+          pt={["34px", "15px", "15px"]}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >

@@ -2,7 +2,7 @@ const express = require("express");
 const UserAuthRoutes = express.Router();
 
 // Model import for adding user
-const { ModelUserAuth } = require("../models/UserAuth.Model")
+const { ModelUserAuth } = require("../models/UserAuth.Models")
 
 const bcrypt = require('bcrypt');    // Bcript import for password protect
 

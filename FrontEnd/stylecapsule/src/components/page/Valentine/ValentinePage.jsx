@@ -13,7 +13,7 @@ export const ValentinePage = () => {
 
   const getData = async () => {
     try {
-      return await axios.get("http://localhost:4000/valentine_flower/rose");
+      return await axios.get("http://localhost:4000/valentine_Day/");
     } catch (err) {
       console.log(err);
     }

@@ -7,28 +7,26 @@ export const NameBox = ({data}) => {
 
   return (
     <Box pb="18px" mb="40px">
-      Name Box
+      Name 
     <Grid gap="1" >
       <Text textAlign={"start"}>
         <Text as="b" color="black">
-          title
+          {data.Name}
         </Text>
       </Text>
-      <Text color="black">subtitle</Text>
+      {/* <Text color="black">subtitle</Text> */}
       <Text color="black"> <Flex gap="3">
         <Text>rating</Text>
-        <Box w="25px" mt="3px"><BsStar /></Box>
+          <Box w="25px" mt="3px"><BsStar /></Box>
+          {/* {} */}
         </Flex>
        </Text>
       
       <SimpleGrid columns={3} spacing={[0]}>
-      <Text fontSize={["sm", "sm", "sm"]} textAlign={"start"}>
         <Text as="b" color="black">
-      price
+          Bought   {data.Bought}
         </Text>
-      </Text>
-      <Text fontSize={["sm", "sm", "sm"]} color="black" as="del">Rs strike_price</Text>
-      <Text fontSize={["sm", "sm", "sm"]} color="orange">discount</Text>
+    
       </SimpleGrid>
     
     </Grid>
