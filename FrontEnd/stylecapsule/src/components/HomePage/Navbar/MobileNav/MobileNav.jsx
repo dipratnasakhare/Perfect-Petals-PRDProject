@@ -20,7 +20,7 @@ import { useNavigate } from "react-router-dom";
 
 export const MobileNav = ({ onOpen }) => {
 
-  const RoutesText = [{ text: "Mens" }, { text: "Mens" }, { text: "Mens" }];
+  const RoutesText = [{ text: "Mens", route:"/valentine"}, { text: "Mens",route:"/valentine" }, { text: "Mens",route:"/valentine" }];
   const navigate = useNavigate()
   return (
     <Flex
@@ -41,7 +41,7 @@ export const MobileNav = ({ onOpen }) => {
       </Text>
 
       {RoutesText.map((ele) => (
-        <Box display={{ base: "none", md: "flex" }}
+        <Box onClick={()=>navigate(ele.route)} display={{ base: "none", md: "flex" }}
         >{ele.text}</Box>
       ))}
 
