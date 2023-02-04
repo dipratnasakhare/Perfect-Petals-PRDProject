@@ -18,7 +18,7 @@ import axios from "axios"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const LoginBox = () => {
+export const Login_Page = () => {
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   const [serverLoading, SetServerLoading] = useState(false)
@@ -48,12 +48,10 @@ export const LoginBox = () => {
 
 const HandelLoginButton =  async () => {
   const data = {email,password}
-  console.log(data)
-
    try{
     SetServerLoading(true)
     let x = await axios.post("http://localhost:4000/user/login", data)
-    localStorage.setItem("styleCapsuleToken", JSON.stringify(x.data.token))  
+    localStorage.setItem("styleCapsuleToken", JSON.stringify(x.data))  
      SetServerLoading(false)
     toast({
       title: x.data.msg,
@@ -62,6 +60,7 @@ const HandelLoginButton =  async () => {
       duration: 9000,
       isClosable: true,
     })
+    navigate("/")
    }catch(err){
     console.log(err)
     SetServerLoading(false)
@@ -131,7 +130,7 @@ const HandelLoginButton =  async () => {
                     </FormControl>
 
                     <Box>
-                      <Text onClick={()=>navigate("/forgotpassword")} color="blue">Forgot Password</Text>
+                      <Text onClick={()=>navigate("/Forgot_Password")} color="blue">Forgot Password</Text>
                     </Box>
 
                     <Stack spacing={10} pt={2}>

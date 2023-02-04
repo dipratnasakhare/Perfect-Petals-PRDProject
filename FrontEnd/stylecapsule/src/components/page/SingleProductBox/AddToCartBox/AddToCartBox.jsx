@@ -43,21 +43,12 @@ export const AddToCartBox = ({ data }) => {
         w="100%"
         border={"1px solid black"}
         gap="3"
-        // disabled={data.count == 1}
-        // onClick={() => HandelAddToCart(data)}
       >
         <Text textAlign={"start"}>
           <BsCart color="black" />
         </Text>{" "}
         <Text color="black">ADD TO CART</Text>
       </Button>
-
-      {/* <Text color="black">size :- {data.size.join(" ")} </Text> */}
-      <Text textAlign={"start"}>
-        <Text as="b" color="black">
-          {data.Price}
-        </Text>
-      </Text>
     </Grid>
   );
 };

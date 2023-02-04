@@ -9,12 +9,11 @@ const { ModelLavenderGifts } = require("../models/Lavender-Gifts.models")
 
 LavenderGifts.get("/", async (req, res) => {
     try {
-        let valentine = await ModelLavenderGifts.find()
-        console.log("valentine", "valentine")
-          res.send(valentine);
+        let LavenderGifts = await ModelLavenderGifts.find()
+          res.send(LavenderGifts);
     } catch (err) {
         console.log(err, "err line 20");
-        res.status(200).send({ msg: err,status:"valentine not updated" });
+        res.status(200).send({ msg: err, status:"error"});
     }
 })
 

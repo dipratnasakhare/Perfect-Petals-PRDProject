@@ -33,7 +33,7 @@ const SignUpImageText = [
   },
 ];
 
-export const SignUpBox = () => {
+export const SignUp_Page = () => {
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   const [serverLoading, SetServerLoading] = useState(false);
