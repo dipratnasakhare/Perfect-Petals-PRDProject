@@ -66,7 +66,7 @@ UserAuthRoutes.post("/login", async (req, res) => {
                 bcrypt.compare(password, User_Details[0].password, async (err, result) => {
                     if (result) {   
                         const token = jwt.sign({email ,id:password}, Key);
-                        res.status(200).send({msg:"User Login Successfully", token, status:"success"});
+                        res.status(200).send({msg:"User Login Successfully", name:User_Details[0].first_name, token, status:"success"});
                     } else {
                         res.status(200).send({msg:"Wrong password", status:"error"})
                     }

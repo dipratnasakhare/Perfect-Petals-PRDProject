@@ -45,7 +45,7 @@ export const SidebarContent = ({ onClose, ...rest }) => {
         </Flex>
         {LinkItems.map((link) => (
           <NavItem key={link.name} icon={link.icon}>
-            {link.name}
+            <Text>{link.name}</Text>
           </NavItem>
         ))}
       </Box>

@@ -4,11 +4,11 @@ import { Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FilterBox } from "./FilterBox/FilterBox";
-import { SingleProductBox } from "./SingleProductBox/SingleProductBox";
+import { SingleProductBox } from "../SingleProductBox/SingleProductBox";
 
 export const ValentinePage = () => {
   const [Loading, setLoading] = useState(false);
-  
+
   const [list, setList] = useState([]);
 
   const getData = async () => {
@@ -19,23 +19,46 @@ export const ValentinePage = () => {
     }
   };
   useEffect(() => {
-    getData()
-      .then((res) => setList(res.data))
+       setLoading(true)
+       getData()
+      .then((res) => {
+        setList(res.data)
+        setLoading(false)})
       .catch((err) => console.log(err));
   }, []);
 
   console.log(list);
   return (
-    <Flex border="5px solid red">
-      <Box w="20%" h="5rem" border={"3px solid green"}>
+    <Flex  display={["grid", "grid", "grid", "flex"]}   m="auto" mt="2rem">
+      <Box w="18%"  border={"2px solid red"}>
         <FilterBox />
       </Box>
-      <Box w="80%" h="5rem" border={"3px solid green"}>
-        <SimpleGrid columns={[1, 2, 2, 4]} spacing={10}>
-          {list.map((product, i) => {
-            return <SingleProductBox product={product} i={i} />;
-          })}
-        </SimpleGrid>
+      <Box w="80%" m="auto" >
+        {Loading ? (
+          <Box
+            h="40rem"
+            display="grid"
+            justifyContent={"center"}
+            alignContent="center"
+          >
+            {" "}
+            <Box>
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="blue.500"
+                size="xl"
+              />
+            </Box>
+          </Box>
+        ) : (
+              <SimpleGrid columns={[1, 2, 2, 4]} spacing={10} display="grid">
+            {list.map((product, i) => (
+              <SingleProductBox product={product} i={i} />
+            ))}
+          </SimpleGrid>
+        )}
       </Box>
     </Flex>
   );
