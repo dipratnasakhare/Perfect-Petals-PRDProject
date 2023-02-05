@@ -27,13 +27,8 @@ export const Navbar = () => {
         <DrawerContent>
           <SidebarContent onClose={onClose} />
         </DrawerContent>
-
       </Drawer>
-
-      
       <MobileNav onOpen={onOpen} />
-
-
     </Box>
   )
 }

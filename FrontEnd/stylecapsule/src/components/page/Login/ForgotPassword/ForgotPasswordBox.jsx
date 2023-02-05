@@ -125,7 +125,6 @@ export const Forgot_Password_Page = () => {
     }
   };
 
-  console.log(otpValue)
 
   return (
     <>
@@ -164,17 +163,17 @@ export const Forgot_Password_Page = () => {
               <Box>
                 <Stack>
                   {passwordBox ?   !sendOtp ? (
-                    <FormControl id="Email" isRequired>
-                      <FormLabel>Email address</FormLabel>
+                    <>
+                      <FormLabel><Text>Email address</Text></FormLabel>
                       <Input
                         type="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
-                    </FormControl>
+                    </>
                   ) : (
                     <>
-                      <FormLabel>Enter OTP</FormLabel>
+                      <FormLabel><Text>Enter OTP</Text></FormLabel>
                       <HStack>
                         <PinInput onChange={(e)=>setOtpValue(e)} type="alphanumeric">
                           <PinInputField />
@@ -187,8 +186,7 @@ export const Forgot_Password_Page = () => {
                   ) : <>
                   
                   
-                  <FormControl id="Password" isRequired>
-                      <FormLabel>Enter new Password</FormLabel>
+                      <FormLabel><Text>Enter new Password</Text></FormLabel>
                       <InputGroup>
                         <Input
                           type={showPassword ? "text" : "Password"}
@@ -205,7 +203,6 @@ export const Forgot_Password_Page = () => {
                           </Button>
                         </InputRightElement>
                       </InputGroup>
-                    </FormControl>
                   
                   </>}
                 
@@ -220,7 +217,7 @@ export const Forgot_Password_Page = () => {
                       color={"white"}
                       onClick={HandelLoginButton}
                     >
-                      Login
+                      <Text>Login</Text>
                     </Button>
                   </Stack>
                 </Stack>
@@ -233,7 +230,7 @@ export const Forgot_Password_Page = () => {
                   <Box>
                     <Box>
                       {" "}
-                      <Image m="auto" w="70%" src={img} />
+                      <Image m="auto" w="50%" src={img} />
                     </Box>
                     <Box textAlign={"center"}>
                       <Text> {text}</Text>
@@ -254,7 +251,7 @@ export const Forgot_Password_Page = () => {
                   onClick={() => navigate("/signup")}
                   colour="blue"
                 >
-                  SignUp
+                  <Text>SignUp</Text>
                 </Button>
               </Box>
             </Flex>

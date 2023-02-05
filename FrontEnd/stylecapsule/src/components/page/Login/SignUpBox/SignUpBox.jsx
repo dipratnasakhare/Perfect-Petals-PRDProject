@@ -2,7 +2,8 @@ import {
   Flex,
   Box,
   FormControl,
-  FormLabel,
+  Text,
+    FormLabel,
   Input,
   InputGroup,
   HStack,
@@ -10,7 +11,6 @@ import {
   Stack,
   Button,
   Image,
-  Text,
   useToast,
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
@@ -116,48 +116,39 @@ export const SignUp_Page = () => {
                 <Stack>
                   <HStack>
                     <Box>
-                      <FormControl id="FirstName" isRequired={true}>
-                        <FormLabel>First Name</FormLabel>
+                        <FormLabel><Text>First Name</Text></FormLabel>
                         <Input
                           name="first_name"
                           onChange={(e) => HandelFormChange(e)}
                           type="text"
                           value={data.first_name}
                         />
-                      </FormControl>
                     </Box>
                     <Box>
-                      <FormControl id="LastName" isRequired>
-                        <FormLabel>Last Name</FormLabel>
+                        <FormLabel><Text>Last Name</Text></FormLabel>
                         <Input
                           name="last_name"
                           onChange={(e) => HandelFormChange(e)}
                           type="text"
                           value={data.last_name}
                         />
-                      </FormControl>
                     </Box>
                   </HStack>
-                  <FormControl id="PhoneNumber" isRequired>
-                    <FormLabel>Phone Number</FormLabel>
+                    <FormLabel><Text>Phone Number</Text></FormLabel>
                     <Input
                       name="mobile_no"
                       onChange={(e) => HandelFormChange(e)}
                       type="number"
                       value={data.mobile_no}
                     />
-                  </FormControl>
-                  <FormControl id="Email" isRequired>
-                    <FormLabel>Email address</FormLabel>
+                    <FormLabel><Text>Email address</Text></FormLabel>
                     <Input
                       name="email"
                       onChange={(e) => HandelFormChange(e)}
                       type="Email"
                       value={data.email}
                     />
-                  </FormControl>
-                  <FormControl id="Password" isRequired>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel><Text>Password</Text></FormLabel>
                     <InputGroup>
                       <Input
                         name="password"
@@ -176,7 +167,6 @@ export const SignUp_Page = () => {
                         </Button>
                       </InputRightElement>
                     </InputGroup>
-                  </FormControl>
 
                   <Stack spacing={10} pt={2}>
                     <Button
@@ -188,7 +178,7 @@ export const SignUp_Page = () => {
                       onClick={handleSignup}
                       _hover="none"
                     >
-                      Sign up
+                      <Text>Sign up</Text>
                     </Button>
                   </Stack>
                 </Stack>
@@ -201,7 +191,7 @@ export const SignUp_Page = () => {
                   <Box>
                     <Box>
                       {" "}
-                      <Image m="auto" w="70%" src={img} />
+                      <Image m="auto" w="50%" src={img} />
                     </Box>
                     <Box textAlign={"center"}>
                       <Text> {text}</Text>
@@ -222,7 +212,7 @@ export const SignUp_Page = () => {
               </Box>
               <Box>
                 <Button onClick={() => navigate("/login")} colour="blue">
-                  Login
+                  <Text>Login</Text>
                 </Button>
               </Box>
             </Flex>

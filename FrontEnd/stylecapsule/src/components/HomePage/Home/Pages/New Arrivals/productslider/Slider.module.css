@@ -1,0 +1,59 @@
+.inner{
+   display: flex;
+   padding: 10px;
+   height: 21rem;
+   width: auto;
+}
+
+.carousel{
+   cursor: grab;
+   overflow: hidden;
+}
+
+
+.inner > div {
+   min-width: 15rem;
+   height: 20rem;
+   margin: auto;
+   margin-left:10px;
+   margin-right: 10px;
+
+
+ 
+}
+
+.inner > div {
+   border: 1px solid;
+   padding: 10px;
+   border-radius: 5px;
+}
+
+
+.inner > div  img{
+   height: 8rem;
+   margin: auto;
+   pointer-events: none;
+
+   
+}
+
+.price{
+   text-decoration: line-through;
+
+}
+
+.boxText{
+  
+   margin-top: 5px;
+   
+}
+
+.boxText > p{
+   text-align: left;
+   padding-bottom: 2px;
+
+}
+
+.boxText > p:nth-child(1):hover{
+  text-decoration: underline;
+}

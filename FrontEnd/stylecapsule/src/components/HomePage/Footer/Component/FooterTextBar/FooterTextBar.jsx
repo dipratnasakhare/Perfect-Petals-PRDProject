@@ -76,7 +76,7 @@ export const FooterTextBar = () => {
 
   let forth = [
     {
-      text: "My Best Buy® Credit Card",
+      text: "Style Capsule® Credit Card",
       data: "Payment Options",
     },
     {
@@ -88,11 +88,11 @@ export const FooterTextBar = () => {
   ];
   let five = [
     {
-      text: "Best Buy Totaltech",
+      text: "Style Capsule Totaltech",
       data: "Rewards & Membership",
     },
     {
-      text: "My Best Buy",
+      text: "My Style Capsule",
     },
     {
       text: "View Points & Certificates",
@@ -104,7 +104,7 @@ export const FooterTextBar = () => {
   let six = [
     {
       text: "Corporate Information",
-      data: "About Best Buy",
+      data: "About Style Capsule",
     },
     {
       text: "Careers",

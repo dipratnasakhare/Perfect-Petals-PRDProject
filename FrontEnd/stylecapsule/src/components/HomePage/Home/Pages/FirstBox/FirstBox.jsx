@@ -1,4 +1,4 @@
-import { Box, Center, Heading, Text } from "@chakra-ui/react";
+import { Box, Center, Heading } from "@chakra-ui/react";
 import React from "react";
 
 const Carousel = () => {
@@ -6,7 +6,7 @@ const Carousel = () => {
     <Box
       w="100%"
       m="auto"
-      h={["20rem", "20rem"]}
+      h={["40rem", "40rem"]}
       backgroundRepeat={"none"}
       backgroundSize={"cover"}
       display="grid"
@@ -15,9 +15,7 @@ const Carousel = () => {
       }
     >
       <Center>
-        <Box w="30%" bg="white" borderRadius={"5%"}
-      //  backdropFilter='blur(10px) hue-rotate(90deg)'
-
+        <Box w="30%" backgroundImage={"https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} borderRadius={"10px"}
         >
           <Center>
             <Heading
@@ -26,8 +24,11 @@ const Carousel = () => {
               fontFamily={"Lato"}
               as="h2"
               size="2xl"
+              m="auto"
+              w="99%"
             >
-              (2xl) In love with React & Next
+              Style Capsule
+              world Best florist
             </Heading>
           </Center>
         </Box>

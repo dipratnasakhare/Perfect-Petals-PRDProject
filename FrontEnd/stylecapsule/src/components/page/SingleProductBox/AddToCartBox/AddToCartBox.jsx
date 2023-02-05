@@ -43,12 +43,35 @@ export const AddToCartBox = ({ data }) => {
         w="100%"
         border={"1px solid black"}
         gap="3"
+        mb="2"
       >
         <Text textAlign={"start"}>
           <BsCart color="black" />
         </Text>{" "}
         <Text color="black">ADD TO CART</Text>
       </Button>
+
+      <Button
+        // bg="#F167AE"
+        backgroundImage={"https://images.pexels.com/photos/6985003/pexels-photo-6985003.jpeg?cs=srgb&dl=pexels-gradienta-6985003.jpg&fm=jpg&_gl=1*b19tv2*_ga*MTM4ODE0NzQ5OS4xNjc1MTY0ODc3*_ga_8JE65Q40S6*MTY3NTU5NTY4Mi4zLjEuMTY3NTU5ODQ4NS4wLjAuMA.."}
+        _hover={"none"}
+        borderRadius={"0px"}
+        w="100%"
+        border={"1px solid black"}
+        gap="3"
+      >
+        <Text textAlign={"start"}>
+          <BsCart color="black" />
+        </Text>{" "}
+        <Text color="black">More</Text>
+      </Button>
     </Grid>
   );
 };
+
+
+{/* <Box p="15px" >
+<Button>
+<Text>More</Text>
+</Button>
+</Box> */}

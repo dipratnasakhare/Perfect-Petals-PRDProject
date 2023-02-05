@@ -7,7 +7,7 @@ function App() {
     <div className="App">
        <Navbar />
        <RoutesOfAllPages />
-       {/* <Footer /> */}
+       <Footer />
     </div>
   );
 }

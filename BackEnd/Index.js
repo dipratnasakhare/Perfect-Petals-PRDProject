@@ -2,6 +2,7 @@
 const express = require("express")
 const { connect } = require("./config/db")
 const cors = require("cors");
+require('dotenv').config();
 
 // Routes here 
 const { UserAuthRoutes } = require("./Routes/UserAuth.Routes")
@@ -53,7 +54,7 @@ app.use(express.json());
 app.use("/user",UserAuthRoutes)
 
 
-app.listen(4000, async ()=> {
+app.listen(process.env.MONGOOSE_PORT_SERVER, async ()=> {
   try{
       await connect
       console.log("connected to db")
