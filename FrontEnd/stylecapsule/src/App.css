@@ -1,3 +1,7 @@
 .App p {
   font-family: cursive;
 }
+
+.HomePage > div{
+  margin-bottom: 8.5rem;
+}

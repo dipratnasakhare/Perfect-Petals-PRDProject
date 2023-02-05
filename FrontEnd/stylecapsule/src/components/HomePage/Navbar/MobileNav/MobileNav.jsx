@@ -104,12 +104,12 @@ export const MobileNav = ({ onOpen }) => {
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
-        {User_Login ? (
+        {!User_Login ? (
           <Flex alignItems={"center"}>
             <Menu>
               <MenuButton>
                 <HStack>
-                  <Avatar src="" />
+                  {/* <Avatar src="" /> */}
                   <VStack
                     display={{ base: "none", md: "flex" }}
                     alignItems="flex-start"

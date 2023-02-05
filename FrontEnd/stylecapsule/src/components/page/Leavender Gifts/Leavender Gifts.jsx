@@ -3,36 +3,39 @@ import { Spinner } from "@chakra-ui/react";
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-// import { FilterBox } from "./FilterBox/FilterBox";
+import { FilterBox } from "../Valentine/FilterBox/FilterBox";
 import { SingleProductBox } from "../SingleProductBox/SingleProductBox"
+import { PaginationBox } from "../Valentine/Pagination/PaginationBox";
 
 export const Lavender_Gifts = () => {
   const [Loading, setLoading] = useState(false);
-  
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(1);
   const [list, setList] = useState([]);
 
-  const getData = async () => {
+  const getData = async (page) => {
     try {
-      return await axios.get("http://localhost:4000/Lavender_Gifts/");
+      return await axios.get(`http://localhost:4000/Lavender_Gifts/?page=${page}&limit=8`);
     } catch (err) {
       console.log(err);
     }
   };
 
-
   useEffect(() => {
     setLoading(true)
-    getData()
+    getData(page)
    .then((res) => {
-     setList(res.data)
+     setList(res.data.LavenderGifts)
+     setTotal(res.data.totalPages);
      setLoading(false)})
    .catch((err) => console.log(err));
-}, []);
+}, [page]);
 
   return (
-    <Flex  display={["grid", "grid", "grid", "flex"]}   m="auto" mt="2rem">
-    <Box w="18%"  border={"2px solid red"}>
-      FilterBox 
+    <>
+        <Flex gap="8"  display={["grid", "grid", "grid", "flex"]} w="95%"    m="auto" mt="2rem">
+    <Box  w={["80%", "80%", "80%","20%"]} m="auto" mt="5rem">
+      <FilterBox/> 
     </Box>
     <Box w="80%" m="auto" >
       {Loading ? (
@@ -62,5 +65,17 @@ export const Lavender_Gifts = () => {
       )}
     </Box>
   </Flex>
+  <Box
+        mb="2rem"
+        display={"grid"}
+        justifyContent={"center"}
+        m="auto"
+        mt="1rem"
+        w="80%"
+      >
+        {" "}
+        <PaginationBox page={page} setPage={setPage} total={total} />
+      </Box>
+      </>
   );
 };

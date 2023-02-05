@@ -1,9 +1,9 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import {FooterTextBar} from "./FooterTextBar/FooterTextBar";
-import FooterLoginBox from "./FooterLoginBox/FooterLoginBox";
+// import FooterLoginBox from "./FooterLoginBox/FooterLoginBox";
 import { OrderCheckBox } from "./OrderCheckBox/OrderCheckBox";
 import { ButtomTextBox } from "./ButtomTextBox/ButtomTextBox";
-
+import { Contact } from "./ContactBox/Contact"
 export default function footer() {
   return (
     <>
@@ -20,7 +20,7 @@ export default function footer() {
           <FooterTextBar />
         </Box>
         <Box  w={["100%", "100%", "100%", "90%"]} >
-          <FooterLoginBox />
+          <Contact />
         </Box>
       </Box>
 

@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Image } from '@chakra-ui/react'
+import { Box, Text, Image, Button } from '@chakra-ui/react'
 import React from 'react'
 import { useState } from 'react'
 import { AddToCartBox } from "./AddToCartBox/AddToCartBox"
@@ -9,7 +9,7 @@ export const SingleProductBox = ({product, i}) => {
     return (
         <div>
    <Box key={i/Date.now()} boxShadow='lg'  rounded='md' bg='white'>
-      <Box bg="white" h={["25rem", "25rem", "25rem"]} >
+      <Box bg="white" h={["25rem", "25rem", "25rem"]}  >
         <Box  h="13.5rem"
           overflow="hidden"
           >
@@ -26,6 +26,7 @@ export const SingleProductBox = ({product, i}) => {
           ) : (
             <AddToCartBox data={product} />
           )}
+
         </Box>
       </Box>
     </Box>       </div>

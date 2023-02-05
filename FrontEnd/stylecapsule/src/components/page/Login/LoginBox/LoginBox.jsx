@@ -105,12 +105,9 @@ const HandelLoginButton =  async () => {
                 </Stack>
                 <Box>
                   <Stack>
-                    <FormControl id="Email" isRequired>
-                      <FormLabel>Email address</FormLabel>
+                      <FormLabel> <Text>Email address</Text></FormLabel>
                       <Input type="Email" value={email}  onChange={(e)=> setEmail(e.target.value)}/>
-                    </FormControl>
-                    <FormControl id="Password" isRequired>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel><Text>Password</Text></FormLabel>
                       <InputGroup>
                         <Input
                           type={showPassword ? "text" : "Password"}
@@ -127,7 +124,6 @@ const HandelLoginButton =  async () => {
                           </Button>
                         </InputRightElement>
                       </InputGroup>
-                    </FormControl>
 
                     <Box>
                       <Text onClick={()=>navigate("/Forgot_Password")} color="blue">Forgot Password</Text>
@@ -143,7 +139,7 @@ const HandelLoginButton =  async () => {
                         color={"white"}
                         onClick={HandelLoginButton}
                       >
-                        Login
+                        <Text>Login</Text>
                       </Button>
                     </Stack>
                   </Stack>
@@ -156,7 +152,7 @@ const HandelLoginButton =  async () => {
                     <Box>
                       <Box>
                         {" "}
-                        <Image m="auto" w="70%" src={img} />
+                        <Image m="auto" w="50%" src={img} />
                       </Box>
                       <Box textAlign={"center"}>
                         <Text> {text}</Text>
@@ -177,7 +173,7 @@ const HandelLoginButton =  async () => {
                     onClick={() => navigate("/signup")}
                     colour="blue"
                   >
-                    SignUp
+                    <Text>SignUp</Text>
                   </Button>
                 </Box>
               </Flex>
