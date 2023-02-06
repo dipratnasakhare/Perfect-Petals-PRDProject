@@ -6,10 +6,11 @@ import { NameBox } from "./ProductNameBox/NameBox"
 export const SingleProductBox = ({product, i}) => {
     const [Hover, setHover] = useState(false);
 
+    // h={["25rem", "25rem", "25rem"]}
     return (
         <div>
    <Box key={i/Date.now()} boxShadow='lg'  rounded='md' bg='white'>
-      <Box bg="white" h={["25rem", "25rem", "25rem"]}  >
+      <Box bg="white" h={["26rem", "25rem", "26rem"]}   >
         <Box  h="13.5rem"
           overflow="hidden"
           >
