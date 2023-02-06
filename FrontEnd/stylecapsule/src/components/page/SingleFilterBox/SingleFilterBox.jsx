@@ -29,7 +29,7 @@ export const SingleFilterBox = () => {
       .then((res) => {
         console.log(res.data)
         setTotal(res.data.totalPages)
-        setList(res.data.sunflowers)
+        setList(res.data[url])
         setLoading(false)})
       .catch((err) => console.log(err));
   }, [page]);
@@ -37,9 +37,9 @@ export const SingleFilterBox = () => {
   console.log(list);
   return (
     <>
-    <Flex  gap="8"  display={["grid", "grid", "grid", "flex"]}  w="95%"   m="auto" mt="2rem">
+    <Flex  gap="8"  display={["grid", "grid", "grid", "flex"]}  w="80%"   m="auto" mt="2rem">
       <Box  >
-        <FilterBox />
+        <FilterBox  />
       </Box>
       <Box w="80%" m="auto" >
         {Loading ? (

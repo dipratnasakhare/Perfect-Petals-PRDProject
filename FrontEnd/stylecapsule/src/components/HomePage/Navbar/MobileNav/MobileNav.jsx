@@ -23,6 +23,7 @@ import { useNavigate } from "react-router-dom";
 export const MobileNav = ({ onOpen }) => {
   const [User_Login, setUser_Login] = useState(false);
   const toast = useToast();
+  const [itForUpdate, seItForUpdate] = useState("")
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const RoutesText = [
@@ -33,12 +34,15 @@ export const MobileNav = ({ onOpen }) => {
   ];
 
   useEffect(() => {
-    let user = JSON.parse(localStorage.getItem("styleCapsuleToken")) || "";
+    let user = JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null";
+
+    console.log(user, "user i 38", User_Login)
+
     if (user !== "null") {
-      setUser_Login(true);
+      setUser_Login(true);  
       setUserName(user.name);
     }
-  }, []);
+  });
 
   const HandelLogout = () => {
     localStorage.removeItem("styleCapsuleToken");
@@ -72,7 +76,7 @@ export const MobileNav = ({ onOpen }) => {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Style Capsule
+        Flowerry Shop
       </Text>
 
       {RoutesText.map((ele) => (
@@ -100,11 +104,11 @@ export const MobileNav = ({ onOpen }) => {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Style Capsule
+        Flowerry Shop
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
-        {!User_Login ? (
+        {User_Login ? (
           <Flex alignItems={"center"}>
             <Menu>
               <MenuButton>

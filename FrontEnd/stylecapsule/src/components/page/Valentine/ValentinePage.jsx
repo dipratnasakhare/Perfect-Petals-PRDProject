@@ -6,12 +6,16 @@ import React, { useEffect, useState } from "react";
 import { FilterBox } from "./FilterBox/FilterBox";
 import { SingleProductBox } from "../SingleProductBox/SingleProductBox";
 import { PaginationBox } from "./Pagination/PaginationBox";
+import { useSelector } from "react-redux";
+import { Set_Single_Page_data } from "../../Redux/products/Prodaction";
 
 export const ValentinePage = () => {
   const [Loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(1);
   const [list, setList] = useState([]);
+
+
 
   const getData = async () => {
     try {

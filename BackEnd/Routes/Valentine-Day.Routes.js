@@ -41,11 +41,11 @@ ValentineDay.get("/Sunflowers", async (req, res) => {
 
   try {
     let length = await Modelsunflowers.find();
-    let sunflowers = await Modelsunflowers.find()
+    let Sunflowers = await Modelsunflowers.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);
       
-    res.send({ sunflowers, totalPages: Math.ceil(length.length / limit) });
+    res.send({ Sunflowers, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
     res.status(200).send({ msg: err, status: "error" });
@@ -53,9 +53,15 @@ ValentineDay.get("/Sunflowers", async (req, res) => {
 });
 
 ValentineDay.get("/Lilies", async (req, res) => {
+  const { page = 1, limit = 8 } = req.query;
+
   try {
-    let ValentineDay = await ModelLilies.find();
-    res.send(ValentineDay);
+    let length =  await ModelLilies.find();
+    let Lilies = await ModelLilies.find()
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
+    
+  res.send({ Lilies, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
     res.status(200).send({ msg: err, status: "error" });
@@ -63,9 +69,15 @@ ValentineDay.get("/Lilies", async (req, res) => {
 });
 
 ValentineDay.get("/Exotic", async (req, res) => {
+  const { page = 1, limit = 8 } = req.query;
+
   try {
-    let Exotic = await ModelExotic.find();
-    res.send(Exotic);
+    let length =  await ModelExotic.find();
+    let Exotic = await ModelExotic.find()
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
+    
+   res.send({ Exotic, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
     res.status(200).send({ msg: err, status: "error" });
@@ -73,19 +85,31 @@ ValentineDay.get("/Exotic", async (req, res) => {
 });
 
 ValentineDay.get("/Sweet_Flower", async (req, res) => {
+  const { page = 1, limit = 8 } = req.query;
+
   try {
-    let SweetFlower = await ModelSweetFlower.find();
-    res.send(SweetFlower);
+    let length =  await ModelSweetFlower.find();
+    let Sweet_Flower = await ModelSweetFlower.find()
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
+    
+   res.send({ Sweet_Flower, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
     res.status(200).send({ msg: err, status: "error" });
   }
 });
 
-ValentineDay.get("/Bright", async (req, res) => {
+ValentineDay.get("/Bright_Flower", async (req, res) => {
+  const { page = 1, limit = 8 } = req.query;
+
   try {
-    let Bright = await ModelBright.find();
-    res.send(Bright);
+    let length =  await ModelBright.find();
+    let Bright_Flower = await ModelBright.find()
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
+    
+   res.send({ Bright_Flower, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
     res.status(200).send({ msg: err, status: "error" });
@@ -93,9 +117,16 @@ ValentineDay.get("/Bright", async (req, res) => {
 });
 
 ValentineDay.get("/Alstroemeria", async (req, res) => {
+  const { page = 1, limit = 8 } = req.query;
+
+
   try {
-    let Alstroemeria = await ModelAlstroemeria.find();
-    res.send(Alstroemeria);
+    let length =  await ModelAlstroemeria.find();
+    let Alstroemeria = await ModelAlstroemeria.find()
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
+    
+   res.send({ Alstroemeria, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
     res.status(200).send({ msg: err, status: "error" });
@@ -103,9 +134,15 @@ ValentineDay.get("/Alstroemeria", async (req, res) => {
 });
 
 ValentineDay.get("/Gardenia_Plants", async (req, res) => {
+  const { page = 1, limit = 8 } = req.query;
+
   try {
-    let GardeniaPlants = await ModelGardeniaPlants.find();
-    res.send(GardeniaPlants);
+    let length =  await ModelGardeniaPlants.find();
+    let Gardenia_Plants = await ModelGardeniaPlants.find()
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
+    
+   res.send({ Gardenia_Plants, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
     res.status(200).send({ msg: err, status: "error" });
@@ -115,9 +152,15 @@ ValentineDay.get("/Gardenia_Plants", async (req, res) => {
 // flower by color
 
 ValentineDay.get("/Red", async (req, res) => {
+  const { page = 1, limit = 8 } = req.query;
+
   try {
-    let Red = await ModelRed.find();
-    res.send(Red);
+    let length =  await ModelRed.find();
+    let Red = await ModelRed.find()
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
+    
+   res.send({ Red, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
     res.status(200).send({ msg: err, status: "error" });
@@ -125,9 +168,15 @@ ValentineDay.get("/Red", async (req, res) => {
 });
 
 ValentineDay.get("/Purple", async (req, res) => {
+  const { page = 1, limit = 8 } = req.query;
+
   try {
-    let Purple = await ModelPurple.find();
-    res.send(Purple);
+    let length =  await ModelPurple.find();
+    let Purple = await ModelPurple.find()
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
+    
+   res.send({ Purple, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
     res.status(200).send({ msg: err, status: "error" });
@@ -135,9 +184,15 @@ ValentineDay.get("/Purple", async (req, res) => {
 });
 
 ValentineDay.get("/Green", async (req, res) => {
+  const { page = 1, limit = 8 } = req.query;
+
   try {
-    let Green = await ModelGreen.find();
-    res.send(Green);
+    let length =  await ModelGreen.find();
+    let Green = await ModelGreen.find()
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
+    
+   res.send({ Green, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
     res.status(200).send({ msg: err, status: "error" });
@@ -145,9 +200,15 @@ ValentineDay.get("/Green", async (req, res) => {
 });
 
 ValentineDay.get("/Blue", async (req, res) => {
+  const { page = 1, limit = 8 } = req.query;
+
   try {
-    let Blue = await ModelBlue.find();
-    res.send(Blue);
+    let length =  await ModelBlue.find();
+    let Blue = await ModelBlue.find()
+    .limit(limit * 1)
+    .skip((page - 1) * limit);
+    
+   res.send({ Blue, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
     res.status(200).send({ msg: err, status: "error" });

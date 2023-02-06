@@ -37,7 +37,7 @@ export const FilterBox = () => {
   let second = [
     {
       text: "Red",
-      route: "Sunflowers",
+      route: "Red",
       data: "FLOWERS BY COLOR",
     },
     {

@@ -5,13 +5,21 @@ import { Text, Button, Grid } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Set_Single_Page_data } from "../../../Redux/products/Prodaction";
 
 var arr = [];
 export const AddToCartBox = ({ data }) => {
   let navigate = useNavigate();
   const toast = useToast();
+  const dispatch = useDispatch();
+
+  const HandelAddSinglePage = () => {
+    dispatch(Set_Single_Page_data({data}))
+  }
 
   const HandelAddToWishList = () => {
+
     toast({
       title: "Succesfull",
       description: "Product Added In WishList",
@@ -59,6 +67,7 @@ export const AddToCartBox = ({ data }) => {
         w="100%"
         border={"1px solid black"}
         gap="3"
+        onClick={()=>HandelAddSinglePage(data)}
       >
         <Text textAlign={"start"}>
           <BsCart color="black" />
