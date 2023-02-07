@@ -37,7 +37,7 @@ export const SingleFilterBox = () => {
   console.log(list);
   return (
     <>
-    <Flex  gap="8"  display={["grid", "grid", "grid", "flex"]}  w="80%"   m="auto" mt="2rem">
+    <Flex  gap="8"  display={["grid", "grid", "grid", "flex"]}  w="95%"   m="auto" mt="2rem">
       <Box  >
         <FilterBox  />
       </Box>

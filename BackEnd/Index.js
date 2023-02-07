@@ -10,6 +10,7 @@ const { ValentineDay } = require("./Routes/Valentine-Day.Routes")
 const { GiftBasketsFood } = require("./Routes/Gift-Baskets-Food.Routes");
 const { LavenderGifts } = require("./Routes/lavender-gifts.Routes");
 const { BirthdayFlowers } = require("./Routes/Birthday-Flowers.Routes");
+const { UserCartData } = require("./Routes/User_Cart_Data.Routes");
 
 
 const app = express()
@@ -22,6 +23,7 @@ app.use("/Gift_Baskets_Food",GiftBasketsFood)
 app.use("/Lavender_Gifts",LavenderGifts)
 app.use("/Birthday_Flowers",BirthdayFlowers)
 
+app.use("/User_Cart_Data", UserCartData)
 // app.use("/Lilies",Lilies)
 // app.use("/Gardenia_Plants",GardeniaPlants)
 // app.use("/Alstroemeria",Alstroemeria)

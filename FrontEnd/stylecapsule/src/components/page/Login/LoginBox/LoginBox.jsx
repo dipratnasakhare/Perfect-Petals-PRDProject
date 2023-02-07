@@ -53,14 +53,17 @@ const HandelLoginButton =  async () => {
     let x = await axios.post("http://localhost:4000/user/login", data)
     localStorage.setItem("styleCapsuleToken", JSON.stringify(x.data))  
      SetServerLoading(false)
-    toast({
+     toast({
       title: x.data.msg,
       description: x.data.msg,
       status: x.data.status,
       duration: 9000,
       isClosable: true,
     })
-    navigate("/")
+    if(x.data.msg !== "Wrong password"){
+      navigate("/")
+    }
+   
    }catch(err){
     console.log(err)
     SetServerLoading(false)

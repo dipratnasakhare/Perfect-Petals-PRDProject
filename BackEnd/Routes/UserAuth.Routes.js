@@ -24,7 +24,7 @@ UserAuthRoutes.post("/register", async (req, res) => {
 
     const UserDetails = req.body;
     const { email, password } = UserDetails
-
+    const unic = "8723ty8723872109809][32/"
     try {
         let Single_User = await ModelUserAuth.find({ email });
         if (Single_User.length !== 0) {
@@ -33,6 +33,9 @@ UserAuthRoutes.post("/register", async (req, res) => {
             bcrypt.hash(password, 8, async (err, protected_password) => {
                 if (!err) {
                     UserDetails.password = protected_password
+                    const UserId = jwt.sign({email ,id:password}, unic);
+                    UserDetails.UserId = UserId
+                    console.log(UserDetails, "user Details here")
                     let NewUser = new ModelUserAuth(UserDetails);
                     NewUser.save();
                     res.status(200).send({ msg:"User has been created", status:"success"});
@@ -57,7 +60,6 @@ UserAuthRoutes.post("/login", async (req, res) => {
     const UserDetails = req.body;
     const { email, password } = UserDetails
     const Key = "Style_User-!`^8};^*3iu($*"
-    console.log(email)
 
     try {
         let User_Details = await ModelUserAuth.find({ email });
@@ -66,7 +68,8 @@ UserAuthRoutes.post("/login", async (req, res) => {
                 bcrypt.compare(password, User_Details[0].password, async (err, result) => {
                     if (result) {   
                         const token = jwt.sign({email ,id:password}, Key);
-                        res.status(200).send({msg:"User Login Successfully", name:User_Details[0].first_name, token, status:"success"});
+                        console.log(User_Details, "userid")
+                        res.status(200).send({msg:"User Login Successfully", UserId:User_Details[0].UserId, name:User_Details[0].first_name, token, status:"success"});
                     } else {
                         res.status(200).send({msg:"Wrong password", status:"error"})
                     }

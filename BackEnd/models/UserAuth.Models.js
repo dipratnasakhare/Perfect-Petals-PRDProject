@@ -8,7 +8,7 @@ const UserSchema = mongoose.Schema({
     mobile_no:{type:Number,require:true},
     last_name:{type:String, require:false},
     user_type:{type:String, require:false},
-    
+    UserId:{type:String, require:true},
 })
 
 const ModelUserAuth= mongoose.model("UserDatabase", UserSchema)
