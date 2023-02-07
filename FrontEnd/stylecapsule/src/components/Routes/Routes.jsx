@@ -8,6 +8,7 @@ import { Forgot_Password_Page } from "../page/Login/ForgotPassword/ForgotPasswor
 import { Login_Page }  from "../page/Login/LoginBox/LoginBox";
 import { SignUp_Page } from "../page/Login/SignUpBox/SignUpBox";
 import { SingleFilterBox } from "../page/SingleFilterBox/SingleFilterBox";
+import { Single_Product_Box } from "../page/Single_Product_Box/Single_Product_Box";
 import { ValentinePage } from "../page/Valentine/ValentinePage";
 
 export const RoutesOfAllPages = () => {
@@ -23,6 +24,7 @@ export const RoutesOfAllPages = () => {
         <Route exact path="/Birthday_FLowers" element={<BirthdayPage />} />
         <Route exact path="/Gift_Baskets_Food" element={<Gift_Baskets_Food />} />
         <Route exact path="/Lavender_Gifts" element={<Lavender_Gifts />} />
+        <Route exact path="/Single_Product_Box" element={<Single_Product_Box />} />
       </Routes>
     </div>
   );

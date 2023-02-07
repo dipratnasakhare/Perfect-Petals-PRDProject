@@ -41,7 +41,7 @@ export const Flowers_Check = () => {
                 {ele.heading}
               </Heading>
              </Box>
-              <Box><Text color="green.800">{ele.text}</Text></Box>
+              <Box><Text>{ele.text}</Text></Box>
             </Box>
           ))}
         </Grid>

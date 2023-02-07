@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { BsHeart } from "react-icons/bs";
 import { BsCart } from "react-icons/bs";
+import { TbListDetails } from "react-icons/tb"
 import { Text, Button, Grid } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Set_Single_Page_data } from "../../../Redux/products/Prodaction";
 
@@ -14,12 +15,34 @@ export const AddToCartBox = ({ data }) => {
   const toast = useToast();
   const dispatch = useDispatch();
 
-  const HandelAddSinglePage = () => {
-    dispatch(Set_Single_Page_data({data}))
+  const HandelAddSinglePage = (data) => {
+    // dispatch(Set_Single_Page_data(data))
+    localStorage.setItem("SingleProductOfFlowerryShop", JSON.stringify(data))
+  }
+
+  const HandelAddToCart = async (CartData) => {
+
+    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"))
+    UserId = UserId.UserId
+    let data =  {
+      UserId,
+      UserCartData: [CartData]
+    }
+    try {
+      let x =  await axios.post('http://localhost:4000/User_Cart_Data/Post', data);
+      toast({
+        title: x.data.msg,
+        description: x.data.msg,
+        status: x.data.status,
+        duration: 9000,
+        isClosable: true,
+      })
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   const HandelAddToWishList = () => {
-
     toast({
       title: "Succesfull",
       description: "Product Added In WishList",
@@ -45,13 +68,14 @@ export const AddToCartBox = ({ data }) => {
         <Text color="black">WISHLIST</Text>
       </Button>
       <Button
-        bg="#F167AE"
+        bg="#35c557"
         _hover={"none"}
         borderRadius={"0px"}
         w="100%"
         border={"1px solid black"}
         gap="3"
         mb="2"
+        onClick={()=> HandelAddToCart(data)}
       >
         <Text textAlign={"start"}>
           <BsCart color="black" />
@@ -60,17 +84,19 @@ export const AddToCartBox = ({ data }) => {
       </Button>
 
       <Button
-        // bg="#F167AE"
-        backgroundImage={"https://images.pexels.com/photos/6985003/pexels-photo-6985003.jpeg?cs=srgb&dl=pexels-gradienta-6985003.jpg&fm=jpg&_gl=1*b19tv2*_ga*MTM4ODE0NzQ5OS4xNjc1MTY0ODc3*_ga_8JE65Q40S6*MTY3NTU5NTY4Mi4zLjEuMTY3NTU5ODQ4NS4wLjAuMA.."}
+        bg="#35c557"
         _hover={"none"}
         borderRadius={"0px"}
         w="100%"
         border={"1px solid black"}
         gap="3"
-        onClick={()=>HandelAddSinglePage(data)}
+        onClick={()=>{
+          HandelAddSinglePage(data)
+          navigate("/Single_Product_Box")
+        }}
       >
         <Text textAlign={"start"}>
-          <BsCart color="black" />
+          <TbListDetails color="black" />
         </Text>{" "}
         <Text color="black">More</Text>
       </Button>

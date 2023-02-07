@@ -3,9 +3,8 @@ import React from "react";
 
 export const PaginationBox = ({page, setPage,total}) => {
 
-    console.log(page, total)
   return (
-      <Flex gap="5">
+      <Flex gap="5" mb="2rem" mt="1rem">
         <Box>
           {" "}
           <Button isDisabled={page <= 1} onClick={() => setPage(page - 1)}>
