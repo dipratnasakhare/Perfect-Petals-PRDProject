@@ -10,6 +10,7 @@ import {
   Spacer,
   Stack,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useEffect } from "react";
@@ -19,12 +20,14 @@ import { CiPassport1 } from "react-icons/ci";
 import { BsCart } from "react-icons/bs";
 
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 export const Single_Product_Box = () => {
   const [data, setData] = useState("");
   const [value, setValue] = useState("4");
   const [price, setPrice] = useState(0);
 
+  const toast = useToast()
   // const data = useSelector((state) => state.prodManager.data);
 
   useEffect(() => {
@@ -40,6 +43,34 @@ export const Single_Product_Box = () => {
       setPrice(x);
     }
   }, []);
+
+
+  const HandelAddToCart = async (CartData) => {
+
+
+    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"))
+    UserId = UserId.UserId
+    let data =  {
+      UserId,
+      UserCartData: [CartData]
+    }
+
+    console.log(UserId, "aaaaaaaaaa")
+
+    try {
+      let x =  await axios.post('http://localhost:4000/User_Cart_Data/Post', data);
+      toast({
+        title: x.data.msg,
+        description: x.data.msg,
+        status: x.data.status,
+        duration: 9000,
+        isClosable: true,
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
 
   return (
     <Box w="80%" m="auto" mt="2rem" mb="2rem">
@@ -159,6 +190,7 @@ export const Single_Product_Box = () => {
                   w="100%"
                   gap="3"
                   mb="2"
+                  onClick={()=>HandelAddToCart(data)}
                 >
                   <Text textAlign={"start"}>
                     <BsCart color="black" />

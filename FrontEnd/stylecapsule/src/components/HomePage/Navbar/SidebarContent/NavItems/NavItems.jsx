@@ -1,9 +1,10 @@
 import { Flex, Icon, Link } from "@chakra-ui/react";
 
 
-export const NavItem = ({ icon, Text, ...rest }) => {
+export const NavItem = ({ icon, key, }) => {
   return (
     <Link
+    border={"1px solid red"}
       href="#"
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
@@ -23,7 +24,7 @@ export const NavItem = ({ icon, Text, ...rest }) => {
             as={icon}
           />
         )}
-        {Text}
+        {key}
       </Flex>
     </Link>
   );

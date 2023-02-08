@@ -16,14 +16,14 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FiMenu, FiBell, FiChevronDown } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
 export const MobileNav = ({ onOpen }) => {
   const [User_Login, setUser_Login] = useState(false);
   const toast = useToast();
-  const [itForUpdate, seItForUpdate] = useState("")
+  const [itForUpdate, seItForUpdate] = useState("");
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const RoutesText = [
@@ -36,10 +36,10 @@ export const MobileNav = ({ onOpen }) => {
   useEffect(() => {
     let user = JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null";
 
-    console.log(user, "user i 38", User_Login)
+    console.log(user, "user i 38", User_Login);
 
     if (user !== "null") {
-      setUser_Login(true);  
+      setUser_Login(true);
       setUserName(user.name);
     }
   });
@@ -109,46 +109,57 @@ export const MobileNav = ({ onOpen }) => {
 
       <HStack spacing={{ base: "0", md: "6" }}>
         {User_Login ? (
-          <Flex alignItems={"center"}>
-            <Menu>
-              <MenuButton>
-                <HStack>
-                  {/* <Avatar src="" /> */}
-                  <VStack
-                    display={{ base: "none", md: "flex" }}
-                    alignItems="flex-start"
-                    spacing="1px"
-                    ml="2"
-                  >
-                    <Text fontSize="sm"> </Text>
-                    <Text fontFamily={"cursive"} color="gray.600">
-                      {userName}
-                    </Text>
-                  </VStack>
-                  <Box display={{ base: "none", md: "flex" }}>
-                    <FiChevronDown />
-                  </Box>
-                </HStack>
-              </MenuButton>
-              <MenuList>
-                <MenuItem>
-                  <Text> Profile </Text>
-                </MenuItem>
-                <MenuItem>
-                  {" "}
-                  <Text> Settings </Text>
-                </MenuItem>
-                <MenuDivider />
-                <MenuItem onClick={HandelLogout}>
-                  {" "}
-                  <Text> Sign out </Text>
-                </MenuItem>
-              </MenuList>
-            </Menu>
-          </Flex>
+          <>
+            <Flex alignItems={"center"}>
+              <Menu>
+                <MenuButton>
+                  <HStack>
+                    {/* <Avatar src="" /> */}
+                    <VStack
+                      display={{ base: "none", md: "flex" }}
+                      alignItems="flex-start"
+                      spacing="1px"
+                      ml="2"
+                    >
+                      <Text fontSize="sm"> </Text>
+                      <Text fontFamily={"cursive"} color="gray.600">
+                        {userName}
+                      </Text>
+                    </VStack>
+                    <Box display={{ base: "none", md: "flex" }}>
+                      <FiChevronDown />
+                    </Box>
+                  </HStack>
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>
+                    <Text> Profile </Text>
+                  </MenuItem>
+                  <MenuItem>
+                    {" "}
+                    <Text> Settings </Text>
+                  </MenuItem>
+                  <MenuDivider />
+                  <MenuItem onClick={HandelLogout}>
+                    {" "}
+                    <Text> Sign out </Text>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            </Flex>
+
+            <IconButton
+              size="lg"
+              variant="ghost"
+              aria-label="open menu"
+              icon={<AiOutlineShoppingCart />}
+              onClick={() => navigate("/Payment_Page")}
+            />
+          </>
         ) : (
           <Button onClick={() => navigate("/login")}>Login</Button>
         )}
+
         <IconButton
           size="lg"
           variant="ghost"

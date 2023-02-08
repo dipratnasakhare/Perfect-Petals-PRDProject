@@ -16,7 +16,6 @@ export const AddToCartBox = ({ data }) => {
   const dispatch = useDispatch();
 
   const HandelAddSinglePage = (data) => {
-    // dispatch(Set_Single_Page_data(data))
     localStorage.setItem("SingleProductOfFlowerryShop", JSON.stringify(data))
   }
 
