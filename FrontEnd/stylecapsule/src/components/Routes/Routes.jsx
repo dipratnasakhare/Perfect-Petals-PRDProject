@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 
 import { Home } from "../HomePage/Home/Home";
+import PaymentPage from "../page/Add To Cart/PaymentPage/PaymentPage";
 import { BirthdayPage } from "../page/Birthday Flower/BirthdayPage";
 import { Gift_Baskets_Food } from "../page/Gift Baskets Food/Gift Baskets Food";
 import { Lavender_Gifts } from "../page/Leavender Gifts/Leavender Gifts";
@@ -25,6 +26,7 @@ export const RoutesOfAllPages = () => {
         <Route exact path="/Gift_Baskets_Food" element={<Gift_Baskets_Food />} />
         <Route exact path="/Lavender_Gifts" element={<Lavender_Gifts />} />
         <Route exact path="/Single_Product_Box" element={<Single_Product_Box />} />
+        <Route exact path="/Payment_Page" element={<PaymentPage />} />
       </Routes>
     </div>
   );
