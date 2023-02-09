@@ -1,13 +1,14 @@
-import { Box, SimpleGrid } from "@chakra-ui/react";
-import {FooterTextBar} from "./FooterTextBar/FooterTextBar";
-// import FooterLoginBox from "./FooterLoginBox/FooterLoginBox";
-import { OrderCheckBox } from "./OrderCheckBox/OrderCheckBox";
-import { ButtomTextBox } from "./ButtomTextBox/ButtomTextBox";
-import { Contact } from "./ContactBox/Contact"
+import { Box } from "@chakra-ui/react";
+import { OrderCheckBox } from "./01-OrderCheckBox/OrderCheckBox";
+import {FooterTextBar} from "./02-FooterTextBar/FooterTextBar";
+import { Contact } from "./03-ContactBox/Contact"
+import { ButtomTextBox } from "./04-ButtomTextBox/ButtomTextBox";
+
+
+
 export default function footer() {
   return (
     <>
-
      <OrderCheckBox />
       <Box
         w="90%"
@@ -25,6 +26,9 @@ export default function footer() {
       </Box>
 
       <Box w="98%" m="auto" display={["none","none","none","grid", ]}>
+
+
+        
       <ButtomTextBox />
       </Box>
     </>

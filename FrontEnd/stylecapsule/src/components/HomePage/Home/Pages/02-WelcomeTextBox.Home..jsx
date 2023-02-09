@@ -2,7 +2,7 @@ import { Box, Button, Heading, Text, Image, Grid, Flex } from "@chakra-ui/react"
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export const WelcomeBox = () => {
+export const WelcomeTextBox = () => {
   const navigate = useNavigate()
   return (
     <Box w="80%"  display={["grid", "grid", "grid", "flex"]} m="auto" >

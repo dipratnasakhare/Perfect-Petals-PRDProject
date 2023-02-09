@@ -1,7 +1,4 @@
 import React from 'react';
-import { SidebarContent } from './SidebarContent/SidebarContent';
-import { MobileNav } from './MobileNav/MobileNav';
-
 import {
   Box,
   Drawer,
@@ -9,15 +6,14 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
+import { NavbarStractureBox } from './01-NavbarStractureBox.Navbar';
+import { SliderContentBox } from './02-SliderContentBox.Navbar';
+
 export const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Box bg={"gray.100"}>
-      {/* <SidebarContent
-        onClose={() => onClose}
-        display={{ base: 'none', md: 'block' }}
-      /> */}
       <Drawer
         isOpen={isOpen}
         placement="left"
@@ -25,10 +21,14 @@ export const Navbar = () => {
         onOverlayClick={onClose}
         size="full">
         <DrawerContent>
-          <SidebarContent onClose={onClose} />
+
+          {/* slider Box when user gose in small device route become at in form of modal */}
+          <SliderContentBox onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      <MobileNav onOpen={onOpen} />
+
+       {/* Navbar stracture here it content all route text and login cart features */}
+      <NavbarStractureBox onOpen={onOpen} />
     </Box>
   )
 }

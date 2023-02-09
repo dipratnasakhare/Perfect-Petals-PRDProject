@@ -18,7 +18,7 @@ import axios from "axios"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Login_Page = () => {
+export const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   const [serverLoading, SetServerLoading] = useState(false)

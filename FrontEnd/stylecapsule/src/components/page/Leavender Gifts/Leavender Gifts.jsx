@@ -1,13 +1,13 @@
-import { Box, Flex, SimpleGrid, Spacer, Text } from "@chakra-ui/react";
+import { Box, Flex, SimpleGrid } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FilterBox } from "../Valentine/FilterBox/FilterBox";
-import { SingleProductBox } from "../SingleProductBox/SingleProductBox"
+import { SingleProductAddToCartBox } from "../SingleProductAddToCartBox/SingleProductAddToCartBox"
 import { PaginationBox } from "../Valentine/Pagination/PaginationBox";
 
-export const Lavender_Gifts = () => {
+export const LavenderGifts = () => {
   const [Loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(1);
@@ -33,8 +33,8 @@ export const Lavender_Gifts = () => {
 
   return (
     <>
-        <Flex gap="8"  display={["grid", "grid", "grid", "flex"]} w="95%"    m="auto" mt="2rem">
-    <Box  w={["80%", "80%", "80%","20%"]} m="auto" mt="5rem">
+        <Flex gap="8"  display={["grid", "grid", "grid", "flex"]} w="95%" m="auto" mt="2rem">
+    <Box  >
       <FilterBox/> 
     </Box>
     <Box w="80%" m="auto" >
@@ -59,7 +59,7 @@ export const Lavender_Gifts = () => {
       ) : (
             <SimpleGrid columns={[1, 2, 2, 4]} spacing={10} display="grid">
           {list.map((product, i) => (
-            <SingleProductBox product={product} i={i} />
+            <SingleProductAddToCartBox product={product} i={i} />
           ))}
         </SimpleGrid>
       )}

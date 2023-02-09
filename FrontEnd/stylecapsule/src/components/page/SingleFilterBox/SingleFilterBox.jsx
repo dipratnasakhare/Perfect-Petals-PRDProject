@@ -4,7 +4,7 @@ import { Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FilterBox } from "../Valentine/FilterBox/FilterBox";
-import { SingleProductBox } from "../SingleProductBox/SingleProductBox";
+import { SingleProductAddToCartBox } from "../SingleProductAddToCartBox/SingleProductAddToCartBox";
 import { useParams } from "react-router-dom";
 import { PaginationBox } from "../Valentine/Pagination/PaginationBox";
 
@@ -32,10 +32,9 @@ export const SingleFilterBox = () => {
         setList(res.data[url])
         setLoading(false)})
       .catch((err) => console.log(err));
-  }, [page]);
+  }, [page, url]);
 
-  console.log(list);
-  return (
+   return (
     <>
     <Flex  gap="8"  display={["grid", "grid", "grid", "flex"]}  w="95%"   m="auto" mt="2rem">
       <Box  >
@@ -63,7 +62,7 @@ export const SingleFilterBox = () => {
         ) : (
               <SimpleGrid columns={[1, 2, 2, 4]} spacing={10} display="grid">
             {list.map((product, i) => (
-              <SingleProductBox product={product} i={i} />
+              <SingleProductAddToCartBox product={product} i={i} />
             ))}
           </SimpleGrid>
         )}
