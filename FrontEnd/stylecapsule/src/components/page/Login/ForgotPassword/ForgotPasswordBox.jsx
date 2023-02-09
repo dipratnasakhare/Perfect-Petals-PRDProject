@@ -1,7 +1,6 @@
 import {
   Flex,
   Box,
-  FormControl,
   FormLabel,
   Input,
   InputGroup,
@@ -11,17 +10,16 @@ import {
   Button,
   Text,
   useToast,
-  Spinner,
   HStack,
   PinInputField,
   PinInput,
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Forgot_Password_Page = () => {
+export const ForgotPasswordPage = () => {
   const toast = useToast();
   const [serverLoading, SetServerLoading] = useState(false);
   const navigate = useNavigate();

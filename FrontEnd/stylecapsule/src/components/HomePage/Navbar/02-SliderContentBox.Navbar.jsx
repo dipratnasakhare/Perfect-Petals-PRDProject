@@ -2,7 +2,6 @@ import {
     Box,
     CloseButton,
     Flex,
-    useColorModeValue,
     Text,
     IconButton,
   } from '@chakra-ui/react';
@@ -11,10 +10,9 @@ import {
   } from "react-icons/fi";
   import { FaBirthdayCake, FaGift } from "react-icons/fa"
   import { GiRose, GiSpotedFlower } from "react-icons/gi"
-import { NavItem } from './NavItems/NavItems';
 import { useNavigate } from 'react-router-dom';
 
-export const SidebarContent = ({ onClose, ...rest }) => {
+export const SliderContentBox = ({ onClose, ...rest }) => {
 
   const navigate = useNavigate()
 

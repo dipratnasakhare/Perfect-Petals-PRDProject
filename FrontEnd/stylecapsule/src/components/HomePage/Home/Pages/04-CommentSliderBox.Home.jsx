@@ -34,8 +34,8 @@ const properties = {
     console.log(`slide transition from ${oldIndex} to ${newIndex}`);
   },
 };
-export const SliderComment = () => {
-  return (
+export const CommentSliderBox = () => {
+    return (
     <Box  bg="gray.200" w="80%" m="auto" p="10px">
       <Slide {...properties}>
         {comment.map((ele, index) => (

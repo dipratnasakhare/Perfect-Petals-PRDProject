@@ -1,8 +1,8 @@
 import { Box, Flex, Grid, Heading, Image, Text } from "@chakra-ui/react";
 import React from "react";
 
-export const Flowers_Check = () => {
-  const flowercheck = [
+export const ProductDetailsTextBox = () => {
+    const flowercheck = [
     {
       heading: "DESIGN AESTHETIC",
       text: "With every design we sketch and every bloom we select, we pour our hearts into ensuring the exquisiteness of our floral creations.",

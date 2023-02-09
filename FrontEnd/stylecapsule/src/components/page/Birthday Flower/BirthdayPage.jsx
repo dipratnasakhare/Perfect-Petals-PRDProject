@@ -4,7 +4,7 @@ import { Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FilterBox } from "../Valentine/FilterBox/FilterBox";
-import { SingleProductBox } from "../SingleProductBox/SingleProductBox"
+import { SingleProductAddToCartBox } from "../SingleProductAddToCartBox/SingleProductAddToCartBox"
 import { PaginationBox } from "../Valentine/Pagination/PaginationBox";
 export const BirthdayPage = () => {
   const [Loading, setLoading] = useState(false);
@@ -59,7 +59,7 @@ export const BirthdayPage = () => {
       ) : (
             <SimpleGrid columns={[1, 2, 2, 4]} spacing={10} display="grid">
           {list.map((product, i) => (
-            <SingleProductBox product={product} i={i} />
+            <SingleProductAddToCartBox product={product} i={i} />
           ))}
         </SimpleGrid>
       )}

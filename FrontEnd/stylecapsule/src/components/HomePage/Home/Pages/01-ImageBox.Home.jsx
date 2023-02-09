@@ -1,8 +1,8 @@
 import { Box, Center, Heading } from "@chakra-ui/react";
 import React from "react";
 
-const Carousel = () => {
-  return (
+export const ImageBox = () => {
+    return (
     <Box
       w="100%"
       m="auto"
@@ -37,4 +37,3 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;

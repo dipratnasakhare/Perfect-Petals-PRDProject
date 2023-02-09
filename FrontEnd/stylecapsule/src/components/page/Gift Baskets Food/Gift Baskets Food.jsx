@@ -1,20 +1,20 @@
-import { Box, Flex, SimpleGrid, Spacer, Text } from "@chakra-ui/react";
+import { Box, Flex, SimpleGrid } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FilterBox } from "../Valentine/FilterBox/FilterBox";
-import { SingleProductBox } from "../SingleProductBox/SingleProductBox"
+import { SingleProductAddToCartBox } from "../SingleProductAddToCartBox/SingleProductAddToCartBox"
 import { PaginationBox } from "../Valentine/Pagination/PaginationBox";
 
 
-export const Gift_Baskets_Food = () => {
+export const GiftBasketsFood = () => {
   const [Loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(1);
   const [list, setList] = useState([]);
 
-  const getData = async () => {
+  const GetData = async (page) => {
     try {
       return await axios.get(`http://localhost:4000/Gift_Baskets_Food/?page=${page}&limit=8`);
     } catch (err) {
@@ -24,7 +24,7 @@ export const Gift_Baskets_Food = () => {
 
   useEffect(() => {
     setLoading(true)
-    getData(page)
+    GetData(page)
    .then((res) => {
      setList(res.data.GiftBasketsFood)
      setTotal(res.data.totalPages);
@@ -60,7 +60,7 @@ export const Gift_Baskets_Food = () => {
       ) : (
             <SimpleGrid columns={[1, 2, 2, 4]} spacing={10} display="grid">
           {list.map((product, i) => (
-            <SingleProductBox product={product} i={i} />
+            <SingleProductAddToCartBox product={product} i={i} />
           ))}
         </SimpleGrid>
       )}

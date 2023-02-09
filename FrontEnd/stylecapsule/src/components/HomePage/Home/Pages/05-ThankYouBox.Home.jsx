@@ -1,9 +1,9 @@
 import { Box, Heading, Image } from "@chakra-ui/react";
 import React from "react";
 
-export const Help_Image_box = () => {
-  return (
-    <Box w="80%" m="auto">
+export const ThankYouBox = () => {
+    return (
+        <Box w="80%" m="auto">
       <Box >
         <Image m="auto" src="https://denhamsflorist.com/wp-content/uploads/2016/12/home-04-i14-1.png" />
       </Box>
@@ -18,5 +18,5 @@ export const Help_Image_box = () => {
         </Box>
       </Box>
     </Box>
-  );
-};
+    )
+}
