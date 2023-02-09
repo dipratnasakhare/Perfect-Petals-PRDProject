@@ -15,7 +15,7 @@ export const WelcomeBox = () => {
         <Box >
           {" "}
           <Heading textAlign={"center"} fontFamily={"serif"} color="gray.500" size="2xl">
-            Welcome to Flowrry Shop
+            Welcome to Perfect Petals Shop
           </Heading>
         </Box>
         <Box >

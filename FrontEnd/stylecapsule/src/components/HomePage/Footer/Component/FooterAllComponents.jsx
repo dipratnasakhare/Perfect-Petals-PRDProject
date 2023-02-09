@@ -19,7 +19,7 @@ export default function footer() {
         <Box w={["90%", "140%"]} m="auto">
           <FooterTextBar />
         </Box>
-        <Box  w={["100%", "100%", "100%", "90%"]} >
+        <Box   w={["100%", "100%", "100%", "100%"]} >
           <Contact />
         </Box>
       </Box>
