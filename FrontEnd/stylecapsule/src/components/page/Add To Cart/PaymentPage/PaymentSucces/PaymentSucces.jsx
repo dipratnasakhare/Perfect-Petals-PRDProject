@@ -23,13 +23,7 @@ export const PaymentSucces = () => {
 
     try {
       let x =  await axios.post('http://localhost:4000/User_Cart_Data/Delete_User_data', data);
-      toast({
-        title: x.data.msg,
-        description: x.data.msg,
-        status: x.data.status,
-        duration: 9000,
-        isClosable: true,
-      })
+     
     } catch (err) {
       console.log(err);
     }
@@ -44,8 +38,15 @@ export const PaymentSucces = () => {
             "https://service-isib.ru/design/builds/static/img/check-circle.gif"
           );
 
-          localStorage.removeItem("cartData");
           if (ele < -1) {
+
+             toast({
+        title: "Order is Placed",
+        description: "Order is Placed",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      })
             navigate("/");
             clearInterval(id);
           }

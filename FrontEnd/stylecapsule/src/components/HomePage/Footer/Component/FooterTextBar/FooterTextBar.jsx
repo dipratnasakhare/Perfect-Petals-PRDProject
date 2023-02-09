@@ -64,19 +64,19 @@ export const FooterTextBar = () => {
       text: "Developers",
     },
     {
-      text: "style Capsule Health",
+      text: "Perfect Petals Health",
     },
     {
-      text: "style Capsule Education",
+      text: "Perfect Petals Education",
     },
     {
-      text: "style Capsule Business",
+      text: "Perfect Petals Business",
     },
   ];
 
   let forth = [
     {
-      text: "Style Capsule® Credit Card",
+      text: "Perfect Petals® Credit Card",
       data: "Payment Options",
     },
     {
@@ -88,11 +88,11 @@ export const FooterTextBar = () => {
   ];
   let five = [
     {
-      text: "Style Capsule Totaltech",
+      text: "Perfect Petals Totaltech",
       data: "Rewards & Membership",
     },
     {
-      text: "My Style Capsule",
+      text: "My Perfect Petals",
     },
     {
       text: "View Points & Certificates",
@@ -104,7 +104,7 @@ export const FooterTextBar = () => {
   let six = [
     {
       text: "Corporate Information",
-      data: "About Style Capsule",
+      data: "About Perfect Petals",
     },
     {
       text: "Careers",

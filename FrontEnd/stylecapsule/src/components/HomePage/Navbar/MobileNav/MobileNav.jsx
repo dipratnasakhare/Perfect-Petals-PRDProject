@@ -76,7 +76,7 @@ export const MobileNav = ({ onOpen }) => {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Flowerry Shop
+        Perfect Petals
       </Text>
 
       {RoutesText.map((ele) => (
@@ -101,10 +101,11 @@ export const MobileNav = ({ onOpen }) => {
       <Text
         display={{ base: "flex", md: "none" }}
         fontSize="2xl"
+        onClick={() => navigate("/")}
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Flowerry Shop
+        Perfect Petals
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>

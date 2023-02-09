@@ -23,7 +23,7 @@ export const Contact = () => {
 
   return (
     <Box >
-      <Grid  w={["100%", "80%", "60%"]} gap="10" m="auto" mt="1rem" mb="1rem" textAlign="start" >
+      <Grid  w={["100%", "80%", "80%"]} gap="10" m="auto" mt="1rem" mb="1rem" textAlign="start" >
         {address.map((ele) => {
           return (
            <Flex w="99%" m="auto" >
@@ -74,7 +74,7 @@ export const Contact = () => {
         <Button borderRadius={"0px"}
           w="100%"         
           h="45px"
-          size="sm" colorScheme='teal' >
+          size="sm" colorScheme='blue' >
            <Text> Submit</Text>
   </Button>
       </Box>
