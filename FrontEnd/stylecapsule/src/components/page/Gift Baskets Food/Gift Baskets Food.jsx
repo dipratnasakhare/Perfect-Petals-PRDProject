@@ -16,7 +16,7 @@ export const GiftBasketsFood = () => {
 
   const GetData = async (page) => {
     try {
-      return await axios.get(`http://localhost:4000/Gift_Baskets_Food/?page=${page}&limit=8`);
+      return await axios.get(`${process.env.REACT_APP_MAIN_SERVER_URL}/Gift_Baskets_Food/?page=${page}&limit=8`);
     } catch (err) {
       console.log(err);
     }

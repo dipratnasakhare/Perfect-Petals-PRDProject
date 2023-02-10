@@ -33,7 +33,7 @@ export const CreditCards = ({ setOrderPlace }) => {
               "https://th.bing.com/th/id/OIP.9TNqDBKi08Xz_DhwKXnwdQHaHa?pid=ImgDet&rs=1"
             }
             // placeholder="Enter Your Number"
-            isInvalid={CardNo == ""}
+            isInvalid={CardNo === ""}
             onChange={(e) => setCardNo(e.target.value)}
             errorBorderColor="red.300"
             size="sm"
@@ -59,7 +59,7 @@ export const CreditCards = ({ setOrderPlace }) => {
             placeholder="Enter Your Name"
             size="sm"
             value={Name}
-            isInvalid={Name == ""}
+            isInvalid={Name === ""}
             errorBorderColor="red.300"
           />
         </Box>
@@ -73,7 +73,7 @@ export const CreditCards = ({ setOrderPlace }) => {
               onChange={(e) => setDate(e.target.value)}
               value={"Date"}
               type="date"
-              isInvalid={Date == ""}
+              isInvalid={Date === ""}
               errorBorderColor="red.300"
             />
           </Box>
@@ -90,7 +90,7 @@ export const CreditCards = ({ setOrderPlace }) => {
               onChange={(e) => setCvv(e.target.value)}
               type="password"
               className={style.inputcvv}
-              isInvalid={Cvv == ""}
+              isInvalid={Cvv === ""}
               errorBorderColor="red.300"
               w="8rem"
               bgRepeat={"no-repeat"}

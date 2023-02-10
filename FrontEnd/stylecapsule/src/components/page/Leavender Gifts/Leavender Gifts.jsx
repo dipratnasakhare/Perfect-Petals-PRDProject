@@ -15,7 +15,7 @@ export const LavenderGifts = () => {
 
   const getData = async (page) => {
     try {
-      return await axios.get(`http://localhost:4000/Lavender_Gifts/?page=${page}&limit=8`);
+      return await axios.get(`${process.env.REACT_APP_MAIN_SERVER_URL}/Lavender_Gifts/?page=${page}&limit=8`);
     } catch (err) {
       console.log(err);
     }

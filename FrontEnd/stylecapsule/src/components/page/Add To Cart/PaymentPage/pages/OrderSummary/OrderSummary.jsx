@@ -13,11 +13,11 @@ import {
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
   const toast = useToast();
-  const navigation = useNavigate();
+  // const navigation = useNavigate();
   const [List, setList] = useState(true);
   const [Total, setTotal] = useState(0);
   const [CartData, setCartData] = useState([]);
@@ -29,10 +29,11 @@ const OrderSummary = () => {
       UserId,
     };
     try {
-      let x = await axios.post("http://localhost:4000/User_Cart_Data/", data);
+      let x = await axios.post(`${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/`, data);
 
       if (x.data.msg == "Please add product in cart") {
         toast({
+          position:"top",
           title: x.data.msg,
           description: x.data.msg,
           status: x.data.status,
@@ -59,10 +60,11 @@ const OrderSummary = () => {
 
     try {
       let x = await axios.post(
-        "http://localhost:4000/User_Cart_Data/delete",
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/delete`,
         data
       );
       toast({
+        position:"top",
         title: x.data.msg,
         description: x.data.msg,
         status: x.data.status,

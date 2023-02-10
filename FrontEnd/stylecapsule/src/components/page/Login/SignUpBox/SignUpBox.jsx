@@ -1,9 +1,8 @@
 import {
   Flex,
   Box,
-  FormControl,
   Text,
-    FormLabel,
+  FormLabel,
   Input,
   InputGroup,
   HStack,
@@ -15,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignUpImageText = [
@@ -54,10 +53,12 @@ export const SignUpPage = () => {
     });
   };
   const handleSignup = async () => {
-
     try {
       SetServerLoading(true);
-      let x = await axios.post("http://localhost:4000/user/register", data);
+      let x = await axios.post(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/user/register`,
+        data
+      );
       SetServerLoading(false);
       toast({
         title: x.data.msg,
@@ -67,7 +68,7 @@ export const SignUpPage = () => {
         isClosable: true,
       });
     } catch (err) {
-      console.log(err)
+      console.log(err);
       SetServerLoading(false);
       toast({
         title: "Something is wrong please try later",
@@ -116,57 +117,67 @@ export const SignUpPage = () => {
                 <Stack>
                   <HStack>
                     <Box>
-                        <FormLabel><Text>First Name</Text></FormLabel>
-                        <Input
-                          name="first_name"
-                          onChange={(e) => HandelFormChange(e)}
-                          type="text"
-                          value={data.first_name}
-                        />
+                      <FormLabel>
+                        <Text>First Name</Text>
+                      </FormLabel>
+                      <Input
+                        name="first_name"
+                        onChange={(e) => HandelFormChange(e)}
+                        type="text"
+                        value={data.first_name}
+                      />
                     </Box>
                     <Box>
-                        <FormLabel><Text>Last Name</Text></FormLabel>
-                        <Input
-                          name="last_name"
-                          onChange={(e) => HandelFormChange(e)}
-                          type="text"
-                          value={data.last_name}
-                        />
+                      <FormLabel>
+                        <Text>Last Name</Text>
+                      </FormLabel>
+                      <Input
+                        name="last_name"
+                        onChange={(e) => HandelFormChange(e)}
+                        type="text"
+                        value={data.last_name}
+                      />
                     </Box>
                   </HStack>
-                    <FormLabel><Text>Phone Number</Text></FormLabel>
+                  <FormLabel>
+                    <Text>Phone Number</Text>
+                  </FormLabel>
+                  <Input
+                    name="mobile_no"
+                    onChange={(e) => HandelFormChange(e)}
+                    type="number"
+                    value={data.mobile_no}
+                  />
+                  <FormLabel>
+                    <Text>Email address</Text>
+                  </FormLabel>
+                  <Input
+                    name="email"
+                    onChange={(e) => HandelFormChange(e)}
+                    type="Email"
+                    value={data.email}
+                  />
+                  <FormLabel>
+                    <Text>Password</Text>
+                  </FormLabel>
+                  <InputGroup>
                     <Input
-                      name="mobile_no"
+                      name="password"
                       onChange={(e) => HandelFormChange(e)}
-                      type="number"
-                      value={data.mobile_no}
+                      type={showPassword ? "text" : "Password"}
+                      value={data.password}
                     />
-                    <FormLabel><Text>Email address</Text></FormLabel>
-                    <Input
-                      name="email"
-                      onChange={(e) => HandelFormChange(e)}
-                      type="Email"
-                      value={data.email}
-                    />
-                    <FormLabel><Text>Password</Text></FormLabel>
-                    <InputGroup>
-                      <Input
-                        name="password"
-                        onChange={(e) => HandelFormChange(e)}
-                        type={showPassword ? "text" : "Password"}
-                        value={data.password}
-                      />
-                      <InputRightElement h={"full"}>
-                        <Button
-                          variant={"ghost"}
-                          onClick={() =>
-                            setShowPassword((showPassword) => !showPassword)
-                          }
-                        >
-                          {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                        </Button>
-                      </InputRightElement>
-                    </InputGroup>
+                    <InputRightElement h={"full"}>
+                      <Button
+                        variant={"ghost"}
+                        onClick={() =>
+                          setShowPassword((showPassword) => !showPassword)
+                        }
+                      >
+                        {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                      </Button>
+                    </InputRightElement>
+                  </InputGroup>
 
                   <Stack spacing={10} pt={2}>
                     <Button

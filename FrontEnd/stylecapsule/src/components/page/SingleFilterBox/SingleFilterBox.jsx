@@ -18,7 +18,7 @@ export const SingleFilterBox = () => {
 
   const getData = async (url, page) => {
     try {
-      return await axios.get(`http://localhost:4000/valentine_Day/${url}/?page=${page}&limit=8`);
+      return await axios.get(`${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/${url}/?page=${page}&limit=8`);
     } catch (err) {
       console.log(err);
     }

@@ -1,4 +1,4 @@
-import { Box, Flex, SimpleGrid, Spacer, Text } from "@chakra-ui/react";
+import { Box, Flex, SimpleGrid } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
 
 import axios from "axios";
@@ -14,7 +14,7 @@ export const BirthdayPage = () => {
 
   const getData = async (page) => {
     try {
-      return await axios.get(`http://localhost:4000/Birthday_Flowers/??page=${page}&limit=8`);
+      return await axios.get(`${process.env.REACT_APP_MAIN_SERVER_URL}/Birthday_Flowers/??page=${page}&limit=8`);
     } catch (err) {
       console.log(err);
     }

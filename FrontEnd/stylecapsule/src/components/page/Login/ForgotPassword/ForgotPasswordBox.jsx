@@ -51,7 +51,7 @@ export const ForgotPasswordPage = () => {
 
   const HandelLoginButton = async () => {
 
-    if(otpValue == 1234){
+    if(otpValue === 1234){
 
       console.log(otpValue, email)
       setPasswordBox(false)
@@ -62,7 +62,7 @@ export const ForgotPasswordPage = () => {
 
         let data = {email, password:newPassword}
         try {
-          let x = await axios.patch("http://localhost:4000/user/setpass", data);
+          let x = await axios.patch(`${process.env.REACT_APP_MAIN_SERVER_URL}/user/setpass`, data);
           console.log(x)
           toast({
             title: x.data.msg,

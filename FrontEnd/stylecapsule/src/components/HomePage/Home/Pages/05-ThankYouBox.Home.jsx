@@ -10,11 +10,11 @@ export const ThankYouBox = () => {
       <Box>
         <Box display={"grid"} justifyContent={"center"} >
           {" "}
-          <Heading>We'd Love to Help!</Heading>
+          <Heading textAlign={"center"}>We'd Love to Help!</Heading>
         </Box>
         <Box display={"grid"} justifyContent={"center"}>
           {" "}
-          <Heading color="#75963d">- Tell us more about your big day -</Heading>
+          <Heading textAlign={"center"} color="#75963d">- Tell us more about your big day -</Heading>
         </Box>
       </Box>
     </Box>

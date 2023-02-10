@@ -16,7 +16,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 import { FcDepartment } from "react-icons/fc";
-import { CiPassport1 } from "react-icons/ci";
+// import { CiPassport1 } from "react-icons/ci";
 import { BsCart } from "react-icons/bs";
 
 // import { useSelector } from "react-redux";
@@ -58,7 +58,7 @@ export const SingleProductBox = () => {
     console.log(UserId, "aaaaaaaaaa")
 
     try {
-      let x =  await axios.post('http://localhost:4000/User_Cart_Data/Post', data);
+      let x =  await axios.post(`${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/Post`, data);
       toast({
         title: x.data.msg,
         description: x.data.msg,

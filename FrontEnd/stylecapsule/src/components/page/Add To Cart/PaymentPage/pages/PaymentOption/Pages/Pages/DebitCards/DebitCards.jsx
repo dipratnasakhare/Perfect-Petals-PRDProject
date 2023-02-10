@@ -34,7 +34,7 @@ export const DebitCards = ({ setOrderPlace }) => {
 
             }
             // placeholder="Enter Your Number"
-            isInvalid={CardNo == ""}
+            isInvalid={CardNo === ""}
             onChange={(e) => setCardNo(e.target.value)}
             errorBorderColor="red.300"
             size="sm"
@@ -60,7 +60,7 @@ export const DebitCards = ({ setOrderPlace }) => {
             placeholder="Enter Your Name"
             size="sm"
             value={Name}
-            isInvalid={Name == ""}
+            isInvalid={Name === ""}
             errorBorderColor="red.300"
           />
         </Box>
@@ -74,7 +74,7 @@ export const DebitCards = ({ setOrderPlace }) => {
               onChange={(e) => setDate(e.target.value)}
               value={"Date"}
               type="date"
-              isInvalid={Date == ""}
+              isInvalid={Date === ""}
               errorBorderColor="red.300"
             />
           </Box>
@@ -91,7 +91,7 @@ export const DebitCards = ({ setOrderPlace }) => {
               onChange={(e) => setCvv(e.target.value)}
               type="password"
               className={style.inputcvv}
-              isInvalid={Cvv == ""}
+              isInvalid={Cvv === ""}
               errorBorderColor="red.300"
               w="8rem"
               bgRepeat={"no-repeat"}
