@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { AdminDashboard } from "../AdminDashboard/AdminDashboard";
 
 import { Home } from "../HomePage/Home/Home";
 import PaymentPage from "../page/Add To Cart/PaymentPage/PaymentPage";
@@ -11,7 +12,7 @@ import { SignUpPage } from "../page/Login/SignUpBox/SignUpBox";
 import { SingleFilterBox } from "../page/SingleFilterBox/SingleFilterBox";
 import { SingleProductBox } from "../page/SingleProductBox/SingleProductBox";
 import { ValentinePage } from "../page/Valentine/ValentinePage";
-
+import { WishlistPage } from "../page/WishListPage/WishlistPage"
 export const RoutesOfAllPages = () => {
   return (
     <div>
@@ -27,6 +28,11 @@ export const RoutesOfAllPages = () => {
         <Route exact path="/Lavender_Gifts" element={<LavenderGifts />} />
         <Route exact path="/Single_Product_Box" element={<SingleProductBox />} />
         <Route exact path="/Payment_Page" element={<PaymentPage />} />
+        <Route exact path="/Wishlist" element={<WishlistPage />} />
+
+        <Route exact path="/AdminDashboard" element={<AdminDashboard />} />
+
+
       </Routes>
     </div>
   );

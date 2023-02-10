@@ -22,10 +22,10 @@ const [PaymentOfMethod , setPaymentOfMethod] = useState("Paytm")
       <Flex  display={["grid","grid","grid", "flex"]} >
         <Box  bg="white"  h="14rem" ><PaymentText setPaymentOfMethod={setPaymentOfMethod} PaymentOfMethod={PaymentOfMethod} /></Box>
         <Box w={["100%" , "35rem"]} p="25px"  bg="white" >
-        {PaymentOfMethod == "Paytm" ? <Paytm setOrderPlace={setOrderPlace}/> : ""}
-        {PaymentOfMethod == "Credit Cards" ? <CreditCards setOrderPlace={setOrderPlace}/> : ""}
-        {PaymentOfMethod == "Debit Cards" ? <DebitCards setOrderPlace={setOrderPlace}/> : ""}
-        {PaymentOfMethod == "Net Banking" ? <NetBanking setOrderPlace={setOrderPlace}/> : ""}
+        {PaymentOfMethod === "Paytm" ? <Paytm setOrderPlace={setOrderPlace}/> : ""}
+        {PaymentOfMethod === "Credit Cards" ? <CreditCards setOrderPlace={setOrderPlace}/> : ""}
+        {PaymentOfMethod === "Debit Cards" ? <DebitCards setOrderPlace={setOrderPlace}/> : ""}
+        {PaymentOfMethod === "Net Banking" ? <NetBanking setOrderPlace={setOrderPlace}/> : ""}
         </Box>
       </Flex>
     </Box>

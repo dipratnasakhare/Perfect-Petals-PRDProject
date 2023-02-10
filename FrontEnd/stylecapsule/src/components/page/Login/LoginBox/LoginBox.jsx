@@ -1,7 +1,6 @@
 import {
   Flex,
   Box,
-  FormControl,
   FormLabel,
   Input,
   InputGroup,
@@ -11,11 +10,10 @@ import {
   Button,
   Text,
   useToast,
-  Spinner,
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import axios from "axios"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
@@ -50,7 +48,7 @@ const HandelLoginButton =  async () => {
   const data = {email,password}
    try{
     SetServerLoading(true)
-    let x = await axios.post("http://localhost:4000/user/login", data)
+    let x = await axios.post("https://rich-puce-piranha-ring.cyclic.app/user/login", data)
     localStorage.setItem("styleCapsuleToken", JSON.stringify(x.data))  
      SetServerLoading(false)
      toast({

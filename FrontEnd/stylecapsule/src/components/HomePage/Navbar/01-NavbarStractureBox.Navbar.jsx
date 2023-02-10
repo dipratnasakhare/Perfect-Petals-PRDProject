@@ -34,9 +34,7 @@ import {
   
     useEffect(() => {
       let user = JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null";
-  
-      console.log(user, "user i 38", User_Login);
-  
+    
       if (user !== "null") {
         setUser_Login(true);
         setUserName(user.name);
@@ -116,7 +114,7 @@ import {
                     <HStack>
                       {/* <Avatar src="" /> */}
                       <VStack
-                        display={{ base: "none", md: "flex" }}
+                        display={{ md: "flex" }}
                         alignItems="flex-start"
                         spacing="1px"
                         ml="2"
@@ -126,18 +124,21 @@ import {
                           {userName}
                         </Text>
                       </VStack>
-                      <Box display={{ base: "none", md: "flex" }}>
+                      <Box display={{  md: "flex" }}>
                         <FiChevronDown />
                       </Box>
                     </HStack>
                   </MenuButton>
                   <MenuList>
+                     <MenuItem>
+                      <Text> Notification</Text>
+                    </MenuItem>
                     <MenuItem>
-                      <Text> Profile </Text>
+                      <Text onClick={()=>navigate("/Wishlist")}> Wishlist </Text>
                     </MenuItem>
                     <MenuItem>
                       {" "}
-                      <Text> Settings </Text>
+                      <Text> Cart </Text>
                     </MenuItem>
                     <MenuDivider />
                     <MenuItem onClick={HandelLogout}>
@@ -149,6 +150,7 @@ import {
               </Flex>
   
               <IconButton
+                display={{ base:"none",  md: "flex" }}
                 size="lg"
                 variant="ghost"
                 aria-label="open menu"
@@ -161,6 +163,8 @@ import {
           )}
   
           <IconButton
+                 display={{ base:"none", md: "flex" }}
+
             size="lg"
             variant="ghost"
             aria-label="open menu"

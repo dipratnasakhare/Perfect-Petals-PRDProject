@@ -3,7 +3,6 @@ import {
   Flex,
   Radio,
   Image,
-  Spacer,
   Select,
   Text,
   Button,

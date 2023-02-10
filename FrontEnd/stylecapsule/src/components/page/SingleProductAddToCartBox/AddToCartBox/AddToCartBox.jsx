@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BsHeart } from "react-icons/bs";
 import { BsCart } from "react-icons/bs";
 import { TbListDetails } from "react-icons/tb"
 import { Text, Button, Grid } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import { json, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { Set_Single_Page_data } from "../../../Redux/products/Prodaction";
+import {  useNavigate } from "react-router-dom";
+// import { useDispatch } from "react-redux";
+// import { Set_Single_Page_data } from "../../../Redux/products/Prodaction";
 
-var arr = [];
 export const AddToCartBox = ({ data }) => {
   let navigate = useNavigate();
   const toast = useToast();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const HandelAddSinglePage = (data) => {
     localStorage.setItem("SingleProductOfFlowerryShop", JSON.stringify(data))
   }
+
+  // User_Wishlist_Data
 
   const HandelAddToCart = async (CartData) => {
 
@@ -41,14 +42,25 @@ export const AddToCartBox = ({ data }) => {
     }
   }
 
-  const HandelAddToWishList = () => {
-    toast({
-      title: "Succesfull",
-      description: "Product Added In WishList",
-      status: "success",
-      duration: 3000,
-      isClosable: true,
-    });
+  const HandelAddToWishList = async (CartData) => {
+    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"))
+    UserId = UserId.UserId
+    let data =  {
+      UserId,
+      UserWishlist: [CartData]
+    }
+    try {
+      let x =  await axios.post('http://localhost:4000/User_Wishlist_Data/Post', data);
+      toast({
+        title: x.data.msg,
+        description: x.data.msg,
+        status: x.data.status,
+        duration: 9000,
+        isClosable: true,
+      })
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -103,9 +115,3 @@ export const AddToCartBox = ({ data }) => {
   );
 };
 
-
-{/* <Box p="15px" >
-<Button>
-<Text>More</Text>
-</Button>
-</Box> */}

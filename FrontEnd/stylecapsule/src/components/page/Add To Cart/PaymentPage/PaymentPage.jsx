@@ -20,7 +20,7 @@ const PaymentPage = () => {
     }
 
     try {
-      let x =  await axios.post('http://localhost:4000/User_Cart_Data/', data);
+      let x =  await axios.post(`${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/`, data);
       setCartData(x.data.User_Arr)
     } catch (err) {
       console.log(err);

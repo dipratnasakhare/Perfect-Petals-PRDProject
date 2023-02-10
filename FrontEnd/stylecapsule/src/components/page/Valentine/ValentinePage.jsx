@@ -17,10 +17,13 @@ export const ValentinePage = () => {
 
 
 
+
+
+  // ${process.env.MAIN_SERVER_URL}
   const GetData = async (page) => {
     try {
       return await axios.get(
-        `http://localhost:4000/valentine_Day/?page=${page}&limit=8`
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/?page=${page}&limit=8`
       );
     } catch (err) {
       console.log(err);
@@ -82,6 +85,8 @@ export const ValentinePage = () => {
         w="80%"
       >
         {" "}
+      
+
         <PaginationBox page={page} setPage={setPage} total={total} />
       </Box>
     </>
