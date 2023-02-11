@@ -24,6 +24,7 @@ import {
     const toast = useToast();
     const navigate = useNavigate();
     const [userName, setUserName] = useState("");
+    const [AdminUser, setAdminUser] = useState(false)
     
     const RoutesText = [
       { text: "Valentine", route: "/Valentine_Flowers" },
@@ -34,10 +35,12 @@ import {
   
     useEffect(() => {
       let user = JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null";
-    
       if (user !== "null") {
         setUser_Login(true);
         setUserName(user.name);
+      }
+      if(user.msg === "Admin Login Successfully"){
+        setAdminUser(true)
       }
     });
   
@@ -45,6 +48,7 @@ import {
       localStorage.removeItem("styleCapsuleToken");
       setUser_Login(false);
       toast({
+        position:"top",
         description: "User Log out successfully",
         status: "success",
         duration: 9000,
@@ -138,8 +142,15 @@ import {
                     </MenuItem>
                     <MenuItem>
                       {" "}
-                      <Text> Cart </Text>
+                      <Text onClick={()=>navigate("/Payment_Page")}> Cart </Text>
                     </MenuItem>
+
+
+                    {AdminUser &&   <MenuItem>
+                      {" "}
+                      <Text onClick={()=>navigate("/AdminDashboard")}> Admin Dashboard </Text>
+                    </MenuItem>
+}
                     <MenuDivider />
                     <MenuItem onClick={HandelLogout}>
                       {" "}
@@ -161,7 +172,7 @@ import {
           ) : (
             <Button onClick={() => navigate("/login")}>Login</Button>
           )}
-  
+         
           <IconButton
                  display={{ base:"none", md: "flex" }}
 

@@ -99,6 +99,7 @@ export const WishlistPage = () => {
         data
       );
       toast({
+        position: "top",
         title: x.data.msg,
         description: x.data.msg,
         status: x.data.status,

@@ -3,7 +3,7 @@ import React from 'react'
 import { Dashboard } from './01-Dashboard/01-Dashboard'
 import { Users } from './02-Users'
 import { Orders } from './03-Orders'
-import { Inventry } from './04-Inventry'
+import { Products } from './04-Products/04-Products'
 import { Accounts } from './05-Accounts'
 import { Tasks } from './06-Tasks'
 
@@ -13,7 +13,7 @@ export const AdminRoutes = ({routesText}) => {
            {routesText === "Dashboard" ? <Dashboard /> : ""} 
            {routesText === "Users" ? <Users /> : ""} 
            {routesText === "Orders" ?  <Orders /> : ""} 
-           {routesText === "Inventry" ? <Inventry /> : ""} 
+           {routesText === "Products" ? <Products /> : ""} 
            {routesText === "Accounts" ? <Accounts />: ""} 
            {routesText === "Tasks" ?   <Tasks /> : ""} 
         </Box>

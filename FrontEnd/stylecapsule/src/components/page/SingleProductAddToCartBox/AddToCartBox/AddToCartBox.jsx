@@ -29,8 +29,9 @@ export const AddToCartBox = ({ data }) => {
       UserCartData: [CartData]
     }
     try {
-      let x =  await axios.post('http://localhost:4000/User_Cart_Data/Post', data);
+      let x =  await axios.post(`${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/Post`, data);
       toast({
+        position: "top",
         title: x.data.msg,
         description: x.data.msg,
         status: x.data.status,
@@ -52,6 +53,7 @@ export const AddToCartBox = ({ data }) => {
     try {
       let x =  await axios.post('http://localhost:4000/User_Wishlist_Data/Post', data);
       toast({
+        position: "top",
         title: x.data.msg,
         description: x.data.msg,
         status: x.data.status,

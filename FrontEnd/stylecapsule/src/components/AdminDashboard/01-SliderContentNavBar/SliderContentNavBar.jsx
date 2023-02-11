@@ -7,7 +7,7 @@ export const SliderContentNavBar = ({setRoutesText, routesText}) => {
         {text:"Dashboard", route:"/Dashboard"},
         {text:"Users", route:"/users"},
         {text:"Orders", route:"/orders"},
-        {text:"Inventry", route:"/inventry"},
+        {text:"Products", route:"/Products"},
         {text:"Accounts", route:"/accounts"},
         {text:"Tasks", route:"/task"},
     ]
@@ -18,7 +18,9 @@ export const SliderContentNavBar = ({setRoutesText, routesText}) => {
                     <Flex  style={{
                         backgroundColor:routesText === ele.text ? "white" : "#c6d4d9"
                       }} mb="2px"  p="8px" pt="15px" pb="15px" onClick={()=>setRoutesText(ele.text)}>
-                        <Box>{ele.text}</Box> 
+                        <Box><Text>
+                        {ele.text}
+                        </Text></Box> 
                       </Flex>
                 )
             })}

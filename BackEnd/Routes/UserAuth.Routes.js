@@ -9,10 +9,29 @@ const bcrypt = require('bcrypt');    // Bcript import for password protect
 const jwt = require('jsonwebtoken');  // jwt import for geting unic token
 
 UserAuthRoutes.get("/", async (req, res) => {
+    const { page = 1, limit = 4 } = req.query;
 
     try {
-        let All_User = await ModelUserAuth.find();
-        res.status(200).send(All_User);
+        let length = await ModelUserAuth.find({user_type:"Client"});
+        let All_User = await ModelUserAuth.find({user_type:"Client"})
+        .limit(limit * 1)
+        .skip((page - 1) * limit);
+        
+      res.send({ All_User, totalPages: Math.ceil(length.length / limit)});
+    } catch (err) {
+        console.log(err, "err line 20");
+        res.status(200).send({ msg: err });
+    }
+
+})
+
+UserAuthRoutes.post("/delete", async (req, res) => {
+
+    const { UserId } = req.body
+
+    try {
+        let All_User = await ModelUserAuth.findOneAndRemove({UserId});
+        res.status(200).send({ msg:"User has been deleted", status:"success"});
     } catch (err) {
         console.log(err, "err line 20");
         res.status(200).send({ msg: err });
@@ -41,6 +60,7 @@ UserAuthRoutes.post("/register", async (req, res) => {
                     res.status(200).send({ msg:"User has been created", status:"success"});
                 } else {
                     console.log(err, "err line 43")
+                    res.status(200).send({ msg: "something went wrong Please try again", status:"error" });
                 }
             })
 
@@ -64,24 +84,28 @@ UserAuthRoutes.post("/login", async (req, res) => {
     try {
         let User_Details = await ModelUserAuth.find({ email });
         if(User_Details.length > 0){
-            if(User_Details[0].type === undefined){
+
+
+
+            if(User_Details[0].user_type === "Client"){
                 bcrypt.compare(password, User_Details[0].password, async (err, result) => {
                     if (result) {   
                         const token = jwt.sign({email ,id:password}, Key);
-                        console.log(User_Details, "userid")
                         res.status(200).send({msg:"User Login Successfully", UserId:User_Details[0].UserId, name:User_Details[0].first_name, token, status:"success"});
                     } else {
                         res.status(200).send({msg:"Wrong password", status:"error"})
                     }
                     if(err){
-                        res.status(200).send({msg:err, status:"error"})
+                        console.log(err, "user login")
+                        res.status(200).send({ msg: "something went wrong Please try again", status:"error" });
+
                     }
                 })
             }else{
                 bcrypt.compare(password, User_Details[0].password, async (err, result) => {
                     if (result) {    
                         const token = jwt.sign({email ,id:password}, Key);
-                        res.status(200).send({msg:"Admin Login Successfully", token, status:"success"});
+                        res.status(200).send({msg:"Admin Login Successfully",  UserId:User_Details[0].UserId, name:User_Details[0].first_name, token, status:"success"});
                     } else {
                         res.status(200).send({msg:"Wrong password", status:"error"})
                     }
@@ -120,7 +144,7 @@ UserAuthRoutes.post("/changepass",async(req,res)=>{
 
     } catch (err) {
       console.log(err.message);
-      res.status(200).send({msg:err, status:"error"})
+      res.status(200).send({ msg: "something went wrong Please try again", status:"error" });
     }
   });
   
@@ -141,8 +165,9 @@ UserAuthRoutes.patch("/setpass",async(req,res)=>{
         });
       }
     } catch (err) {
-        res.send({msg:err, status:"error"})
         console.log(err);
+        res.status(200).send({ msg: "something went wrong Please try again", status:"error" });
+
     }
 
 })

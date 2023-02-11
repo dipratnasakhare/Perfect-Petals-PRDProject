@@ -12,7 +12,7 @@ export const AdminDashboard = () => {
     
   return (
     <Flex >
-      <Box  w="20%" border="1px solid red">
+      <Box  w="30%" border="1px solid red">
         <SliderContentNavBar routesText={routesText} setRoutesText={setRoutesText} />
       </Box>
 

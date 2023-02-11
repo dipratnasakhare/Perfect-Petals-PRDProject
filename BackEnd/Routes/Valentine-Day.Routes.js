@@ -34,6 +34,29 @@ ValentineDay.get("/", async (req, res) => {
   }
 });
 
+
+
+
+ValentineDay.post("/edit", async (req, res) => {
+
+  console.log(req.body)
+const { ProductName, 
+  ProductPrice,
+  productId} = req.body
+
+
+  try {
+    await ModelValentineDay.updateOne({_id:productId},{$set:{Price:ProductPrice}})
+    let valentine = await ModelValentineDay.updateOne({_id:productId},{$set:{Name:ProductName}})
+     console.log(valentine)
+    res.send({valentine});
+  } catch (err) {
+    console.log(err, "err line 20");
+    res.status(200).send({ msg: err, status: "error" });
+  }
+});
+
+
 // Filter by flower
 
 ValentineDay.get("/Sunflowers", async (req, res) => {

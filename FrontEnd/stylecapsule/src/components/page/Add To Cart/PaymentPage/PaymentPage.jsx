@@ -8,45 +8,75 @@ import { useNavigate } from "react-router-dom";
 const PaymentPage = () => {
   const [CartData, setCartData] = useState([]);
   const [orderPlace, setOrderPlace] = useState(false);
+  const [OrderTotal, setOrderTotal] = useState(0);
   const navigation = useNavigate();
-  const toast = useToast()
+  const toast = useToast();
 
   const GetCartData = async () => {
-
-    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"))
-    UserId = UserId.UserId
-    let data =  {
-      UserId
-    }
+    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
+    UserId = UserId.UserId;
+    let data = {
+      UserId,
+    };
 
     try {
-      let x =  await axios.post(`${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/`, data);
-      setCartData(x.data.User_Arr)
+      let x = await axios.post(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/`,
+        data
+      );
+      setCartData(x.data.User_Arr);
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-     GetCartData();
+    GetCartData();
   }, []);
 
+  const SetOrderDetails = async () => {
+    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
+    UserId = UserId.UserId;
+    let data = {
+      UserId,
+      TotalPrice: OrderTotal,
+      OrderDetails: CartData,
+    };
+
+    console.log(data, "order Total");
+
+    try {
+      let x = await axios.post(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/OrderPost`,
+        data
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Box mt="2rem" mb="2rem">
       {orderPlace ? (
-        <PaymentSucces />
+        <PaymentSucces setOrderTotal={setOrderTotal} />
       ) : (
-        <Box bg="#e1e9ec" >
-        <Box w="80%" m="auto" display={["grid", "grid","grid", "flex"]}>
-          <Box >
-           <OrderSummary cartData={CartData} /> 
+        <Box bg="#e1e9ec">
+          <Box w="80%" m="auto" display={["grid", "grid", "grid", "flex"]}>
+            <Box>
+              <OrderSummary
+                setOrderTotal={setOrderTotal}
+                orderPlace={orderPlace}
+                cartData={CartData}
+              />
+            </Box>
+            <Spacer />
+            <Box>
+              <PaymentOption
+                SetOrderDetails={SetOrderDetails}
+                setOrderPlace={setOrderPlace}
+              />
+            </Box>
           </Box>
-          <Spacer />
-          <Box >
-            <PaymentOption setOrderPlace={setOrderPlace} />
-          </Box>
-        </Box>
         </Box>
       )}
 

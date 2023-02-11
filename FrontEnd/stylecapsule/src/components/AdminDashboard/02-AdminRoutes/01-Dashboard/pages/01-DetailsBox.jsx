@@ -3,7 +3,7 @@ import React from 'react'
 
 export const DetailsBox = ({ count, name, Icons }) => {
     return (
-        <Flex p="25px" border="1px solid red">
+        <Flex   p="25px" border="1px solid">
             <Box>
                 <Heading>
                     {count}

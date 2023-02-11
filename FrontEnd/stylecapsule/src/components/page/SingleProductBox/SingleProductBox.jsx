@@ -60,6 +60,7 @@ export const SingleProductBox = () => {
     try {
       let x =  await axios.post(`${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/Post`, data);
       toast({
+        position: "top",
         title: x.data.msg,
         description: x.data.msg,
         status: x.data.status,

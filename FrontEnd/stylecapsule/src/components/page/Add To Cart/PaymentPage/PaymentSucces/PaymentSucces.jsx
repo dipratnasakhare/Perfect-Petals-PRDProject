@@ -22,7 +22,7 @@ export const PaymentSucces = () => {
     }
 
     try {
-      let x =  await axios.post('http://localhost:4000/User_Cart_Data/Delete_User_data', data);
+      let x =  await axios.post(`${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/Delete_User_data`, data);
      
     } catch (err) {
       console.log(err);
@@ -41,6 +41,7 @@ export const PaymentSucces = () => {
           if (ele < -1) {
 
              toast({
+              position: "top",
         title: "Order is Placed",
         description: "Order is Placed",
         status: "success",

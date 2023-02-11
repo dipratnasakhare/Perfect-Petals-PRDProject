@@ -48,10 +48,15 @@ const HandelLoginButton =  async () => {
   const data = {email,password}
    try{
     SetServerLoading(true)
-    let x = await axios.post("https://rich-puce-piranha-ring.cyclic.app/user/login", data)
+    let x = await axios.post(`${process.env.REACT_APP_MAIN_SERVER_URL}/user/login`, data)
     localStorage.setItem("styleCapsuleToken", JSON.stringify(x.data))  
      SetServerLoading(false)
+
+
+
+
      toast({
+      position: "top",
       title: x.data.msg,
       description: x.data.msg,
       status: x.data.status,
@@ -66,6 +71,7 @@ const HandelLoginButton =  async () => {
     console.log(err)
     SetServerLoading(false)
     toast({
+      position: "top",
       title: "Something is wrong please try later",
       status: "error",
       duration: 9000,

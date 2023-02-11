@@ -65,6 +65,7 @@ export const ForgotPasswordPage = () => {
           let x = await axios.patch(`${process.env.REACT_APP_MAIN_SERVER_URL}/user/setpass`, data);
           console.log(x)
           toast({
+            position: "top",
             title: x.data.msg,
             description: x.data.msg,
             status: x.data.status,

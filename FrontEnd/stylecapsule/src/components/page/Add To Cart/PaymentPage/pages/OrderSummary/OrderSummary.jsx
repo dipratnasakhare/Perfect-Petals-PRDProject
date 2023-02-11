@@ -15,7 +15,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
-const OrderSummary = () => {
+const OrderSummary = ({setOrderTotal}) => {
   const toast = useToast();
   // const navigation = useNavigate();
   const [List, setList] = useState(true);
@@ -90,8 +90,9 @@ const OrderSummary = () => {
         total += x;
       });
       setTotal(Math.floor(total));
+      setOrderTotal(Math.floor(total) + 20)
     } 
-  });
+  }, [HandelDelte]);
 
   return (
     <>
