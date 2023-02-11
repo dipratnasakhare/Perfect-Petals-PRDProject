@@ -85,8 +85,6 @@ export const ValentinePage = () => {
         w="80%"
       >
         {" "}
-      
-
         <PaginationBox page={page} setPage={setPage} total={total} />
       </Box>
     </>

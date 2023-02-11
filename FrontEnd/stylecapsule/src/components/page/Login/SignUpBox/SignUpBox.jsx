@@ -43,6 +43,7 @@ export const SignUpPage = () => {
     email: "",
     password: "",
     mobile_no: "",
+    user_type:"Client"
   });
 
   const HandelFormChange = (e) => {
@@ -52,6 +53,7 @@ export const SignUpPage = () => {
       [name]: value,
     });
   };
+
   const handleSignup = async () => {
     try {
       SetServerLoading(true);
@@ -61,6 +63,7 @@ export const SignUpPage = () => {
       );
       SetServerLoading(false);
       toast({
+        position: "top",
         title: x.data.msg,
         description: x.data.msg,
         status: x.data.status,
@@ -71,6 +74,7 @@ export const SignUpPage = () => {
       console.log(err);
       SetServerLoading(false);
       toast({
+        position: "top",
         title: "Something is wrong please try later",
         status: "error",
         duration: 9000,
