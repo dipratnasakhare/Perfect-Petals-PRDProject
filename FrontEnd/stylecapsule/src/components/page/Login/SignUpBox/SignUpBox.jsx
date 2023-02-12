@@ -43,7 +43,7 @@ export const SignUpPage = () => {
     email: "",
     password: "",
     mobile_no: "",
-    user_type:"Client"
+    user_type: "Client",
   });
 
   const HandelFormChange = (e) => {

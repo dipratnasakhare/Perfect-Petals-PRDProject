@@ -21,9 +21,6 @@ export const NetBanking = ({setOrderPlace}) => {
     "https://th.bing.com/th/id/R.7e6cb234fafae69a58b7cd00712578e8?rik=QB3kDsyO8WiyGg&riu=http%3a%2f%2flogos-download.com%2fwp-content%2fuploads%2f2016%2f06%2fYes_Bank_logo.png&ehk=8PHqelTg6dAn4v2Ee2BdZo6yP7R25CiDdhtLCapkpog%3d&risl=&pid=ImgRaw&r=0",
   ];
 
-  // let imagesBank2 = [
-    
-  // ];
 
   const selectoption = [
     "Cosmos Bank",
@@ -63,33 +60,6 @@ export const NetBanking = ({setOrderPlace}) => {
           );
         })}
       </SimpleGrid>
-
-      {/* <SimpleGrid gap="15px" columns={[1, 2, 2, 2]}  >
-        {imagesBank2.map((ele) => {
-          return (
-            <Box mr="1"  w="15rem">
-              <Flex border={"1px solid"}>
-                <Box pl="2" pr="2" justifyContent={"center"} display="grid">
-                  {" "}
-                  <Radio value="1">First</Radio>
-                </Box>
-
-                <Spacer />
-
-                <Box
-                  h="70"
-                  pl="2"
-                  pr="2"
-                  alignContent={"center"}
-                  display="grid"
-                >
-                  <Image w="15" src={ele} />
-                </Box>
-              </Flex>
-            </Box>
-          );
-        })}
-      </SimpleGrid> */}
 
       <Box justifyContent={"flex-start"} display="grid">
         <Text>All Bank</Text>

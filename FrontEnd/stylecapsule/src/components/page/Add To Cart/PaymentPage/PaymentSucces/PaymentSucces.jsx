@@ -6,28 +6,28 @@ import { useNavigate } from "react-router-dom";
 
 export const PaymentSucces = () => {
   const [timer, setTimer] = useState(5);
-  const toast = useToast()
-  const [IMage, setIMage] = useState(
+  const toast = useToast();
+  const [Image, setIMage] = useState(
     "https://www.cashlesso.com/wp-content/uploads/2020/03/19-March-Final-animation.gif"
   );
   const navigate = useNavigate();
 
-  
-  const HandelDelteCartData = async ( ) => {
-
-    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"))
-    UserId = UserId.UserId
-    let data =  {
-      UserId
-    }
+  const HandelDelteCartData = async () => {
+    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
+    UserId = UserId.UserId;
+    let data = {
+      UserId,
+    };
 
     try {
-      let x =  await axios.post(`${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/Delete_User_data`, data);
-     
+      let x = await axios.post(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/Delete_User_data`,
+        data
+      );
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   useEffect(() => {
     let id;
@@ -39,15 +39,14 @@ export const PaymentSucces = () => {
           );
 
           if (ele < -1) {
-
-             toast({
+            toast({
               position: "top",
-        title: "Order is Placed",
-        description: "Order is Placed",
-        status: "success",
-        duration: 9000,
-        isClosable: true,
-      })
+              title: "Order is Placed",
+              description: "Order is Placed",
+              status: "success",
+              duration: 9000,
+              isClosable: true,
+            });
             navigate("/");
             clearInterval(id);
           }
@@ -56,7 +55,7 @@ export const PaymentSucces = () => {
       });
     }, 1000);
 
-    HandelDelteCartData()
+    HandelDelteCartData();
 
     const cleanup = () => {
       clearInterval(id);
@@ -64,12 +63,9 @@ export const PaymentSucces = () => {
     return cleanup;
   }, []);
 
-
-
-
   return (
     <Box justifyContent={"center"} pt="1rem" display="grid" pb="10rem">
-      <Image src={IMage} />{" "}
+      <Image src={Image} />{" "}
     </Box>
   );
 };

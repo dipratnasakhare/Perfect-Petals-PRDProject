@@ -27,7 +27,7 @@ export const SingleProductBox = () => {
   const [value, setValue] = useState("4");
   const [price, setPrice] = useState(0);
 
-  const toast = useToast()
+  const toast = useToast();
   // const data = useSelector((state) => state.prodManager.data);
 
   useEffect(() => {
@@ -44,21 +44,21 @@ export const SingleProductBox = () => {
     }
   }, []);
 
-
   const HandelAddToCart = async (CartData) => {
-
-
-    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"))
-    UserId = UserId.UserId
-    let data =  {
+    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
+    UserId = UserId.UserId;
+    let data = {
       UserId,
-      UserCartData: [CartData]
-    }
+      UserCartData: [CartData],
+    };
 
-    console.log(UserId, "aaaaaaaaaa")
+    console.log(UserId, "aaaaaaaaaa");
 
     try {
-      let x =  await axios.post(`${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/Post`, data);
+      let x = await axios.post(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/Post`,
+        data
+      );
       toast({
         position: "top",
         title: x.data.msg,
@@ -66,21 +66,20 @@ export const SingleProductBox = () => {
         status: x.data.status,
         duration: 9000,
         isClosable: true,
-      })
+      });
     } catch (err) {
       console.log(err);
     }
-  }
-
+  };
 
   return (
     <Box w="80%" m="auto" mt="2rem" mb="2rem">
       {data && (
         <>
-          <Flex display={["grid","grid","grid", "flex"]}   m="auto"  gap="35px">
+          <Flex display={["grid", "grid", "grid", "flex"]} m="auto" gap="35px">
             <Grid
               w={["20%", "20%", "20%", "10%"]}
-              display={["none","none","none", "grid"]}
+              display={["none", "none", "none", "grid"]}
               gap="10px"
               h="0px"
             >
@@ -97,7 +96,14 @@ export const SingleProductBox = () => {
               <Image src={data.ImgUrl} />
             </Box>
 
-            <Box className="single_Product_BoxShadow_App_Css" m="auto" gap="25px"  display="grid" p="10px" w={["100%","100%","70%", "40%"]}>
+            <Box
+              className="single_Product_BoxShadow_App_Css"
+              m="auto"
+              gap="25px"
+              display="grid"
+              p="10px"
+              w={["100%", "100%", "70%", "40%"]}
+            >
               {/* Product Name Box  */}
               <Box>
                 <Text>{data.Name}</Text>
@@ -150,7 +156,9 @@ export const SingleProductBox = () => {
                 </Box>
                 <Flex gap="10px">
                   <Text>4 interest free payments of $19.00</Text>{" "}
-                  <Text color={"green"} textDecoration={"underline"}>Learn More</Text>
+                  <Text color={"green"} textDecoration={"underline"}>
+                    Learn More
+                  </Text>
                 </Flex>
               </Flex>
 
@@ -161,14 +169,12 @@ export const SingleProductBox = () => {
               </Box>
 
               <Box>
-              <Checkbox isInvalid>
-
-                <Text>
-                  passport icon Free Shipping/No Service Charge for One Full
-                  Year for Only $29.99/Year.
-                </Text>
+                <Checkbox isInvalid>
+                  <Text>
+                    passport icon Free Shipping/No Service Charge for One Full
+                    Year for Only $29.99/Year.
+                  </Text>
                 </Checkbox>
-
               </Box>
 
               <Box gap="15px" display={"grid"}>
@@ -191,7 +197,7 @@ export const SingleProductBox = () => {
                   w="100%"
                   gap="3"
                   mb="2"
-                  onClick={()=>HandelAddToCart(data)}
+                  onClick={() => HandelAddToCart(data)}
                 >
                   <Text textAlign={"start"}>
                     <BsCart color="black" />
@@ -201,9 +207,10 @@ export const SingleProductBox = () => {
               </Box>
 
               <Flex>
-
                 <Text>Designed & Delivered by a Local Shop - </Text>
-                <Text textDecoration={"underline"} color={"green"}>Learn more</Text>
+                <Text textDecoration={"underline"} color={"green"}>
+                  Learn more
+                </Text>
               </Flex>
             </Box>
           </Flex>

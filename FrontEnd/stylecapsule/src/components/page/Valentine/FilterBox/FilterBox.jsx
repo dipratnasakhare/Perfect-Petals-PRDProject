@@ -56,7 +56,7 @@ export const FilterBox = () => {
 
   return (
     <Box>
-      <Box   m="auto" mb="3rem">
+      <Box m="auto" mb="3rem">
         <Text>TOP 10 </Text>
         <Accordion>
           <AccordionBox List={first} />

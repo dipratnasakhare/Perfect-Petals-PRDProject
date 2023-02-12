@@ -34,9 +34,7 @@ export const NameBox = ({ data }) => {
           </Flex>
         </Text>
 
-          <Text  color="black">
-            Bought {data.Bought}
-          </Text>
+        <Text color="black">Bought {data.Bought}</Text>
         <Text as="b" color="black">
           {data.Price}
         </Text>
