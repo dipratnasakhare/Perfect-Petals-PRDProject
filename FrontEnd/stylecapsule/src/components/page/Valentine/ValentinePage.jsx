@@ -15,10 +15,6 @@ export const ValentinePage = () => {
   const [total, setTotal] = useState(1);
   const [list, setList] = useState([]);
 
-
-
-
-
   // ${process.env.MAIN_SERVER_URL}
   const GetData = async (page) => {
     try {
@@ -40,11 +36,17 @@ export const ValentinePage = () => {
       .catch((err) => console.log(err));
   }, [page]);
 
-
   return (
     <>
-      <Flex  gap="8"  display={["grid", "grid", "grid", "flex"]} w="95%"  m="auto" mb="2rem" mt="2rem">
-        <Box  >
+      <Flex
+        gap="8"
+        display={["grid", "grid", "grid", "flex"]}
+        w="95%"
+        m="auto"
+        mb="2rem"
+        mt="2rem"
+      >
+        <Box>
           <FilterBox />
         </Box>
         <Box w="80%" m="auto">

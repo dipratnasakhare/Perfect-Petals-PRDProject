@@ -29,10 +29,7 @@ export const RoutesOfAllPages = () => {
         <Route exact path="/Single_Product_Box" element={<SingleProductBox />} />
         <Route exact path="/Payment_Page" element={<PaymentPage />} />
         <Route exact path="/Wishlist" element={<WishlistPage />} />
-
         <Route exact path="/AdminDashboard" element={<AdminDashboard />} />
-
-
       </Routes>
     </div>
   );

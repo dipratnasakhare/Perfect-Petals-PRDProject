@@ -17,7 +17,6 @@ import { MdDeleteOutline } from "react-icons/md";
 import { PaginationBox } from "../Valentine/Pagination/PaginationBox";
 
 export const WishlistPage = () => {
-  const [List, setList] = useState(true);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [WishlistData, setWishlistData] = useState([]);
@@ -85,7 +84,6 @@ export const WishlistPage = () => {
     GetWishlistData();
   }, [HandelDelte]);
 
-
   const HandelAddToCart = async (CartData) => {
     let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
     UserId = UserId.UserId;
@@ -121,7 +119,7 @@ export const WishlistPage = () => {
         "https://images.pexels.com/photos/7130545/pexels-photo-7130545.jpeg?auto=compress&cs=tinysrgb&w=600"
       }
     >
-      <Grid  gap="25px">
+      <Grid gap="25px">
         <Box w="30%" m="auto">
           <Image
             m="auto"
@@ -133,20 +131,25 @@ export const WishlistPage = () => {
             <Heading textAlign={"center"}>my wishlist</Heading>
           </Box>
         </Box>
-        <SimpleGrid  columns={{base:1, md:2, lg:1}} spacing={10}  w="70%" m="auto" >
+        <SimpleGrid
+          columns={{ base: 1, md: 2, lg: 1 }}
+          spacing={10}
+          w="70%"
+          m="auto"
+        >
           {WishlistData &&
             WishlistData.map((ele) => {
               return (
                 <Flex
-                  display={{ base: "grid",md:"grid" , lg: "flex" }}
-                  gap={{ base: "6px", md: "8px", lg:"25px" }}
+                  display={{ base: "grid", md: "grid", lg: "flex" }}
+                  gap={{ base: "6px", md: "8px", lg: "25px" }}
                   p="25"
                   border={"1px solid"}
                   alignItems="center"
                 >
                   <Box
-                    w={{ base: "60%", md: "65%", lg:"10%" }}
-                    m={{ base: "auto", md: "auto", lg:"0px" }}
+                    w={{ base: "60%", md: "65%", lg: "10%" }}
+                    m={{ base: "auto", md: "auto", lg: "0px" }}
                   >
                     <Image src={ele.ImgUrl} />
                   </Box>
@@ -199,9 +202,8 @@ export const WishlistPage = () => {
                 </Flex>
               );
             })}
-        </SimpleGrid >
+        </SimpleGrid>
       </Grid>
-
       <Box
         mb="2rem"
         display={"grid"}

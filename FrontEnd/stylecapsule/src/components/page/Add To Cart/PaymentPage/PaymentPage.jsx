@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Box, Spacer, Text, useToast } from "@chakra-ui/react";
+import { Box, Spacer, Text } from "@chakra-ui/react";
 import OrderSummary from "./pages/OrderSummary/OrderSummary";
 import PaymentOption from "./pages/PaymentOption/PaymentOption";
 import { PaymentSucces } from "./PaymentSucces/PaymentSucces";
@@ -10,7 +10,7 @@ const PaymentPage = () => {
   const [orderPlace, setOrderPlace] = useState(false);
   const [OrderTotal, setOrderTotal] = useState(0);
   const navigation = useNavigate();
-  const toast = useToast();
+  // const toast = useToast();
 
   const GetCartData = async () => {
     let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
@@ -42,8 +42,6 @@ const PaymentPage = () => {
       TotalPrice: OrderTotal,
       OrderDetails: CartData,
     };
-
-    console.log(data, "order Total");
 
     try {
       let x = await axios.post(
@@ -86,8 +84,8 @@ const PaymentPage = () => {
         </Box>
         <Box justifyContent={"flex-start"} display="grid">
           <Text color="white">
-            nearbuy helps you discover the best things to do, eat and buy –
-            wherever you are! Make every day awesome with nearbuy. Dine at the
+            Perfect Petals helps you discover the best things to do, eat and buy
+            – wherever you are! Make every day awesome with nearbuy. Dine at the
             finest restaurants, relax at the best spas, pamper yourself with
             exciting wellness and shopping offers or just explore your city
             intimately… you will always find a lot more to do with nearbuy. From

@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import axios from "axios";
-import {  useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const ForgotPasswordPage = () => {
@@ -24,15 +24,12 @@ export const ForgotPasswordPage = () => {
   const [serverLoading, SetServerLoading] = useState(false);
   const navigate = useNavigate();
   const [sendOtp, SetSendOtp] = useState(false);
-  const [otpValue, setOtpValue] = useState("")
+  const [otpValue, setOtpValue] = useState("");
   const [email, setEmail] = useState("");
-  const [newPassword , setNewPassword] = useState("")
-  const [passwordBox, setPasswordBox] = useState(true)
-
+  const [newPassword, setNewPassword] = useState("");
+  const [passwordBox, setPasswordBox] = useState(true);
 
   const [showPassword, setShowPassword] = useState(false);
-
-
 
   const SignInImageText = [
     {
@@ -50,20 +47,18 @@ export const ForgotPasswordPage = () => {
   ];
 
   const HandelLoginButton = async () => {
+    if (otpValue === 1234) {
+      console.log(otpValue, email);
+      setPasswordBox(false);
 
-    if(otpValue === 1234){
-
-      console.log(otpValue, email)
-      setPasswordBox(false)
-
-
-
-      if(newPassword !== ""){
-
-        let data = {email, password:newPassword}
+      if (newPassword !== "") {
+        let data = { email, password: newPassword };
         try {
-          let x = await axios.patch(`${process.env.REACT_APP_MAIN_SERVER_URL}/user/setpass`, data);
-          console.log(x)
+          let x = await axios.patch(
+            `${process.env.REACT_APP_MAIN_SERVER_URL}/user/setpass`,
+            data
+          );
+          console.log(x);
           toast({
             position: "top",
             title: x.data.msg,
@@ -73,7 +68,7 @@ export const ForgotPasswordPage = () => {
             isClosable: true,
           });
 
-          navigate("/login")
+          navigate("/login");
         } catch (err) {
           console.log(err);
           toast({
@@ -84,15 +79,8 @@ export const ForgotPasswordPage = () => {
           });
         }
       }
-      return 
+      return;
     }
-
-
-
-
-
-
-
 
     const data = { email };
     console.log(data);
@@ -123,7 +111,6 @@ export const ForgotPasswordPage = () => {
       });
     }
   };
-
 
   return (
     <>
@@ -161,35 +148,46 @@ export const ForgotPasswordPage = () => {
               </Stack>
               <Box>
                 <Stack>
-                  {passwordBox ?   !sendOtp ? (
-                    <>
-                      <FormLabel><Text>Email address</Text></FormLabel>
-                      <Input
-                        type="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </>
+                  {passwordBox ? (
+                    !sendOtp ? (
+                      <>
+                        <FormLabel>
+                          <Text>Email address</Text>
+                        </FormLabel>
+                        <Input
+                          type="Email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <FormLabel>
+                          <Text>Enter OTP</Text>
+                        </FormLabel>
+                        <HStack>
+                          <PinInput
+                            onChange={(e) => setOtpValue(e)}
+                            type="alphanumeric"
+                          >
+                            <PinInputField />
+                            <PinInputField />
+                            <PinInputField />
+                            <PinInputField />
+                          </PinInput>
+                        </HStack>
+                      </>
+                    )
                   ) : (
                     <>
-                      <FormLabel><Text>Enter OTP</Text></FormLabel>
-                      <HStack>
-                        <PinInput onChange={(e)=>setOtpValue(e)} type="alphanumeric">
-                          <PinInputField />
-                          <PinInputField />
-                          <PinInputField />
-                          <PinInputField />
-                        </PinInput>
-                      </HStack>
-                    </>
-                  ) : <>
-                  
-                  
-                      <FormLabel><Text>Enter new Password</Text></FormLabel>
+                      <FormLabel>
+                        <Text>Enter new Password</Text>
+                      </FormLabel>
                       <InputGroup>
                         <Input
                           type={showPassword ? "text" : "Password"}
-                          value={newPassword} onChange={(e)=> setNewPassword(e.target.value)}
+                          value={newPassword}
+                          onChange={(e) => setNewPassword(e.target.value)}
                         />
                         <InputRightElement h={"full"}>
                           <Button
@@ -202,9 +200,8 @@ export const ForgotPasswordPage = () => {
                           </Button>
                         </InputRightElement>
                       </InputGroup>
-                  
-                  </>}
-                
+                    </>
+                  )}
 
                   <Stack spacing={10} pt={2}>
                     <Button

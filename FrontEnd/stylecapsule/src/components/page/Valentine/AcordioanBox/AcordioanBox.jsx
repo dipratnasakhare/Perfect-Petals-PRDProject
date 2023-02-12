@@ -9,8 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export const AccordionBox = ({ List }) => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <Box borderTop="1px solid">
@@ -27,7 +26,9 @@ export const AccordionBox = ({ List }) => {
           {List.map((ele) => {
             return (
               <Box>
-                <Text onClick={() => navigate(`/Flower/${ele.route}`)}>{ele.text}</Text>
+                <Text onClick={() => navigate(`/Flower/${ele.route}`)}>
+                  {ele.text}
+                </Text>
               </Box>
             );
           })}
