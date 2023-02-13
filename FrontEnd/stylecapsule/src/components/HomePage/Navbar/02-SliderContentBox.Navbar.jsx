@@ -45,7 +45,10 @@ export const SliderContentBox = ({ onClose, ...rest }) => {
              variant="outline"
              icon={<link.icon />}
            />
-           <Text  onClick={()=>navigate(link.route)} display={"grid"} alignContent={"center"} fontFamily={"cursive"}>
+           <Text  onClick={()=>{
+               navigate(link.route)
+               onClose()
+            }} display={"grid"} alignContent={"center"} fontFamily={"cursive"}>
              {link.name}
            </Text>{" "}
          </Flex>

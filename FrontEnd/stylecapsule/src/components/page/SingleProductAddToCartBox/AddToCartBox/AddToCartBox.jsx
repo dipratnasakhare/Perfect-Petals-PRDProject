@@ -21,8 +21,24 @@ export const AddToCartBox = ({ data }) => {
   // User_Wishlist_Data
 
   const HandelAddToCart = async (CartData) => {
-    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
+    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null"
+    if(UserId == "null"){
+      toast({
+        position: "top",
+        description: "Please login first",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+      navigate("/login")
+      return 
+    }
+
+    console.log(UserId)
+
     UserId = UserId.UserId;
+
+
     let data = {
       UserId,
       UserCartData: [CartData],
@@ -47,6 +63,19 @@ export const AddToCartBox = ({ data }) => {
 
   const HandelAddToWishList = async (CartData) => {
     let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
+
+    if(UserId == "null"){
+      toast({
+        position: "top",
+        description: "Please login first",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+      navigate("/login")
+      return 
+    }
+
     UserId = UserId.UserId;
     let data = {
       UserId,
