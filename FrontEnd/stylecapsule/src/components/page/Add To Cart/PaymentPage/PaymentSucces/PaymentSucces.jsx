@@ -1,4 +1,4 @@
-import { Box, Image, useToast } from "@chakra-ui/react";
+import { Box, Heading, Image, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const PaymentSucces = () => {
   const [timer, setTimer] = useState(5);
   const toast = useToast();
-  const [Image, setIMage] = useState(
+  const [Imagecart, setIMage] = useState(
     "https://www.cashlesso.com/wp-content/uploads/2020/03/19-March-Final-animation.gif"
   );
   const navigate = useNavigate();
@@ -65,7 +65,7 @@ export const PaymentSucces = () => {
 
   return (
     <Box justifyContent={"center"} pt="1rem" display="grid" pb="10rem">
-      <Image src={Image} />{" "}
+      <Image src={Imagecart} />{" "}
     </Box>
   );
 };
