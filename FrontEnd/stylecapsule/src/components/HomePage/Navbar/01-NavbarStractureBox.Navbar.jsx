@@ -54,6 +54,7 @@ import {
         duration: 9000,
         isClosable: true,
       });
+      navigate("/")
     };
   
     return (
@@ -146,11 +147,10 @@ import {
                     </MenuItem>
 
 
-                    {AdminUser &&   <MenuItem>
+                    {AdminUser ? <MenuItem>
                       {" "}
                       <Text onClick={()=>navigate("/AdminDashboard")}> Admin Dashboard </Text>
-                    </MenuItem>
-}
+                    </MenuItem> : ""}
                     <MenuDivider />
                     <MenuItem onClick={HandelLogout}>
                       {" "}

@@ -55,16 +55,7 @@ export const Dashboard = () => {
   }, [])
 
 
-
-
-
-
-
-
-
-
-
-
+  
   return (
     <Grid pt="1rem" pb="2rem" gap="30px" w="90%" m="auto">
       <SimpleGrid columns={[1, 2, 2, 4]} w={{base:"85%" , md:"100%"}}spacing={10}>

@@ -20,7 +20,7 @@ UserAuthRoutes.get("/", async (req, res) => {
       res.send({ All_User, totalPages: Math.ceil(length.length / limit)});
     } catch (err) {
         console.log(err, "err line 20");
-        res.status(200).send({ msg: err });
+        res.status(200).send({ msg: "Something went wrong please try again", status:"error" });
     }
 
 })
@@ -34,7 +34,7 @@ UserAuthRoutes.post("/delete", async (req, res) => {
         res.status(200).send({ msg:"User has been deleted", status:"success"});
     } catch (err) {
         console.log(err, "err line 20");
-        res.status(200).send({ msg: err });
+        res.status(200).send({ msg: "Something went wrong please try again", status:"error" });
     }
 
 })
@@ -54,13 +54,12 @@ UserAuthRoutes.post("/register", async (req, res) => {
                     UserDetails.password = protected_password
                     const UserId = jwt.sign({email ,id:password}, unic);
                     UserDetails.UserId = UserId
-                    console.log(UserDetails, "user Details here")
                     let NewUser = new ModelUserAuth(UserDetails);
                     NewUser.save();
                     res.status(200).send({ msg:"User has been created", status:"success"});
                 } else {
                     console.log(err, "err line 43")
-                    res.status(200).send({ msg: "something went wrong Please try again", status:"error" });
+                    res.status(200).send({ msg: "Something went wrong please try again", status:"error" });
                 }
             })
 
@@ -68,7 +67,7 @@ UserAuthRoutes.post("/register", async (req, res) => {
 
     } catch (err) {
         console.log(err, "err line 50");
-        res.status(200).send({ msg: "something went wrong Please try again", status:"error" });
+        res.status(200).send({ msg: "Something went wrong please try again", status:"error" });
     }
 
 });
@@ -91,26 +90,24 @@ UserAuthRoutes.post("/login", async (req, res) => {
                 bcrypt.compare(password, User_Details[0].password, async (err, result) => {
                     if (result) {   
                         const token = jwt.sign({email ,id:password}, Key);
-                        res.status(200).send({msg:"User Login Successfully", UserId:User_Details[0].UserId, name:User_Details[0].first_name, token, status:"success"});
+                        res.status(200).send({msg:"User login successfully", UserId:User_Details[0].UserId, name:User_Details[0].first_name, token, status:"success"});
                     } else {
                         res.status(200).send({msg:"Wrong password", status:"error"})
                     }
                     if(err){
-                        console.log(err, "user login")
-                        res.status(200).send({ msg: "something went wrong Please try again", status:"error" });
-
+                        res.status(200).send({ msg: "Something went wrong please try again", status:"error" });
                     }
                 })
             }else{
                 bcrypt.compare(password, User_Details[0].password, async (err, result) => {
                     if (result) {    
                         const token = jwt.sign({email ,id:password}, Key);
-                        res.status(200).send({msg:"Admin Login Successfully",  UserId:User_Details[0].UserId, name:User_Details[0].first_name, token, status:"success"});
+                        res.status(200).send({msg:"Admin login successfully",  UserId:User_Details[0].UserId, name:User_Details[0].first_name, token, status:"success"});
                     } else {
                         res.status(200).send({msg:"Wrong password", status:"error"})
                     }
                     if(err){
-                        res.status(200).send({msg:err, status:"error"})
+                        res.status(200).send({msg:"Something went wrong please try again", err, status:"error"})
                     }
                 })
 
@@ -121,7 +118,7 @@ UserAuthRoutes.post("/login", async (req, res) => {
        
     } catch (err) {
         console.log(err, "err line 98");
-        res.status(200).send({ msg: "something went wrong Please try again", err , status:"error"})
+        res.status(200).send({ msg: "Something went wrong please try again", err , status:"error"})
     }
 });
 
@@ -130,21 +127,21 @@ UserAuthRoutes.post("/login", async (req, res) => {
 UserAuthRoutes.post("/changepass",async(req,res)=>{
 
     const email = req.body.email;
-    console.log(req.body)
+    // console.log(req.body)
 
    try {
-     let User_Details = await ModelUserAuth.find({email: 'rickysakhare677@gmail.com'});
+     let User_Details = await ModelUserAuth.find({email});
 
      console.log(User_Details, email)
             if(User_Details.length > 0){
-                res.status(200).send({msg:"user is found", status:"success", userPresent:true});
+                res.status(200).send({msg:"User is found", status:"success", userPresent:true});
             }else{
-                res.status(200).send({msg:"user doesn't exist", status:"error", userPresent:false })
+                res.status(200).send({msg:"User doesn't exist", status:"error", userPresent:false })
             }
 
     } catch (err) {
       console.log(err.message);
-      res.status(200).send({ msg: "something went wrong Please try again", status:"error" });
+      res.status(200).send({ msg: "Something went wrong please try again", status:"error" });
     }
   });
   
@@ -166,7 +163,7 @@ UserAuthRoutes.patch("/setpass",async(req,res)=>{
       }
     } catch (err) {
         console.log(err);
-        res.status(200).send({ msg: "something went wrong Please try again", status:"error" });
+        res.status(200).send({ msg: "Something went wrong please try again", status:"error" });
 
     }
 

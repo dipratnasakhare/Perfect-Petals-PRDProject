@@ -7,17 +7,19 @@ import { SinglePage } from "./pages/01-SinglePage";
 export const Products = () => {
   const [Loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(1);
+  const [total, setTotal] = useState(10);
   const [list, setList] = useState([]);
 
   const [name, setName] = useState(false)
   const [price, setPrice] = useState(false)
 
-  const GetData = async (page) => {
+  const GetData = async () => {
     try {
-      return await axios.get(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/?page=${page}&limit=6`
+      let res =  await axios.get(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/`
       );
+      setList(res.data.valentine);
+      setTotal(res.data.totalPages);
     } catch (err) {
       console.log(err);
     }
@@ -37,32 +39,19 @@ export const Products = () => {
       }
 }
 
+// useEffect(() => {
+//   GetData()
+// }, [page]);
+
 useEffect(() => {
-  setLoading(true);
-  GetData(page)
-    .then((res) => {
-      setList(res.data.valentine);
-      setTotal(res.data.totalPages);
-      setLoading(false);
-    })
-    .catch((err) => console.log(err));
-}, [HandelEditProduct, page]);
+  GetData()
+}, [HandelEditProduct]);
 
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   GetData(page)
-  //     .then((res) => {
-  //       setList(res.data.valentine);
-  //       setTotal(res.data.totalPages);
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [page]);
 
   return (
-    <Box pt="1rem" pb="2rem" w="80%" m="auto">
-      <SimpleGrid columns={[1, 2, 2, 3]} spacing={10} display="grid">
+    <Box pt="1rem" pb="2rem" w="90%" m="auto">
+      <SimpleGrid h="40rem" overflowY={"scroll"}  columns={[1, 2, 2, 3]} spacing={10} display="grid">
         {list.map((product, i) => {
           return (
            <SinglePage HandelEditProduct={HandelEditProduct} Price={price} setPrice={setPrice} name={name} setName={setName} product={product} i={i} />

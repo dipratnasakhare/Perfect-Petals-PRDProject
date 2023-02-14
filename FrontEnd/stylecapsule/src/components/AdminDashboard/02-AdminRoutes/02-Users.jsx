@@ -21,8 +21,10 @@ export const Users = () => {
 
 
   const GetUserData = async (page) => {
+    setLoading(true)
     try {
       let res =  await axios.get(`${process.env.REACT_APP_MAIN_SERVER_URL}/user?page=${page}&limit=4`);
+      setLoading(false)
       setList(res.data.All_User);
       setTotal(res.data.totalPages)
     } catch (err) {
@@ -56,9 +58,13 @@ export const Users = () => {
     }
   };
 
+  // useEffect(() => {
+  //   GetUserData(page)       
+  // }, [HandelDelte]);
+
   useEffect(() => {
     GetUserData(page)       
-  }, [HandelDelte]);
+  }, []);
 
 
   return (
@@ -110,34 +116,8 @@ export const Users = () => {
       )}
     </Box>
 
-    <Box
-        mb="2rem"
-        display={"grid"}
-        justifyContent={"center"}
-        m="auto"
-        mt="1rem"
-        w="80%"
-      >
-        {" "}
-        <Flex gap="5" mb="2rem" mt="1rem">
-        <Box>
-          {" "}
-          <Button isDisabled={page <= 1} onClick={() => setPage(page - 1)}>
-            Prev
-          </Button>
-        </Box>{" "}
-        <Box>
-          {" "}
-          <Button>{page}</Button>
-        </Box>
-        <Box>
-          {" "}
-          <Button isDisabled={page >= total} onClick={() => setPage(page + 1)}>
-            Next
-          </Button>
-        </Box>
-      </Flex>
-      </Box>
+    <PaginationBox page={page} setPage={setPage} total={total} />
+
     </Box>
   );
 };
