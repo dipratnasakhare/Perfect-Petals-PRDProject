@@ -5,6 +5,7 @@ import {
   Flex,
   Grid,
   Image,
+  Input,
   Radio,
   RadioGroup,
   Spacer,
@@ -26,9 +27,47 @@ export const SingleProductBox = () => {
   const [data, setData] = useState("");
   const [value, setValue] = useState("4");
   const [price, setPrice] = useState(0);
+  const [buttonText, setButtonText] = useState("Comment");
+  const [commentText, setCommentText] = useState("")
 
   const toast = useToast();
   // const data = useSelector((state) => state.prodManager.data);
+
+  const HandelCommentBox = async (ProductId) => {
+    let dataUser = JSON.parse(localStorage.getItem("styleCapsuleToken"));
+    const UserId = dataUser.UserId;
+    const user = dataUser.name;
+    const data = {
+      UserId,
+      ProductId,
+      user,
+      comment:commentText,
+    };
+
+    if (buttonText == "Submit") {
+      console.log("post");
+    }
+
+    setButtonText("Submit");
+    console.log(data, "aaaaaaaaaa");
+
+    // try {
+    //   let x = await axios.post(
+    //     `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/comment`,
+    //     data
+    //   );
+    //   toast({
+    //     position: "top",
+    //     title: x.data.msg,
+    //     description: x.data.msg,
+    //     status: x.data.status,
+    //     duration: 9000,
+    //     isClosable: true,
+    //   });
+    // } catch (err) {
+    //   console.log(err);
+    // }
+  };
 
   useEffect(() => {
     let Data =
@@ -212,6 +251,17 @@ export const SingleProductBox = () => {
                   Learn more
                 </Text>
               </Flex>
+
+              <Box>
+                {buttonText !== "Comment" ? (
+                  <Input onChange={(e)=>setCommentText(e.target.value)} placeholder="Enter you Expreence with product" />
+                ) : (
+                  ""
+                )}
+                <Button onClick={() => HandelCommentBox("ss")}>
+                  {buttonText}
+                </Button>
+              </Box>
             </Box>
           </Flex>
         </>

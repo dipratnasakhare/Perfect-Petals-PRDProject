@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const OrderDetails = mongoose.Schema({
   UserId: { type: String },
   TotalPrice: { type: Number },
+  Status: { type: String },
   OrderDetails: [
     {
       ImgUrl: { type: String },

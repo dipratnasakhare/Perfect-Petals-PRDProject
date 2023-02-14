@@ -48,6 +48,8 @@ const PaymentPage = () => {
         `${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/OrderPost`,
         data
       );
+
+      console.log(x, "orderlist post or not")
     } catch (err) {
       console.log(err);
     }

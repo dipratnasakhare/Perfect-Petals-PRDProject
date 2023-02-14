@@ -15,7 +15,7 @@ GiftBasketsFood.get("/", async (req, res) => {
     res.send({ GiftBasketsFood, totalPages: Math.ceil(length.length / limit) });
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 

@@ -17,7 +17,7 @@ BirthdayFlowers.get("/", async (req, res) => {
     res.send({ BirthdayFlowers, totalPages: Math.ceil(length.length / limit) });
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err });
+    res.status(200).send({ msg: "Something went wrong please try again", status:'error' });
   }
 });
 

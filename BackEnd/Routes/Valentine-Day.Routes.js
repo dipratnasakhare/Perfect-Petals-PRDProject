@@ -17,7 +17,7 @@ const { ModelGreen } = require("../models/Green.models");
 const { ModelBlue } = require("../models/Blue.models");
 
 ValentineDay.get("/", async (req, res) => {
-  const { page = 1, limit = 8 } = req.query;
+  const { page = 1, limit = 20 } = req.query;
 
   try {
     let length = await ModelValentineDay.find();
@@ -30,7 +30,7 @@ ValentineDay.get("/", async (req, res) => {
     });
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 
@@ -44,7 +44,6 @@ const { ProductName,
   ProductPrice,
   productId} = req.body
 
-
   try {
     await ModelValentineDay.updateOne({_id:productId},{$set:{Price:ProductPrice}})
     let valentine = await ModelValentineDay.updateOne({_id:productId},{$set:{Name:ProductName}})
@@ -52,7 +51,20 @@ const { ProductName,
     res.send({valentine});
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
+  }
+});
+
+ValentineDay.get("/comment", async (req, res) => {
+
+  console.log(req.body)
+const { user , comment, productId} = req.body
+  try {
+    let valentine = await ModelValentineDay.updateOne({_id:productId},{$push:{Comment:{user, comment}}})
+    res.send({ msg: "Comment is added", status: "succes" });
+  } catch (err) {
+    console.log(err, "err line 20");
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 
@@ -71,7 +83,7 @@ ValentineDay.get("/Sunflowers", async (req, res) => {
     res.send({ Sunflowers, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 
@@ -87,7 +99,7 @@ ValentineDay.get("/Lilies", async (req, res) => {
   res.send({ Lilies, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 
@@ -103,7 +115,7 @@ ValentineDay.get("/Exotic", async (req, res) => {
    res.send({ Exotic, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 
@@ -119,7 +131,7 @@ ValentineDay.get("/Sweet_Flower", async (req, res) => {
    res.send({ Sweet_Flower, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 
@@ -135,7 +147,7 @@ ValentineDay.get("/Bright_Flower", async (req, res) => {
    res.send({ Bright_Flower, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 
@@ -152,7 +164,7 @@ ValentineDay.get("/Alstroemeria", async (req, res) => {
    res.send({ Alstroemeria, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 
@@ -168,7 +180,7 @@ ValentineDay.get("/Gardenia_Plants", async (req, res) => {
    res.send({ Gardenia_Plants, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 
@@ -186,7 +198,7 @@ ValentineDay.get("/Red", async (req, res) => {
    res.send({ Red, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 
@@ -202,7 +214,7 @@ ValentineDay.get("/Purple", async (req, res) => {
    res.send({ Purple, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 
@@ -218,7 +230,7 @@ ValentineDay.get("/Green", async (req, res) => {
    res.send({ Green, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 
@@ -234,7 +246,7 @@ ValentineDay.get("/Blue", async (req, res) => {
    res.send({ Blue, totalPages: Math.ceil(length.length / limit)});
   } catch (err) {
     console.log(err, "err line 20");
-    res.status(200).send({ msg: err, status: "error" });
+    res.status(200).send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
 

@@ -7,7 +7,9 @@ const ValentineDaySchema = mongoose.Schema({
     Price: { type: String },
     Basket: { type: String },
     Bought: { type: Number },
-    Rating: { type: Number }
+    Rating: { type: Number },
+    Comment: [{ type: String, require:false }]
+
 });
 
 const ModelValentineDay = mongoose.model(

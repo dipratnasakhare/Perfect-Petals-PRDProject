@@ -8,12 +8,12 @@ export const SinglePage = ({ product, i, HandelEditProduct }) => {
   const [Price, setPrice] = useState(false);
   const [name, setName] = useState(false)
 
-  const [ProductName, setProductName] = useState(product.Name)
-  const [ProductPrice, setProductPrice] = useState(product.Price)
+  const [ProductName, setProductName] = useState("")
+  const [ProductPrice, setProductPrice] = useState("")
 
   useEffect(()=> {
-    setProductName(product.Name)
-    setProductPrice(product.Price)
+    // setProductName(product.Name)
+    // setProductPrice(product.Price)
   }, [])
 
   return (
@@ -61,7 +61,7 @@ export const SinglePage = ({ product, i, HandelEditProduct }) => {
               
               <BiEdit onClick={() => setPrice(!Price)} />
             </Grid>
-            {ProductName !== product.Name || ProductPrice !== product.Price ? <Button mt="5px" onClick={()=>{
+            {ProductName !== "" || ProductPrice !== "" ? <Button mt="5px" onClick={()=>{
               setName(false)
               setPrice(false)
               HandelEditProduct(ProductName, product["_id"], ProductPrice)
