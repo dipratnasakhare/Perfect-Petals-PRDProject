@@ -57,7 +57,8 @@ export const Dashboard = () => {
 
   
   return (
-    <Grid pt="1rem" pb="2rem" gap="30px" w="90%" m="auto">
+    <Box h="40rem" backgroundSize={"cover"} backgroundImage={"https://images.pexels.com/photos/7130540/pexels-photo-7130540.jpeg?auto=compress&cs=tinysrgb&w=600"} pt="1rem" pb="2rem">
+    <Grid pt="1rem" pb="2rem" gap="30px" w="90%" m="auto" >
       <SimpleGrid columns={[1, 2, 2, 4]} w={{base:"85%" , md:"100%"}}spacing={10}>
         {Details.map((ele) => {
           return (
@@ -75,5 +76,6 @@ export const Dashboard = () => {
         <Box w="50%"></Box>
       </Box>
     </Grid>
+  </Box>
   );
 };

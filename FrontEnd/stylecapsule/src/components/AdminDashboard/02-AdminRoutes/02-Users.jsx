@@ -20,7 +20,7 @@ export const Users = () => {
   const [total, setTotal] = useState(1);
 
 
-  const GetUserData = async (page) => {
+  const GetUserData = async () => {
     setLoading(true)
     try {
       let res =  await axios.get(`${process.env.REACT_APP_MAIN_SERVER_URL}/user?page=${page}&limit=4`);
@@ -31,8 +31,6 @@ export const Users = () => {
       console.log(err);
     }
   };
-
-
   const HandelDelte = async (id) => {
     let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
     UserId = UserId.UserId;
@@ -61,17 +59,15 @@ export const Users = () => {
   // useEffect(() => {
   //   GetUserData(page)       
   // }, [HandelDelte]);
-
   useEffect(() => {
-    GetUserData(page)       
-  }, []);
-
+    GetUserData()       
+  }, [page]);
 
   return (
     <Box backgroundSize={"cover"} backgroundImage={"https://images.pexels.com/photos/7130540/pexels-photo-7130540.jpeg?auto=compress&cs=tinysrgb&w=600"} pt="1rem" pb="2rem">
     <Box >
       {Loading ? (
-        <Box display={"grid"} justifyContent="center" alignContent={"center"}>
+        <Box h="30rem" display={"grid"} justifyContent="center" alignContent={"center"}>
           <Spinner
             thickness="4px"
             speed="0.65s"
@@ -116,8 +112,17 @@ export const Users = () => {
       )}
     </Box>
 
-    <PaginationBox page={page} setPage={setPage} total={total} />
-
+    <Box
+        mb="2rem"
+        display={"grid"}
+        justifyContent={"center"}
+        m="auto"
+        mt="1rem"
+        w="80%"
+      >
+        {" "}
+        <PaginationBox page={page} setPage={setPage} total={total} />
+      </Box>{" "}
     </Box>
   );
 };

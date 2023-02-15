@@ -34,10 +34,8 @@ export const AddToCartBox = ({ data }) => {
       return 
     }
 
-    console.log(UserId)
-
     UserId = UserId.UserId;
-
+    CartData.Date = Date()
 
     let data = {
       UserId,

@@ -16,7 +16,7 @@ export const Products = () => {
   const GetData = async () => {
     try {
       let res =  await axios.get(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/`
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/?page=${page}&limit=8`
       );
       setList(res.data.valentine);
       setTotal(res.data.totalPages);
@@ -39,19 +39,20 @@ export const Products = () => {
       }
 }
 
-// useEffect(() => {
-//   GetData()
-// }, [page]);
-
 useEffect(() => {
   GetData()
-}, [HandelEditProduct]);
+}, [page]);
+
+// useEffect(() => {
+//   GetData()
+// }, [HandelEditProduct]);
 
 
 
   return (
+    <Box backgroundSize={"cover"} backgroundImage={"https://images.pexels.com/photos/7130540/pexels-photo-7130540.jpeg?auto=compress&cs=tinysrgb&w=600"} pt="1rem" pb="2rem" >
     <Box pt="1rem" pb="2rem" w="90%" m="auto">
-      <SimpleGrid h="40rem" overflowY={"scroll"}  columns={[1, 2, 2, 3]} spacing={10} display="grid">
+      <SimpleGrid   columns={[1, 2, 2, 4]} spacing={10} >
         {list.map((product, i) => {
           return (
            <SinglePage HandelEditProduct={HandelEditProduct} Price={price} setPrice={setPrice} name={name} setName={setName} product={product} i={i} />
@@ -70,5 +71,6 @@ useEffect(() => {
         <PaginationBox page={page} setPage={setPage} total={total} />
       </Box>{" "}
     </Box>
+  </Box>
   );
 };

@@ -48,12 +48,23 @@ export const LoginPage = () => {
         `${process.env.REACT_APP_MAIN_SERVER_URL}/user/login`,
         data
       );
+
+      if(x.data.msg === "User not found"){
+        toast({
+          position: "top",
+          description: x.data.msg,
+          status: x.data.status,
+          duration: 9000,
+          isClosable: true,
+        });
+        SetServerLoading(false);
+        return
+      }
       localStorage.setItem("styleCapsuleToken", JSON.stringify(x.data));
       SetServerLoading(false);
 
       toast({
         position: "top",
-        title: x.data.msg,
         description: x.data.msg,
         status: x.data.status,
         duration: 9000,

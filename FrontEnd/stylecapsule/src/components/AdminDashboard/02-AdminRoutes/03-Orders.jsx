@@ -24,10 +24,11 @@ export const Orders = () => {
     setLoading(true)
     try {
       let x = await axios.get(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/OrderGet`
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/OrderGet?page=${page}&limit=3`
       );
       setLoading(false)
       setList(x.data.orderList);
+      setTotal(x.data.totalPages);
     } catch (err) {
       console.log(err);
     }
@@ -35,7 +36,7 @@ export const Orders = () => {
 
   useEffect(() => {
     OrderDetails();
-  }, []);
+  }, [page]);
 
   return (
     <Box
@@ -62,9 +63,8 @@ export const Orders = () => {
             <Box gap="25px">
               {List &&
                 List.map((ele) => {
-                  console.log(ele);
                   return (
-                    <Box border={"1px solid"} overflowX="scroll"  p="25px">
+                    <Box w="90%" mt="15px" border={"1px solid"} overflowX="scroll"  p="10px">
                       <Flex>
                         <Text pr="5px"  color="blue">UserId-</Text>
                         <Text>  {ele.UserId}</Text>
@@ -89,8 +89,16 @@ export const Orders = () => {
           </Box>
         )}
       </Box>
-
-      <PaginationBox page={page} setPage={setPage} total={total} />
-    </Box>
+      <Box
+        mb="2rem"
+        display={"grid"}
+        justifyContent={"center"}
+        m="auto"
+        mt="1rem"
+        w="80%"
+      >
+        {" "}
+        <PaginationBox page={page} setPage={setPage} total={total} />
+      </Box>{" "}    </Box>
   );
 };
