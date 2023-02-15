@@ -5,33 +5,22 @@ import { BiEdit } from "react-icons/bi";
 import axios from "axios";
 
 export const SinglePage = ({ product, i, HandelEditProduct }) => {
-  const [Price, setPrice] = useState(false);
-  const [name, setName] = useState(false)
-
-  const [ProductName, setProductName] = useState("")
-  const [ProductPrice, setProductPrice] = useState("")
-
-  useEffect(()=> {
+  useEffect(() => {
     // setProductName(product.Name)
     // setProductPrice(product.Price)
-  }, [])
+  }, []);
 
   return (
     <Box key={i / Date.now()} boxShadow="lg" rounded="md" bg="white">
-      <Box bg="white" >
-        <Box h="13.5rem" overflow="hidden">
+      <Box bg="white">
+        <Box>
           <Image src={product.ImgUrlList[0]} />
         </Box>
-        <Box p="15px" pt={["34px", "16px", "16px"]}>
-          <Box pb="10px" mb="40px">
+        <Box p="15px">
+          <Box pb="10px">
             <Grid gap="1">
-              {name ? <Input value={ProductName} onChange={(e)=> setProductName(e.target.value)}/> :  <Text as="b" color="black">
-                  {product.Name}
-                </Text>}
-              <Text textAlign={"start"}>
-               
-                <BiEdit onClick={() => setName(!name)} />
-              </Text>
+              <Text>{product.Name}</Text>
+
               <Text color="black">
                 {" "}
                 <Flex gap="3">
@@ -55,19 +44,11 @@ export const SinglePage = ({ product, i, HandelEditProduct }) => {
               </Text>
 
               <Text color="black">Bought {product.Bought}</Text>
-              {Price ? <Input value={ProductPrice}  onChange={(e)=> setProductPrice(e.target.value)}/> : <Text as="b" color="black">
+              <Text as="b" color="black">
                 {product.Price}
-              </Text>}
-              
-              <BiEdit onClick={() => setPrice(!Price)} />
+              </Text>
+              <BiEdit />
             </Grid>
-            {ProductName !== "" || ProductPrice !== "" ? <Button mt="5px" onClick={()=>{
-              setName(false)
-              setPrice(false)
-              HandelEditProduct(ProductName, product["_id"], ProductPrice)
-              setProductName(ProductName)
-              setProductPrice(ProductPrice)
-              }} _hover={"none"} bg={"green"}>Submit</Button> : ""}
           </Box>
         </Box>
       </Box>

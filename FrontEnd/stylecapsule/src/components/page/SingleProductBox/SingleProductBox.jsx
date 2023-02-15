@@ -1,4 +1,5 @@
 import {
+  Accordion,
   Box,
   Button,
   Checkbox,
@@ -6,8 +7,13 @@ import {
   Grid,
   Image,
   Input,
+  AccordionItem,
+  AccordionButton,
+  AccordionIcon,
+  AccordionPanel,
   Radio,
   RadioGroup,
+  Select,
   Spacer,
   Stack,
   Text,
@@ -15,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { BsStar } from "react-icons/bs";
 
 import { FcDepartment } from "react-icons/fc";
 // import { CiPassport1 } from "react-icons/ci";
@@ -24,74 +31,103 @@ import { BsCart } from "react-icons/bs";
 import axios from "axios";
 
 export const SingleProductBox = () => {
-  const [data, setData] = useState("");
+  const [ProductData, setProductData] = useState("");
   const [value, setValue] = useState("4");
   const [price, setPrice] = useState(0);
   const [buttonText, setButtonText] = useState("Comment");
-  const [commentText, setCommentText] = useState("")
+  const [commentText, setCommentText] = useState("");
+  const [ProductRating, setProductRating] = useState(5);
 
   const toast = useToast();
   // const data = useSelector((state) => state.prodManager.data);
 
   const HandelCommentBox = async (ProductId) => {
+
+
     let dataUser = JSON.parse(localStorage.getItem("styleCapsuleToken"));
     const UserId = dataUser.UserId;
     const user = dataUser.name;
+
+    // checking here user have added comment before 
+    let x = ProductData.Comment.map((ele)=>ele.UserId == UserId)
+    if(x[0]){
+      toast({
+        position: "top",
+        description: "You already added comment",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+      return
+    }
+    console.log(x)
+
+
+// posting comment text to backend 
     const data = {
       UserId,
       ProductId,
       user,
-      comment:commentText,
+      comment: commentText,
+      Rating: ProductRating,
+      Like: 0,
     };
 
     if (buttonText == "Submit") {
-      console.log("post");
+      try {
+        let x = await axios.post(
+          `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/comment`,
+          data
+        );
+        toast({
+          position: "top",
+          status: x.data.status,
+          duration: 9000,
+          isClosable: true,
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
-
+    // changing text comment to submit for butten to submit comment
     setButtonText("Submit");
-    console.log(data, "aaaaaaaaaa");
-
-    // try {
-    //   let x = await axios.post(
-    //     `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/comment`,
-    //     data
-    //   );
-    //   toast({
-    //     position: "top",
-    //     title: x.data.msg,
-    //     description: x.data.msg,
-    //     status: x.data.status,
-    //     duration: 9000,
-    //     isClosable: true,
-    //   });
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
-  useEffect(() => {
-    let Data =
-      JSON.parse(localStorage.getItem("SingleProductOfFlowerryShop")) || "null";
 
-    console.log(Data);
-    if (Data !== "null") {
-      setData(Data);
-      let price = Data.Price.trim().split("-");
-      let x = price[0].trim().split("$");
-      x = +x[1];
-      setPrice(x);
+  const getDataForSingleProduct = async () => {
+    // geting id from from localstorage
+    let ProductData = JSON.parse(localStorage.getItem("SingleProductOfFlowerryShop")) || "null";
+     const data = {ProductId: ProductData["_id"]}
+
+    try {
+      let x = await axios.post(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/single-product`,
+        data
+      );
+      setProductData(x.data.data)
+      console.log(x.data.data, "geting data from get ", data)
+
+    } catch (err) {
+      console.log(err);
     }
+  }
+
+  useEffect(() => {
+
+    getDataForSingleProduct()
+
   }, []);
+
+
 
   const HandelAddToCart = async (CartData) => {
     let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
     UserId = UserId.UserId;
+    CartData.Date = Date()
     let data = {
       UserId,
       UserCartData: [CartData],
     };
-
-    console.log(UserId, "aaaaaaaaaa");
 
     try {
       let x = await axios.post(
@@ -100,7 +136,6 @@ export const SingleProductBox = () => {
       );
       toast({
         position: "top",
-        title: x.data.msg,
         description: x.data.msg,
         status: x.data.status,
         duration: 9000,
@@ -112,8 +147,9 @@ export const SingleProductBox = () => {
   };
 
   return (
+    <>
     <Box w="80%" m="auto" mt="2rem" mb="2rem">
-      {data && (
+      {ProductData && (
         <>
           <Flex display={["grid", "grid", "grid", "flex"]} m="auto" gap="35px">
             <Grid
@@ -122,7 +158,7 @@ export const SingleProductBox = () => {
               gap="10px"
               h="0px"
             >
-              {data.ImgUrlList.map((items, index) => {
+              {ProductData.ImgUrlList.map((items, index) => {
                 return (
                   <Box>
                     <Image src={items} />
@@ -132,7 +168,7 @@ export const SingleProductBox = () => {
             </Grid>
 
             <Box m="auto" bg="pink">
-              <Image src={data.ImgUrl} />
+              <Image src={ProductData.ImgUrl} />
             </Box>
 
             <Box
@@ -145,7 +181,7 @@ export const SingleProductBox = () => {
             >
               {/* Product Name Box  */}
               <Box>
-                <Text>{data.Name}</Text>
+                <Text>{ProductData.Name}</Text>
               </Box>
               {/* Catogery Box here  */}
               <Box>
@@ -236,7 +272,7 @@ export const SingleProductBox = () => {
                   w="100%"
                   gap="3"
                   mb="2"
-                  onClick={() => HandelAddToCart(data)}
+                  onClick={() => HandelAddToCart(ProductData)}
                 >
                   <Text textAlign={"start"}>
                     <BsCart color="black" />
@@ -252,20 +288,94 @@ export const SingleProductBox = () => {
                 </Text>
               </Flex>
 
-              <Box>
+              <Grid gap="10px">
                 {buttonText !== "Comment" ? (
-                  <Input onChange={(e)=>setCommentText(e.target.value)} placeholder="Enter you Expreence with product" />
+                  <>
+                    <Input
+                      onChange={(e) => setCommentText(e.target.value)}
+                      placeholder="Enter you Expreence with product"
+                    />
+                    <Select onChange={(e) => setProductRating(e.target.value)}>
+                      <option value={5}>5</option>
+                      <option value={4}>4</option>
+                      <option value={3}>3</option>
+                      <option value={2}>2</option>
+                      <option value={1}>1</option>
+                    </Select>
+                  </>
                 ) : (
                   ""
                 )}
-                <Button onClick={() => HandelCommentBox("ss")}>
+                <Button onClick={() => HandelCommentBox(ProductData["_id"])}>
                   {buttonText}
                 </Button>
-              </Box>
+              </Grid>
             </Box>
           </Flex>
         </>
       )}
+
+   
     </Box>
+
+{ProductData.Comment &&       <Box>
+  <Accordion allowToggle>
+    <Box borderTop="1px solid">
+      <AccordionItem>
+        <h2>
+          <AccordionButton>
+            <Box as="span" flex="1" textAlign="left">
+              <h1>Comments</h1>
+            </Box>
+            <AccordionIcon />
+          </AccordionButton>
+        </h2>
+        <AccordionPanel pb={4}>
+          {ProductData &&
+            ProductData.Comment.map((ele) => {
+              return (
+                <Box m="10px" border="1px solid blue" p="5px">
+                  <Box>
+                    <Text>{ele.user}</Text>
+                  </Box>
+                  <Box>
+                    <Text color="black">
+                      {" "}
+                      <Flex gap="3">
+                        <Flex gap="1.5" w="25px" mt="3px">
+                          {Array(5)
+                            .fill(0)
+                            .map((k, i) =>
+                              i < ele.Rating ? (
+                                <Box>
+                                  <BsStar
+                                    fontSize={"1.2rem"}
+                                    color="gold"
+                                  />
+                                </Box>
+                              ) : (
+                                <Box>
+                                  <BsStar
+                                    fontSize={"1.2rem"}
+                                    color="green"
+                                  />
+                                </Box>
+                              )
+                            )}
+                        </Flex>
+                      </Flex>
+                    </Text>
+                  </Box>
+
+                  <Text>{ele.comment}</Text>
+                </Box>
+              );
+            })}
+        </AccordionPanel>
+      </AccordionItem>
+    </Box>
+  </Accordion>
+</Box>}
+</>
   );
 };

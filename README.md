@@ -1,10 +1,20 @@
 #  Perfect Petals
 
  This project is about buying flower online by this project user can see verious type of flower , buke and gifts
- user can login by there email user have to provide some details to create account after that user can login for login
- user want email and password now user can add any product to there cart now user can access there cart page from there 
- user can checkout user ordel is pleaced 
+ ### Features 
+  # Login Signup
+  User able to create account 
+  User able to login 
+  User able to change password 
+   note now i am using hardcoded otp 1234
+  Admin also login from same page
+   note Admin@gmail.com
+  # Add to cart and wishlist
+  User able to add product in cart delete from cart
+  User able to add product in wishlist and delete also
 
+
+ 
 
 ### `clone website`
 https://stylecapsule-dipratnasakhare.vercel.app

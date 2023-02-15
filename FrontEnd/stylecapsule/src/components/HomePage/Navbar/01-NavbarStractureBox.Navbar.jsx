@@ -34,12 +34,15 @@ import {
     ];
   
     useEffect(() => {
+      console.log(AdminUser)
       let user = JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null";
+      console.log(AdminUser, user)
+
       if (user !== "null") {
         setUser_Login(true);
         setUserName(user.name);
       }
-      if(user.msg === "Admin Login Successfully"){
+      if(user.msg === "Admin login successfully"){
         setAdminUser(true)
       }
     });
