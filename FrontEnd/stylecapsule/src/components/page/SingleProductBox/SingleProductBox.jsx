@@ -48,20 +48,19 @@ export const SingleProductBox = () => {
     const UserId = dataUser.UserId;
     const user = dataUser.name;
 
-    // checking here user have added comment before 
-    let x = ProductData.Comment.map((ele)=>ele.UserId == UserId)
-    if(x[0]){
+     // checking here user have added comment before 
+    let x = ProductData.Comment.filter((ele)=>ele.UserId == UserId)
+
+    if(x.length >= 1){
       toast({
         position: "top",
         description: "You already added comment",
         status: "error",
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
       });
       return
     }
-    console.log(x)
-
 
 // posting comment text to backend 
     const data = {
@@ -81,13 +80,17 @@ export const SingleProductBox = () => {
         );
         toast({
           position: "top",
+          description: x.data.msg,
           status: x.data.status,
-          duration: 9000,
+          duration: 2000,
           isClosable: true,
         });
       } catch (err) {
         console.log(err);
       }
+
+      setButtonText("Comment");
+
     }
     // changing text comment to submit for butten to submit comment
     setButtonText("Submit");
@@ -105,6 +108,9 @@ export const SingleProductBox = () => {
         data
       );
       setProductData(x.data.data)
+      if(x.data.data === undefined){
+        setProductData(ProductData)
+      }
       console.log(x.data.data, "geting data from get ", data)
 
     } catch (err) {
@@ -113,10 +119,9 @@ export const SingleProductBox = () => {
   }
 
   useEffect(() => {
-
     getDataForSingleProduct()
-
   }, []);
+ 
 
 
 
@@ -138,7 +143,7 @@ export const SingleProductBox = () => {
         position: "top",
         description: x.data.msg,
         status: x.data.status,
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
       });
     } catch (err) {
@@ -318,7 +323,7 @@ export const SingleProductBox = () => {
    
     </Box>
 
-{ProductData.Comment &&       <Box>
+{ProductData.Comment !== undefined &&   <Box>
   <Accordion allowToggle>
     <Box borderTop="1px solid">
       <AccordionItem>

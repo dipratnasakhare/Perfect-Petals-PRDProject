@@ -12,6 +12,8 @@ const PaymentPage = () => {
   const navigation = useNavigate();
   // const toast = useToast();
 
+  console.log(CartData, "payment page")
+
   const GetCartData = async () => {
     let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
     UserId = UserId.UserId;
@@ -24,7 +26,11 @@ const PaymentPage = () => {
         `${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/`,
         data
       );
-      setCartData(x.data.User_Arr);
+      if(x.data.msg === "Please add product in cart"){
+        setCartData([])
+      }else{
+        setCartData(x.data.User_Arr)
+      }
     } catch (err) {
       console.log(err);
     }
@@ -48,7 +54,6 @@ const PaymentPage = () => {
         `${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/OrderPost`,
         data
       );
-
       console.log(x, "orderlist post or not")
     } catch (err) {
       console.log(err);
@@ -74,6 +79,7 @@ const PaymentPage = () => {
               <PaymentOption
                 SetOrderDetails={SetOrderDetails}
                 setOrderPlace={setOrderPlace}
+                CartData={CartData}
               />
             </Box>
           </Box>

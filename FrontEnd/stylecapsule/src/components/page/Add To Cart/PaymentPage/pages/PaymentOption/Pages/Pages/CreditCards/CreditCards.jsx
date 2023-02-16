@@ -4,26 +4,58 @@ import {
   Input,
   Text,
   Flex,
+  Grid,
   Spacer,
   Button,
   Checkbox,
   useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import style from "./style/CreditCards.module.css";
-export const CreditCards = ({ setOrderPlace }) => {
+export const CreditCards = ({ setOrderPlace, SetOrderDetails, CartData }) => {
   const [CardNo, setCardNo] = useState("");
   const [Name, setName] = useState("");
   const [Date, setDate] = useState("");
   const [Cvv, setCvv] = useState("");
   const toast = useToast()
 
+  const HandelCheckout = () => {
+console.log(CartData)
+
+    if(CartData.length === 0){
+      toast({
+        position:"top",
+        description: "Please add product in cart",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+      return 
+    }
+
+
+    if(CardNo !== "" && Name !== "" && Date !== "" && Cvv !== "" ){
+      setOrderPlace(true)
+      SetOrderDetails()
+    }else{
+      toast({
+        position: 'top',
+        title: 'Please fields all inputs',
+        status: 'error',
+        duration: 2000,
+        isClosable: true,
+      })
+    }
+  }
+
   return (
-    <Box className={style.mainBox}>
-      <Box>
+    <Grid gap="8px" >
+      <Grid
+      gap="5px"
+      >
         <Box justifyContent={"flex-start"} display="grid">
           <Text>Credit card number</Text>
         </Box>
+
         <Box>
           <Input
             bgRepeat={"no-repeat"}
@@ -47,9 +79,9 @@ export const CreditCards = ({ setOrderPlace }) => {
             placeholder="xxxx xxxx xxxx xxxx"
           />
         </Box>
-      </Box>
+      </Grid>
 
-      <Box>
+      <Grid gap="5px">
         <Box justifyContent={"flex-start"} display="grid">
           <Text>Credit card name</Text>
         </Box>
@@ -63,7 +95,7 @@ export const CreditCards = ({ setOrderPlace }) => {
             errorBorderColor="red.300"
           />
         </Box>
-      </Box>
+      </Grid>
 
       <Flex display={["grid", "grid", "flex"]}>
         <Box>
@@ -71,7 +103,7 @@ export const CreditCards = ({ setOrderPlace }) => {
           <Box>
             <Input
               onChange={(e) => setDate(e.target.value)}
-              value={"Date"}
+              value={Date}
               type="date"
               isInvalid={Date === ""}
               errorBorderColor="red.300"
@@ -89,7 +121,6 @@ export const CreditCards = ({ setOrderPlace }) => {
               value={Cvv}
               onChange={(e) => setCvv(e.target.value)}
               type="password"
-              className={style.inputcvv}
               isInvalid={Cvv === ""}
               errorBorderColor="red.300"
               w="8rem"
@@ -117,19 +148,7 @@ export const CreditCards = ({ setOrderPlace }) => {
 
       <Box m="30px" justifyContent={"flex-start"} display="grid">
         <Button
-           onClick={() => {
-            if(CardNo !== "" && Name !== "" && Date !== "" && Cvv !== "" ){
-              setOrderPlace(true)
-            }else{
-              toast({
-                position: 'top',
-                title: 'Please Fields all Input',
-                status: 'error',
-                duration: 5000,
-                isClosable: true,
-              })
-            }
-          }}
+           onClick={() => HandelCheckout()}
           _hover={"none"}
           borderRadius={"0px"}
           bg="#ef534e"
@@ -137,6 +156,6 @@ export const CreditCards = ({ setOrderPlace }) => {
           Pay Now
         </Button>
       </Box>
-    </Box>
+    </Grid>
   );
 };

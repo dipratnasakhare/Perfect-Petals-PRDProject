@@ -28,7 +28,6 @@ export const SingleFilterBox = () => {
     setLoading(true);
     getData(url, page)
       .then((res) => {
-        console.log(res.data);
         setTotal(res.data.totalPages);
         setList(res.data[url]);
         setLoading(false);

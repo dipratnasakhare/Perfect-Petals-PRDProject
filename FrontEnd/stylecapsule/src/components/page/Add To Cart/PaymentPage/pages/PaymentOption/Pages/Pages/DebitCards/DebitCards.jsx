@@ -7,20 +7,46 @@ import {
   Button,
   Checkbox,
   useToast,
+  Grid,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import style from "./style/DebitCards.module.css";
 
-export const DebitCards = ({ setOrderPlace }) => {
+export const DebitCards = ({ setOrderPlace, SetOrderDetails, CartData }) => {
   const [CardNo, setCardNo] = useState("");
   const [Name, setName] = useState("");
   const [Date, setDate] = useState("");
   const [Cvv, setCvv] = useState("");
   const toast = useToast()
 
+
+  const HandelCheckout = () => {
+    if(CartData.length === 0){
+      toast({
+        position:"top",
+        description: "Please add product in cart",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+      return 
+    }
+
+    if(CardNo !== "" && Name !== "" && Date !== "" && Cvv !== "" ){
+      setOrderPlace(true)
+      SetOrderDetails()
+    }else{
+      toast({
+        position: 'top',
+        title: 'Please Fields all Input',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      })
+    }
+  }
   return (
-    <Box className={style.mainBox}>
-      <Box>
+    <Grid gap="8px" >
+      <Grid gap="5px">
         <Box justifyContent={"flex-start"} display="grid">
           <Text>Debit card number</Text>
         </Box>
@@ -48,9 +74,9 @@ export const DebitCards = ({ setOrderPlace }) => {
             placeholder="xxxx xxxx xxxx xxxx"
           />
         </Box>
-      </Box>
+      </Grid>
 
-      <Box>
+      <Grid gap="5px">
         <Box justifyContent={"flex-start"} display="grid">
           <Text>Credit card name</Text>
         </Box>
@@ -64,7 +90,7 @@ export const DebitCards = ({ setOrderPlace }) => {
             errorBorderColor="red.300"
           />
         </Box>
-      </Box>
+      </Grid>
 
       <Flex display={["grid", "grid", "flex"]}>
         <Box>
@@ -72,7 +98,7 @@ export const DebitCards = ({ setOrderPlace }) => {
           <Box>
             <Input
               onChange={(e) => setDate(e.target.value)}
-              value={"Date"}
+              value={Date}
               type="date"
               isInvalid={Date === ""}
               errorBorderColor="red.300"
@@ -90,7 +116,6 @@ export const DebitCards = ({ setOrderPlace }) => {
               value={Cvv}
               onChange={(e) => setCvv(e.target.value)}
               type="password"
-              className={style.inputcvv}
               isInvalid={Cvv === ""}
               errorBorderColor="red.300"
               w="8rem"
@@ -118,19 +143,7 @@ export const DebitCards = ({ setOrderPlace }) => {
 
       <Box m="30px" justifyContent={"flex-start"} display="grid">
         <Button
-          onClick={() => {
-            if(CardNo !== "" && Name !== "" && Date !== "" && Cvv !== "" ){
-              setOrderPlace(true)
-            }else{
-              toast({
-                position: 'top',
-                title: 'Please Fields all Input',
-                status: 'error',
-                duration: 5000,
-                isClosable: true,
-              })
-            }
-          }}
+          onClick={() => HandelCheckout()}
           _hover={"none"}
           borderRadius={"0px"}
           bg="#ef534e"
@@ -138,6 +151,6 @@ export const DebitCards = ({ setOrderPlace }) => {
           Pay Now
         </Button>
       </Box>
-    </Box>
+    </Grid>
   );
 };

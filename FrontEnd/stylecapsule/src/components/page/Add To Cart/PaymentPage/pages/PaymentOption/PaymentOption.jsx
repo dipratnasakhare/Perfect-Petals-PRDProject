@@ -6,7 +6,7 @@ import { NetBanking } from "./Pages/Pages/NetBanking/NetBanking";
 import { Paytm } from "./Pages/Pages/Paytm/Paytm";
 import { PaymentText } from "./Pages/PaymentText/PaymentText";
 
-const PaymentOption = ({ setOrderPlace, SetOrderDetails }) => {
+const PaymentOption = ({ setOrderPlace, SetOrderDetails, CartData }) => {
   const [PaymentOfMethod, setPaymentOfMethod] = useState("Paytm");
 
   return (
@@ -27,6 +27,7 @@ const PaymentOption = ({ setOrderPlace, SetOrderDetails }) => {
           <PaymentText
             setPaymentOfMethod={setPaymentOfMethod}
             PaymentOfMethod={PaymentOfMethod}
+            CartData={CartData}
           />
         </Box>
         <Box w={["100%", "35rem"]} p="25px" bg="white">
@@ -34,22 +35,35 @@ const PaymentOption = ({ setOrderPlace, SetOrderDetails }) => {
             <Paytm
               SetOrderDetails={SetOrderDetails}
               setOrderPlace={setOrderPlace}
+              CartData={CartData}
             />
           ) : (
             ""
           )}
           {PaymentOfMethod === "Credit Cards" ? (
-            <CreditCards setOrderPlace={setOrderPlace} />
+            <CreditCards
+              SetOrderDetails={SetOrderDetails}
+              setOrderPlace={setOrderPlace}
+              CartData={CartData}
+            />
           ) : (
             ""
           )}
           {PaymentOfMethod === "Debit Cards" ? (
-            <DebitCards setOrderPlace={setOrderPlace} />
+            <DebitCards
+              SetOrderDetails={SetOrderDetails}
+              setOrderPlace={setOrderPlace}
+              CartData={CartData}
+            />
           ) : (
             ""
           )}
           {PaymentOfMethod === "Net Banking" ? (
-            <NetBanking setOrderPlace={setOrderPlace} />
+            <NetBanking
+              SetOrderDetails={SetOrderDetails}
+              setOrderPlace={setOrderPlace}
+              CartData={CartData}
+            />
           ) : (
             ""
           )}

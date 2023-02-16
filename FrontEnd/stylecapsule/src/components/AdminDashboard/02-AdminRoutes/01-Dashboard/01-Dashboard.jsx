@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, SimpleGrid } from "@chakra-ui/react";
+import { Box, Flex, Grid, SimpleGrid, useToast } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { DetailsBox } from "./pages/01-DetailsBox";
 import { BsCart } from "react-icons/bs";
@@ -17,6 +17,7 @@ export const Dashboard = () => {
   const [UserCount, setUserCount] = useState(0)
   const [OrderCount, setOrderCount] = useState(0)
   const [Earning, setEarning] = useState(0)
+  const toast = useToast()
 
 
   const Details = [
@@ -25,12 +26,22 @@ export const Dashboard = () => {
     { name: "Earning", count:"$-" + Earning, icon: GiTakeMyMoney },
   ];
 
+// const user = useSelector((store) => store.AdminDashboard);
+
+// console.log(user, "userADMIN")
   const GetUserCount = async () => {
       try {
         let res =  await axios.get(`${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/users`);
         setUserCount(res.data.count)
       } catch (err) {
         console.log(err);
+        toast({
+          position: "top",
+          title: "Something is wrong please try later",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
       }
   }
 
@@ -46,12 +57,20 @@ export const Dashboard = () => {
         setEarning(total)
     } catch (err) {
       console.log(err);
+      toast({
+        position: "top",
+        title: "Something is wrong please try later",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
     }
   };
 
   useEffect(() => {
     GetUserCount()
     GetOrderList()
+    // dispatch(Get_User_Count_Action())
   }, [])
 
 
