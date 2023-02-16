@@ -64,10 +64,9 @@ export const SignUpPage = () => {
       SetServerLoading(false);
       toast({
         position: "top",
-        title: x.data.msg,
         description: x.data.msg,
         status: x.data.status,
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
       });
     } catch (err) {
@@ -77,7 +76,7 @@ export const SignUpPage = () => {
         position: "top",
         title: "Something is wrong please try later",
         status: "error",
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
       });
     }

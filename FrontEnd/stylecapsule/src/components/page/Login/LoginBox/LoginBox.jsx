@@ -54,7 +54,7 @@ export const LoginPage = () => {
           position: "top",
           description: x.data.msg,
           status: x.data.status,
-          duration: 9000,
+          duration: 2000,
           isClosable: true,
         });
         SetServerLoading(false);
@@ -67,7 +67,7 @@ export const LoginPage = () => {
         position: "top",
         description: x.data.msg,
         status: x.data.status,
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
       });
       if (x.data.msg !== "Wrong password") {
@@ -80,7 +80,7 @@ export const LoginPage = () => {
         position: "top",
         title: "Something is wrong please try later",
         status: "error",
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
       });
     }

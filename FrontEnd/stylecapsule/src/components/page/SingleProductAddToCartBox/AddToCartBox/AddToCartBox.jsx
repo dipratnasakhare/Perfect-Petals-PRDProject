@@ -27,7 +27,7 @@ export const AddToCartBox = ({ data }) => {
         position: "top",
         description: "Please login first",
         status: "error",
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
       });
       navigate("/login")
@@ -48,10 +48,9 @@ export const AddToCartBox = ({ data }) => {
       );
       toast({
         position: "top",
-        title: x.data.msg,
         description: x.data.msg,
         status: x.data.status,
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
       });
     } catch (err) {
@@ -67,7 +66,7 @@ export const AddToCartBox = ({ data }) => {
         position: "top",
         description: "Please login first",
         status: "error",
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
       });
       navigate("/login")
@@ -86,10 +85,9 @@ export const AddToCartBox = ({ data }) => {
       );
       toast({
         position: "top",
-        title: x.data.msg,
         description: x.data.msg,
         status: x.data.status,
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
       });
     } catch (err) {

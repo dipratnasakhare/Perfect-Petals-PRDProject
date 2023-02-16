@@ -61,7 +61,6 @@ export const ForgotPasswordPage = () => {
           console.log(x);
           toast({
             position: "top",
-            title: x.data.msg,
             description: x.data.msg,
             status: x.data.status,
             duration: 9000,

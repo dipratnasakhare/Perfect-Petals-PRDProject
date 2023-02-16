@@ -41,7 +41,6 @@ export const PaymentSucces = () => {
           if (ele < -1) {
             toast({
               position: "top",
-              title: "Order is Placed",
               description: "Order is Placed",
               status: "success",
               duration: 9000,

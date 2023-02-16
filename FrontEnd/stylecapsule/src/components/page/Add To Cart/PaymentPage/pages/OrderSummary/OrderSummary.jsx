@@ -31,19 +31,20 @@ const OrderSummary = ({setOrderTotal}) => {
     try {
       let x = await axios.post(`${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/`, data);
 
+      console.log(x)
       if (x.data.msg == "Please add product in cart") {
         toast({
           position:"top",
-          title: x.data.msg,
           description: x.data.msg,
           status: x.data.status,
-          duration: 9000,
+          duration: 2000,
           isClosable: true,
         });
-
+        return
         // navigation("/");
       } else {
         setCartData(x.data.User_Arr);
+        return 
       }
     } catch (err) {
       console.log(err);
@@ -65,10 +66,9 @@ const OrderSummary = ({setOrderTotal}) => {
       );
       toast({
         position:"top",
-        title: x.data.msg,
         description: x.data.msg,
         status: x.data.status,
-        duration: 9000,
+        duration: 2000,
         isClosable: true,
       });
     } catch (err) {
