@@ -8,7 +8,15 @@ const ValentineDaySchema = mongoose.Schema({
     Basket: { type: String },
     Bought: { type: Number },
     Rating: { type: Number },
-    Comment: [{ type: String, require:false }]
+    Comment: [{  
+      user :{type:String}, 
+      comment:{type:String}, 
+      UserId:{type:String}, 
+      productId:{type:String},
+      Rating:{type:Number}, 
+      Like:{type:Number},
+      UserId:{type:String}, 
+    }]
 
 });
 

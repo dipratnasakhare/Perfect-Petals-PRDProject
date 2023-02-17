@@ -11,6 +11,7 @@ const UserCartData = mongoose.Schema({
       Basket: { type: String },
       Bought: { type: Number },
       Rating: { type: Number },
+      Date: { type: String },
     },
   ],
 });

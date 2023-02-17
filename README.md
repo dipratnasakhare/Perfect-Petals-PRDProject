@@ -1,25 +1,60 @@
 #  Perfect Petals
 
- This project is about buying flower online by this project user can see verious type of flower , buke and gifts
- ### Features 
-  # Login Signup
-  User able to create account 
-  User able to login 
-  User able to change password 
-   note now i am using hardcoded otp 1234
-  Admin also login from same page
-   note Admin@gmail.com
-  # Add to cart and wishlist
-  User able to add product in cart delete from cart
-  User able to add product in wishlist and delete also
+# User Side
+ This project is about buying flower online by this project user can see verious type of flower , buke and gifts and buy flowers
+# Admin Side
+ By this project admin can see all details of user track orders edit products 
 
+ ### ✨ Features
+ # User Side
+ - SingUp 
+ - Login
+ - Forgot password
+ - Wishlist
+ - Add to cart
+ - Adding commnet
+ - Adding Rating
+ - Product filtter
+ - product Single Page
+ - Dynamic Page
+ # Admin Side
+ - Order Dashboard
+ - User details
+ - Product edit, add
+ - Admin Account 
+ - Admin Tasks
+
+  ## pages
+  - Home Page
+  - Login/ SignUp Page
+    - Product Page - Valentine, BirthDay, Gift Baskets, Lavender Gifts,   Add to cart, Wishlist
+
+  ### 📁 Folder structure
+   
+  - ## FrontEnd
+   # `src`
+    - # components
+     - `Admin Dashboard` it contain all pages of admin side
+     - `HomePage` it contain Navbar, Home, Footer code
+     - `Redux` it contain api call and manage state for admin
+     - `Page` it contain pages all pages like 
+        - Add to cart
+        - Single Page
+        - Login
+        - WishList Page
+        - SingleProductAddToCartBox
+        - # `pages`
+           -  Valantine
+           -  Birthday Flower
+           -  Gift Baskets Food
+  - ## 🔙 🔚 BackEnd
+   #
 
  
 
 ### `clone website`
 https://stylecapsule-dipratnasakhare.vercel.app
 
-### `explaining video`
 
 
 

@@ -1,0 +1,4 @@
+
+export const GET_USER_COUNT = 'GET_USER_COUNT'
+
+export const GET_ORDER_LIST = 'GET_ORDER_LIST'
