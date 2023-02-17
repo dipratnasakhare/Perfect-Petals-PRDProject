@@ -12,7 +12,9 @@ const OrderDetails = mongoose.Schema({
       Price: { type: String },
       Basket: { type: String },
       Bought: { type: Number },
-      Rating: { type: Number },
+      Rating: { type: Number ,  require:false},
+      Date: { type: String , require:false},
+
     },
   ],
 });
