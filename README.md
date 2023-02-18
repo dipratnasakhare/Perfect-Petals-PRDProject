@@ -1,12 +1,12 @@
 <h1 align="center" id="title">Perfect Petals</h1>
 
- `User Side`
+ ### `User Side`
  This project is about buying flower online by this project user can see verious type of flower , buke and gifts and buy flowers
   - React
   - Redux
   - chakra ui
   - Deploy in Vercel
- `Admin Side`
+ ### `Admin Side`
  By this project admin can see all details of user track orders edit products 
   server
   - Express
@@ -15,7 +15,7 @@
   - server Deploy in cyclic
 
  #### ✨ Features
-  `User Side`
+  #`User Side`
  - SingUp 
  - Login
  - Forgot password
@@ -26,7 +26,7 @@
  - Product filtter
  - product Single Page
  - Dynamic Page
-  `Admin Side`
+ # `Admin Side`
  - Order Dashboard
  - User details
  - Product edit, add
@@ -35,7 +35,7 @@
 
   ### 📁 Folder structure
    
-  -  `FrontEnd`
+  -## `FrontEnd`
     `src`
     -  components
      - `Admin Dashboard` it contain all pages of admin side
