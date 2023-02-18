@@ -10,12 +10,11 @@
  By this project admin can see all details of user track orders edit products 
   server
   - Express
-  `Database`
-  - mongose atlast
+  - Database mongose atlast
   - server Deploy in cyclic
 
  #### ✨ Features
-  #`User Side`
+# `User Side`
  - SingUp 
  - Login
  - Forgot password
@@ -35,7 +34,7 @@
 
   ### 📁 Folder structure
    
-  -## `FrontEnd`
+  -  `FrontEnd`
     `src`
     -  components
      - `Admin Dashboard` it contain all pages of admin side
