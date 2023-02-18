@@ -9,6 +9,7 @@ import { LavenderGifts } from "../page/Leavender Gifts/Leavender Gifts";
 import { ForgotPasswordPage } from "../page/Login/ForgotPassword/ForgotPasswordBox";
 import { LoginPage }  from "../page/Login/LoginBox/LoginBox";
 import { SignUpPage } from "../page/Login/SignUpBox/SignUpBox";
+import { NotificationBox } from "../page/Notification/Notification";
 import { SingleFilterBox } from "../page/SingleFilterBox/SingleFilterBox";
 import { SingleProductBox } from "../page/SingleProductBox/SingleProductBox";
 import { ValentinePage } from "../page/Valentine/ValentinePage";
@@ -30,6 +31,8 @@ export const RoutesOfAllPages = () => {
         <Route exact path="/Payment_Page" element={<PaymentPage />} />
         <Route exact path="/Wishlist" element={<WishlistPage />} />
         <Route exact path="/AdminDashboard" element={<AdminDashboard />} />
+        <Route exact path="/Notification" element={<NotificationBox />} />
+
       </Routes>
     </div>
   );

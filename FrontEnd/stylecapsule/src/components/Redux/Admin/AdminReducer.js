@@ -1,9 +1,10 @@
-import { GET_ORDER_LIST, GET_USER_COUNT } from "./AdminTypes";
+import { GET_ORDER_LIST, GET_USER_COUNT, SET_EDIT_PRODUCT } from "./AdminTypes";
 
 const init = {
   UserCount: 0,
   Earning: 0,
-  OrderCount: 0
+  OrderCount: 0,
+  EditProduct:{}
 };
 
 export const AdminReducer = (state = init, action) => {
@@ -24,6 +25,12 @@ export const AdminReducer = (state = init, action) => {
         ...state,
         OrderCount: action.payload.length,
         Earning: total,
+      };
+    }
+    case SET_EDIT_PRODUCT: {
+      return {
+        ...state,
+        EditProduct: action.payload,
       };
     }
 

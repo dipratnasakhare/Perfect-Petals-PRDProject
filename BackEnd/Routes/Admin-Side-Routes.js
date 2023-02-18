@@ -6,7 +6,7 @@ const AdminSideRoutes = express.Router();
 AdminSideRoutes.get("/users", async (req, res) => {
   try {
 
-    let All_User = await ModelUserAuth.find({ user_type: "Client" });
+    let All_User = await ModelUserAuth.find();
     res.status(200).send({ count: All_User.length });
   } catch (err) {
     console.log(err, "err line 20");
@@ -61,6 +61,77 @@ AdminSideRoutes.post("/OrderPost", async (req, res) => {
       .send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
+
+
+
+
+
+
+AdminSideRoutes.post("/GetOrderForUser", async (req, res) => {
+  const { UserId } = req.body;
+  try {
+    let Order_Details = await ModelOrderDetails.find({ UserId });
+        res
+        .status(200)
+        .send({ Order_Details });
+  } catch (err) {
+    console.log(err, "err line 20");
+    res
+      .status(200)
+      .send({ msg: "Something went wrong please try again", status: "error" });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 AdminSideRoutes.get("/OrderGet", async (req, res) => {
   const { page = 1, limit = 1 } = req.query;

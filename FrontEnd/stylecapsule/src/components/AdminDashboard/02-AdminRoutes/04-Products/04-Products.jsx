@@ -1,8 +1,9 @@
-import { Box, SimpleGrid} from "@chakra-ui/react";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { PaginationBox } from "../../../page/Valentine/Pagination/PaginationBox";
 import { SinglePage } from "./pages/01-SinglePage";
+import { DrawerAddProduct } from "./pages/02-DrawerAddProduct";
 
 export const Products = () => {
   const [Loading, setLoading] = useState(false);
@@ -10,12 +11,12 @@ export const Products = () => {
   const [total, setTotal] = useState(10);
   const [list, setList] = useState([]);
 
-  const [name, setName] = useState(false)
-  const [price, setPrice] = useState(false)
+  const [name, setName] = useState(false);
+  const [price, setPrice] = useState(false);
 
   const GetData = async () => {
     try {
-      let res =  await axios.get(
+      let res = await axios.get(
         `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/?page=${page}&limit=8`
       );
       setList(res.data.valentine);
@@ -27,50 +28,67 @@ export const Products = () => {
 
   const HandelEditProduct = async (ProductName, productId, ProductPrice) => {
     const data = {
-        ProductName, 
-        ProductPrice,
-        productId
-    }
+      ProductName,
+      ProductPrice,
+      productId,
+    };
+    
     try {
-        return await axios.post(
-          `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/edit`, data);
-      } catch (err) {
-        console.log(err);
-      }
-}
+      return await axios.post(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/edit`,
+        data
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-useEffect(() => {
-  GetData()
-}, [page]);
-
-// useEffect(() => {
-//   GetData()
-// }, [HandelEditProduct]);
-
-
+  useEffect(() => {
+    GetData();
+  }, [page]);
 
   return (
-    <Box backgroundSize={"cover"} backgroundImage={"https://images.pexels.com/photos/7130540/pexels-photo-7130540.jpeg?auto=compress&cs=tinysrgb&w=600"} pt="1rem" pb="2rem" >
-    <Box pt="1rem" pb="2rem" w="90%" m="auto">
-      <SimpleGrid   columns={[1, 2, 2, 4]} spacing={10} >
-        {list.map((product, i) => {
-          return (
-           <SinglePage HandelEditProduct={HandelEditProduct} Price={price} setPrice={setPrice} name={name} setName={setName} product={product} i={i} />
-          );
-        })}
-      </SimpleGrid>
-      <Box
-        mb="2rem"
-        display={"grid"}
-        justifyContent={"center"}
-        m="auto"
-        mt="1rem"
-        w="80%"
-      >
-        {" "}
-        <PaginationBox page={page} setPage={setPage} total={total} />
-      </Box>{" "}
+    <Box
+      backgroundSize={"cover"}
+      backgroundImage={
+        "https://images.pexels.com/photos/7130540/pexels-photo-7130540.jpeg?auto=compress&cs=tinysrgb&w=600"
+      }
+      pt="1rem"
+      pb="2rem"
+    >
+      <Box textAlign={"center"}>
+      <DrawerAddProduct GetData={GetData} />
+      </Box>
+
+      <Box pt="1rem" pb="2rem" w="90%" m="auto">
+        <SimpleGrid columns={[1, 2, 2, 4]} spacing={10}>
+          {list.map((product, i) => {
+            return (
+              <SinglePage
+                GetData={GetData}
+                HandelEditProduct={HandelEditProduct}
+                Price={price}
+                setPrice={setPrice}
+                name={name}
+                setName={setName}
+                product={product}
+                i={i}
+              />
+            );
+          })}
+        </SimpleGrid>
+        <Box
+          mb="2rem"
+          display={"grid"}
+          justifyContent={"center"}
+          m="auto"
+          mt="1rem"
+          w="80%"
+        >
+          {" "}
+          <PaginationBox page={page} setPage={setPage} total={total} />
+        </Box>{" "}
+      </Box>
     </Box>
-  </Box>
   );
 };

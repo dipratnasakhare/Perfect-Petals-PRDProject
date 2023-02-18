@@ -12,7 +12,6 @@ const PaymentPage = () => {
   const navigation = useNavigate();
   // const toast = useToast();
 
-  console.log(CartData, "payment page")
 
   const GetCartData = async () => {
     let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
@@ -20,7 +19,6 @@ const PaymentPage = () => {
     let data = {
       UserId,
     };
-
     try {
       let x = await axios.post(
         `${process.env.REACT_APP_MAIN_SERVER_URL}/User_Cart_Data/`,
