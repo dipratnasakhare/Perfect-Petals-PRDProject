@@ -24,7 +24,7 @@ export const Tasks = () => {
       pt="1rem"
       pb="2rem"
     >
-      <Box w="80%">
+      <Box w="80%" m="auto">
         <Box>
           <TableContainer>
             <Table variant="simple">
