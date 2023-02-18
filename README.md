@@ -1,23 +1,21 @@
 <h1 align="center" id="title">Perfect Petals</h1>
 
-# `User Side`
+ `User Side`
  This project is about buying flower online by this project user can see verious type of flower , buke and gifts and buy flowers
   - React
   - Redux
   - chakra ui
-  `Deploy`
-   - Vercel
-# `Admin Side`
+  - Deploy in Vercel
+ `Admin Side`
  By this project admin can see all details of user track orders edit products 
-  `server`
+  server
   - Express
   `Database`
   - mongose atlast
-  `Deploy`
-  - cyclic
+  - server Deploy in cyclic
 
  #### ✨ Features
- # `User Side`
+  `User Side`
  - SingUp 
  - Login
  - Forgot password
@@ -28,18 +26,18 @@
  - Product filtter
  - product Single Page
  - Dynamic Page
- # `Admin Side`
+  `Admin Side`
  - Order Dashboard
  - User details
  - Product edit, add
  - Admin Account 
  - Admin Tasks
 
-  #### 📁 Folder structure
+  ### 📁 Folder structure
    
-  - ## `FrontEnd`
-   # `src`
-    - # components
+  -  `FrontEnd`
+    `src`
+    -  components
      - `Admin Dashboard` it contain all pages of admin side
      - `HomePage` it contain Navbar, Home, Footer code
      - `Redux` it contain api call and manage state for admin
@@ -50,7 +48,7 @@
         - Login
         - WishList Page
         - SingleProductAddToCartBox
-        - # `Routes Page`
+        - `Routes Page`
            -  Valantine
            -  Birthday Flower
            -  Gift Baskets Food
@@ -64,11 +62,11 @@
 
  
 
-### `clone website`
+### `website`
 https://stylecapsule-dipratnasakhare.vercel.app
 
 
-### `screen shots of clone website`
+### `screen shots of website`
 
 ### Home 
 ![Screenshot (722)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(722).png)
@@ -97,7 +95,7 @@ https://stylecapsule-dipratnasakhare.vercel.app
 ![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(727).png)
 
 
-##### Admin side
+### Admin side
 ### Dashboard
 ![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(730).png)
 ### Users
@@ -106,7 +104,6 @@ https://stylecapsule-dipratnasakhare.vercel.app
 ![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(732).png)
 ### Products
 ![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(733).png)
-### 
 
 
 In the project directory, you can run:
