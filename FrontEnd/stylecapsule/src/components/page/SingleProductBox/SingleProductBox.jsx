@@ -43,14 +43,41 @@ export const SingleProductBox = () => {
 
   const HandelCommentBox = async (ProductId) => {
 
-
     let dataUser = JSON.parse(localStorage.getItem("styleCapsuleToken"));
     const UserId = dataUser.UserId;
     const user = dataUser.name;
 
+    const data1 = {
+      UserId,
+      ProductId,
+      commentText,
+      ProductRating
+    };
+
+    if (buttonText == "Edit") {
+      try {
+        let x = await axios.post(
+          `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/edit-contmme`,
+          data1
+        );
+        toast({
+          position: "top",
+          description: x.data.msg,
+          status: x.data.status,
+          duration: 2000,
+          isClosable: true,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+      getDataForSingleProduct()
+      setButtonText("Comment");
+      return 
+    }
+      
+    
      // checking here user have added comment before 
     let x = ProductData.Comment.filter((ele)=>ele.UserId == UserId)
-
     if(x.length >= 1){
       toast({
         position: "top",
@@ -59,6 +86,8 @@ export const SingleProductBox = () => {
         duration: 2000,
         isClosable: true,
       });
+      setCommentText(x[0].comment)
+      setButtonText("Edit")
       return
     }
 
@@ -78,6 +107,7 @@ export const SingleProductBox = () => {
           `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/comment`,
           data
         );
+
         toast({
           position: "top",
           description: x.data.msg,
@@ -88,13 +118,15 @@ export const SingleProductBox = () => {
       } catch (err) {
         console.log(err);
       }
-
-      setButtonText("Comment");
+      getDataForSingleProduct()
 
     }
-    // changing text comment to submit for butten to submit comment
-    setButtonText("Submit");
+    setButtonText("Submit")
+   
   };
+
+
+
 
 
   const getDataForSingleProduct = async () => {
@@ -111,8 +143,6 @@ export const SingleProductBox = () => {
       if(x.data.data === undefined){
         setProductData(ProductData)
       }
-      console.log(x.data.data, "geting data from get ", data)
-
     } catch (err) {
       console.log(err);
     }
@@ -297,8 +327,9 @@ export const SingleProductBox = () => {
                 {buttonText !== "Comment" ? (
                   <>
                     <Input
+                      value={commentText}
                       onChange={(e) => setCommentText(e.target.value)}
-                      placeholder="Enter you Expreence with product"
+                      // placeholder="Enter you Expreence with product"
                     />
                     <Select onChange={(e) => setProductRating(e.target.value)}>
                       <option value={5}>5</option>

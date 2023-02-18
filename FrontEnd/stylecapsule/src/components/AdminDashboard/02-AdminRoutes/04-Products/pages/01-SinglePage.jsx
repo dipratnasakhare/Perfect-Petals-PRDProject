@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Text, Image, Flex, Input, Button } from "@chakra-ui/react";
 import { BsStar } from "react-icons/bs";
-import { BiEdit } from "react-icons/bi";
 import axios from "axios";
+import { DrawerEditProduct } from "./03-DrawerEditProduct";
+import { useDispatch } from "react-redux";
 
-export const SinglePage = ({ product, i, HandelEditProduct }) => {
-  useEffect(() => {
-    // setProductName(product.Name)
-    // setProductPrice(product.Price)
-  }, []);
+
+export const SinglePage = ({ product, i, GetData }) => {
 
   return (
     <Box key={i / Date.now()} boxShadow="lg" rounded="md" bg="white">
@@ -44,10 +42,10 @@ export const SinglePage = ({ product, i, HandelEditProduct }) => {
               </Text>
 
               <Text color="black">Bought {product.Bought}</Text>
-              <Text as="b" color="black">
+              <Text as="b" color="black" >
                 {product.Price}
               </Text>
-              <BiEdit />
+              <DrawerEditProduct GetData={GetData} productEdit={product} i={i} />
             </Grid>
           </Box>
         </Box>

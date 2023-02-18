@@ -35,19 +35,63 @@ ValentineDay.get("/", async (req, res) => {
   }
 });
 
-ValentineDay.post("/edit", async (req, res) => {
-  const { ProductName, ProductPrice, productId } = req.body;
+ValentineDay.patch("/edit", async (req, res) => {
+  const { ProductName, ProductPrice, productId, ProductImg } = req.body;
   try {
     await ModelValentineDay.updateOne(
       { _id: productId },
       { $set: { Price: ProductPrice } }
     );
+    await ModelValentineDay.updateOne(
+      { _id: productId },
+      { $set: { ImgUrl : ProductImg } }
+    );
+    await ModelValentineDay.updateOne(
+      { _id: productId },
+      { $set: { ImgUrlList : [ProductImg] } }
+    );
     let valentine = await ModelValentineDay.updateOne(
       { _id: productId },
       { $set: { Name: ProductName } }
     );
-    console.log(valentine);
-    res.send({ valentine });
+
+    res.send({msg:"Product have been updated", status:"success"});
+  } catch (err) {
+    console.log(err, "err line 20");
+    res
+      .status(200)
+      .send({ msg: "Something went wrong please try again", status: "error" });
+  }
+});
+
+
+
+ValentineDay.post("/AddProduct", async (req, res) => {
+  const { ImgUrl } = req.body;
+  let data = req.body
+  data.Rating = 0
+  data.Bougth = 0
+  data.ImgUrlList = [ImgUrl]
+  data.Comment  = []
+
+  try {
+     let x = await ModelValentineDay.insertMany(data)
+    console.log(x)
+   
+    res.send({msg:"Product have been updated", status:"success"});
+  } catch (err) {
+    console.log(err, "err line 20");
+    res
+      .status(200)
+      .send({ msg: "Something went wrong please try again", status: "error" });
+  }
+});
+
+ValentineDay.post("/delete", async (req, res) => {
+  const { ProductId } = req.body;
+  try {
+     let x = await ModelValentineDay.deleteOne({_id:ProductId})   
+    res.send({msg:"Product is deleted", status:"success"});
   } catch (err) {
     console.log(err, "err line 20");
     res
@@ -57,30 +101,40 @@ ValentineDay.post("/edit", async (req, res) => {
 });
 
 ValentineDay.post("/comment", async (req, res) => {
-  const { ProductId, UserId } = req.body;
-
-  
-  
-console.log("user id ", UserId)
+  const { ProductId, UserId } = req.body;  
   try {
-
-    let valentine1 = await ModelValentineDay.updateOne({ _id: ProductId });
-
-    let x = valentine1.Comment.filter((ele)=>ele.UserId == UserId)
-
-
-    if(x.length > 0){
-      res.send({ msg: "You already added comment", status: "error" });
-    }
 
     let valentine = await ModelValentineDay.updateOne(
       { _id: ProductId },
       { $push: { Comment: req.body } }
     );
-    // let valentine = await ModelValentineDay.updateMany({$set:{Rating:0}})
-    // let vaslentine = await ModelValentineDay.updateMany({$set:{Like:0}})
-    console.log(valentine, ProductId);
+
     res.send({ msg: "Comment is added", status: "success" });
+  } catch (err) {
+    console.log(err, "err line 20");
+    res
+      .status(200)
+      .send({ msg: "Something went wrong please try again", status: "error" });
+  }
+});
+
+
+ValentineDay.post("/edit-contmme", async (req, res) => {
+  const { ProductId, UserId, commentText, ProductRating } = req.body;  
+  try {
+
+    let valentine = await ModelValentineDay.find({ _id: ProductId});
+
+    valentine[0].Comment.map((ele, i) => {
+      if(ele.UserId === UserId){
+        ele.comment = commentText
+        ele.Rating = ProductRating
+      }
+    })
+
+    await ModelValentineDay.updateOne({ _id: ProductId}, valentine[0]);
+
+    res.send({ msg: "Comment is updated", status: "success" });
   } catch (err) {
     console.log(err, "err line 20");
     res

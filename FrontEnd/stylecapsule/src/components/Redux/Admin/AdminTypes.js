@@ -2,3 +2,5 @@
 export const GET_USER_COUNT = 'GET_USER_COUNT'
 
 export const GET_ORDER_LIST = 'GET_ORDER_LIST'
+
+export const SET_EDIT_PRODUCT = 'SET_EDIT_PRODUCT'

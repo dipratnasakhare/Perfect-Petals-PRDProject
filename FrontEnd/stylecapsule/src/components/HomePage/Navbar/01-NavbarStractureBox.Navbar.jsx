@@ -34,14 +34,13 @@ import {
     ];
   
     useEffect(() => {
-      console.log(AdminUser)
       let user = JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null";
-      console.log(AdminUser, user)
 
       if (user !== "null") {
         setUser_Login(true);
         setUserName(user.name);
       }
+
       if(user.msg === "Admin login successfully"){
         setAdminUser(true)
       }
@@ -50,6 +49,8 @@ import {
     const HandelLogout = () => {
       localStorage.removeItem("styleCapsuleToken");
       setUser_Login(false);
+      setAdminUser(false)
+
       toast({
         position:"top",
         description: "User Log out successfully",
@@ -139,7 +140,7 @@ import {
                   </MenuButton>
                   <MenuList>
                      <MenuItem>
-                      <Text> Notification</Text>
+                      <Text onClick={()=>navigate("/Notification")}> Notification</Text>
                     </MenuItem>
                     <MenuItem>
                       <Text onClick={()=>navigate("/Wishlist")}> Wishlist </Text>

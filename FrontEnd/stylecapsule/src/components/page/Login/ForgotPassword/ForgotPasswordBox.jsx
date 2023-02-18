@@ -47,7 +47,8 @@ export const ForgotPasswordPage = () => {
   ];
 
   const HandelLoginButton = async () => {
-    if (otpValue === 1234) {
+
+    if (otpValue == 1234) {
       console.log(otpValue, email);
       setPasswordBox(false);
 
