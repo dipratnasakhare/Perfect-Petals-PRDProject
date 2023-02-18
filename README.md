@@ -1,12 +1,23 @@
-#  Perfect Petals
+<h1 align="center" id="title">Perfect Petals</h1>
 
-# User Side
+# `User Side`
  This project is about buying flower online by this project user can see verious type of flower , buke and gifts and buy flowers
-# Admin Side
+  - React
+  - Redux
+  - chakra ui
+  `Deploy`
+   - Vercel
+# `Admin Side`
  By this project admin can see all details of user track orders edit products 
+  `server`
+  - Express
+  `Database`
+  - mongose atlast
+  `Deploy`
+  - cyclic
 
- ### ✨ Features
- # User Side
+ #### ✨ Features
+ # `User Side`
  - SingUp 
  - Login
  - Forgot password
@@ -17,38 +28,39 @@
  - Product filtter
  - product Single Page
  - Dynamic Page
- # Admin Side
+ # `Admin Side`
  - Order Dashboard
  - User details
  - Product edit, add
  - Admin Account 
  - Admin Tasks
 
-  ## pages
-  - Home Page
-  - Login/ SignUp Page
-    - Product Page - Valentine, BirthDay, Gift Baskets, Lavender Gifts,   Add to cart, Wishlist
-
-  ### 📁 Folder structure
+  #### 📁 Folder structure
    
-  - ## FrontEnd
+  - ## `FrontEnd`
    # `src`
     - # components
      - `Admin Dashboard` it contain all pages of admin side
      - `HomePage` it contain Navbar, Home, Footer code
      - `Redux` it contain api call and manage state for admin
+     - `Routes` it contain routes of pages
      - `Page` it contain pages all pages like 
         - Add to cart
         - Single Page
         - Login
         - WishList Page
         - SingleProductAddToCartBox
-        - # `pages`
+        - # `Routes Page`
            -  Valantine
            -  Birthday Flower
            -  Gift Baskets Food
-  - ## 🔙 🔚 BackEnd
-   #
+           - LavenderGifts
+  - ##  `BackEnd`
+    - config
+    - middleware
+    - models it contain models for api 
+    - Routes it contain all api Routes
+    - index
 
  
 
@@ -56,6 +68,45 @@
 https://stylecapsule-dipratnasakhare.vercel.app
 
 
+### `screen shots of clone website`
+
+### Home 
+![Screenshot (722)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(722).png)
+
+### Product
+![Screenshot (725)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(725).png)
+
+### product Single Page 
+![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(734).png)
+
+### Comment 
+![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(735).png)
+
+
+### Wishlist
+![Screenshot (724)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(728).png)
+
+### Checkout page
+![Screenshot (729)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(729).png)
+
+### footer
+![Screenshot (723)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(723).png)
+
+### responsive
+![Screenshot (726)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(726).png)
+![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(727).png)
+
+
+##### Admin side
+### Dashboard
+![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(730).png)
+### Users
+![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(731).png)
+### Orders
+![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(732).png)
+### Products
+![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(733).png)
+### 
 
 
 In the project directory, you can run:
@@ -82,25 +133,6 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `screen shots of clone website`
-
-### Home 
-
-
-### Single Product Page
-
-
-### footer
-
-
-### responsive
-
-
-
-
-
-
 
 
 
