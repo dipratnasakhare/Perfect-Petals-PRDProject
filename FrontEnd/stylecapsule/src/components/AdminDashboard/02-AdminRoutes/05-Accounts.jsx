@@ -31,10 +31,9 @@ export const Accounts = () => {
       }
       pt="1rem"
       pb="2rem"
-      h="40rem"
     >
-      <Box p="25px" gap="25px" display={["grid", "flex"]} w="80%" m="auto">
-        <Box w={["50%", "50%", "30%"]} borderRadius={"55px"}>
+      <Box p="25px" gap="25px" display={["grid", "flex"]} w="90%" m="auto">
+        <Box w={["50%", "50%", "10%"]} borderRadius={"55px"}>
           <Image
             borderRadius={"100%"}
             src="https://avatars.githubusercontent.com/u/107991169?s=400&u=5e8fd2b5a456df5e8abbf0a3aa24442431734e12&v=4"
@@ -49,40 +48,33 @@ export const Accounts = () => {
 
           <Flex>
             <Text color="blue">{AdminData.email}</Text>
-            <Text>{AdminData.user_type}</Text>
           </Flex>
         </Flex>
       </Box>
 
-    <Box p="25px" gap="25px" display={"grid"} w="80%" m="auto">
-    <Heading>Account</Heading>
-      
-      <Box display={"grid"} gap="25px">
-        <Box>
-          <Text>Email: - {AdminData.email}</Text>
-        </Box>
-        <Box>
-          <Text>Mobile :- {AdminData.mobile_no}</Text>
-        </Box>
-        <Box>
-          <Text>Password :- ****************</Text>
-        </Box>
-        <Box>
-          <Text>
-            Full Name :- {AdminData.first_name} {AdminData.last_name}
-          </Text>
-        </Box>
-        <Box>
-          <Text>Title :- {AdminData.user_type}</Text>
-        </Box>
-        <Box>
-          <Text>Task :- 5</Text>
-        </Box>
-        <Box>
-          <Text>Project :- 5</Text>
+      <Box p="25px" gap="25px" display={"grid"} w="90%" m="auto">
+        <Heading>Account</Heading>
+
+        <Box display={"grid"} gap="25px">
+          <Box>
+            <Text>Email: - {AdminData.email}</Text>
+          </Box>
+          <Box>
+            <Text>Mobile :- {AdminData.mobile_no}</Text>
+          </Box>
+          <Box>
+            <Text>Password :- ****************</Text>
+          </Box>
+          <Box>
+            <Text>
+              Full Name :- {AdminData.first_name} {AdminData.last_name}
+            </Text>
+          </Box>
+          <Box>
+            <Text>Title :- {AdminData.user_type}</Text>
+          </Box>
         </Box>
       </Box>
-    </Box>
     </Box>
   );
 };

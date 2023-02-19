@@ -54,7 +54,7 @@ export const SingleProductBox = () => {
       ProductRating
     };
 
-    if (buttonText == "Edit") {
+    if (buttonText == "Update") {
       try {
         let x = await axios.post(
           `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/edit-contmme`,
@@ -87,7 +87,7 @@ export const SingleProductBox = () => {
         isClosable: true,
       });
       setCommentText(x[0].comment)
-      setButtonText("Edit")
+      setButtonText("Update")
       return
     }
 
