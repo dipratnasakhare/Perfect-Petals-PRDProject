@@ -67,7 +67,10 @@ export const Users = () => {
     <Box backgroundSize={"cover"} backgroundImage={"https://images.pexels.com/photos/7130540/pexels-photo-7130540.jpeg?auto=compress&cs=tinysrgb&w=600"} pt="1rem" pb="2rem">
     <Box >
       {Loading ? (
-        <Box h="30rem" display={"grid"} justifyContent="center" alignContent={"center"}>
+        <Box   h="40rem"
+        display="grid"
+        justifyContent={"center"}
+        alignContent="center">
           <Spinner
             thickness="4px"
             speed="0.65s"

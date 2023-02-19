@@ -21,12 +21,12 @@ export const Orders = () => {
   const [List, setList] = useState([]);
   const toast = useToast();
   const OrderDetails = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
       let x = await axios.get(
         `${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/OrderGet?page=${page}&limit=3`
       );
-      setLoading(false)
+      setLoading(false);
       setList(x.data.orderList);
       setTotal(x.data.totalPages);
     } catch (err) {
@@ -49,7 +49,12 @@ export const Orders = () => {
     >
       <Box>
         {Loading ? (
-          <Box display={"grid"} justifyContent="center" alignContent={"center"}>
+          <Box
+            h="40rem"
+            display="grid"
+            justifyContent={"center"}
+            alignContent="center"
+          >
             <Spinner
               thickness="4px"
               speed="0.65s"
@@ -64,17 +69,29 @@ export const Orders = () => {
               {List &&
                 List.map((ele) => {
                   return (
-                    <Box w="90%" mt="15px" border={"1px solid"} overflowX="scroll"  p="10px">
+                    <Box
+                      w="90%"
+                      mt="15px"
+                      border={"1px solid"}
+                      overflowX="scroll"
+                      p="10px"
+                    >
                       <Flex>
-                        <Text pr="5px"  color="blue">UserId-</Text>
-                        <Text>  {ele.UserId}</Text>
+                        <Text pr="5px" color="blue">
+                          UserId-
+                        </Text>
+                        <Text> {ele.UserId}</Text>
                       </Flex>
                       <Flex>
-                        <Text pr="5px" color="blue">Total Ammount -</Text>
+                        <Text pr="5px" color="blue">
+                          Total Ammount -
+                        </Text>
                         <Text> ${ele.TotalPrice}</Text>
                       </Flex>
                       <Flex>
-                        <Text pr="5px" color="blue">Delivart -</Text>
+                        <Text pr="5px" color="blue">
+                          Delivart -
+                        </Text>
                         <Text>{ele.Status}</Text>
                       </Flex>
                       <Box>
@@ -99,6 +116,7 @@ export const Orders = () => {
       >
         {" "}
         <PaginationBox page={page} setPage={setPage} total={total} />
-      </Box>{" "}    </Box>
+      </Box>{" "}
+    </Box>
   );
 };
