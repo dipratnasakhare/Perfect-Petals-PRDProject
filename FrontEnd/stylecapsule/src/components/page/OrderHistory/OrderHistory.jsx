@@ -2,7 +2,7 @@ import { Accordion, AccordionButton, Image ,AccordionIcon, AccordionItem, Accord
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export const NotificationBox = () => {
+export const OrderHistory = () => {
   const [List, setList] = useState([]);
   const [Loading, setLoading] = useState(false);
 
@@ -22,6 +22,8 @@ export const NotificationBox = () => {
 
       const list = x.data.Order_Details[0].OrderDetails;
 
+      console.log(list)
+
       let obj = {};
       for (let i = 0; i < list.length; i++) {
         if (obj[list[i].Date] == undefined) {
@@ -34,9 +36,6 @@ export const NotificationBox = () => {
       for (let i in obj) {
         arr.push({ date: i, arr: obj[i] });
       }
-
-      console.log(arr)
-
       setLoading(false);
       setList(arr);
     } catch (err) {
