@@ -5,7 +5,7 @@ import { Users } from './02-Users'
 import { Orders } from './03-Orders'
 import { Products } from './04-Products/04-Products'
 import { Accounts } from './05-Accounts'
-import { Tasks } from './06-Tasks'
+import { Tasks } from './06-Tasks/06-Tasks'
 
 export const AdminRoutes = ({routesText}) => {
     return (

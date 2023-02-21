@@ -1,6 +1,5 @@
 import {
     IconButton,
-    // Avatar,
     Box,
     Flex,
     HStack,
@@ -140,7 +139,7 @@ import {
                   </MenuButton>
                   <MenuList>
                      <MenuItem>
-                      <Text onClick={()=>navigate("/Notification")}> Notification</Text>
+                      <Text onClick={()=>navigate("/Notification")}>Order</Text>
                     </MenuItem>
                     <MenuItem>
                       <Text onClick={()=>navigate("/Wishlist")}> Wishlist </Text>
