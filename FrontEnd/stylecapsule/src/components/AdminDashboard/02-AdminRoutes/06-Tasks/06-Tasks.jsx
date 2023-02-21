@@ -12,6 +12,7 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React from "react";
+import { DrawerTasks } from "./DrawerTasks";
 
 export const Tasks = () => {
   return (
@@ -49,7 +50,7 @@ export const Tasks = () => {
           </TableContainer>
         </Box>
         <Box mt="5rem" textAlign={"center"}>
-          <Button>Add Task</Button>
+          <DrawerTasks />
         </Box>
       </Box>
     </Box>

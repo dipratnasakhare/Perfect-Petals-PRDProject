@@ -34,7 +34,7 @@
 
   ### 📁 Folder structure
    
-  -  `FrontEnd`
+  ## `FrontEnd`
     `src`
     -  components
      - `Admin Dashboard` it contain all pages of admin side
@@ -67,41 +67,41 @@ https://stylecapsule-dipratnasakhare.vercel.app
 
 ### `screen shots of website`
 
-### Home 
+## Home 
 ![Screenshot (722)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(722).png)
 
-### Product
+## Product
 ![Screenshot (725)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(725).png)
 
-### product Single Page 
+## product Single Page 
 ![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(734).png)
 
-### Comment 
+## Comment 
 ![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(735).png)
 
 
-### Wishlist
+## Wishlist
 ![Screenshot (724)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(728).png)
 
-### Checkout page
+## Checkout page
 ![Screenshot (729)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(729).png)
 
-### footer
+## footer
 ![Screenshot (723)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(723).png)
 
-### responsive
+## responsive
 ![Screenshot (726)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(726).png)
 ![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(727).png)
 
 
 ### Admin side
-### Dashboard
+## Dashboard
 ![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(730).png)
-### Users
+## Users
 ![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(731).png)
-### Orders
+## Orders
 ![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(732).png)
-### Products
+## Products
 ![Screenshot (727)](https://raw.githubusercontent.com/dipratnasakhare/test/main/perfect%20petals/Screenshot%20(733).png)
 
 

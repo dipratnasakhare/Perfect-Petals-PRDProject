@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, Image ,AccordionIcon, AccordionItem, AccordionPanel, Box, Spinner, Text } from "@chakra-ui/react";
+import { Accordion, AccordionButton, Image ,AccordionIcon, AccordionItem, AccordionPanel, Box, Spinner, Text, Grid } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -22,14 +22,16 @@ export const OrderHistory = () => {
 
       const list = x.data.Order_Details[0].OrderDetails;
 
-      console.log(list)
-
       let obj = {};
       for (let i = 0; i < list.length; i++) {
-        if (obj[list[i].Date] == undefined) {
-          obj[list[i].Date] = [list[i]];
+
+       let char = list[i].Date.trim().split(" ")
+       let x = `${char[0]}  ${char[1]}  ${char[3]}`
+
+       if (obj[x] == undefined) {
+          obj[x] = [list[i]];
         } else {
-          obj[list[i].Date].push(list[i]);
+          obj[x].push(list[i]);
         }
       }
       let arr = [];
@@ -38,6 +40,7 @@ export const OrderHistory = () => {
       }
       setLoading(false);
       setList(arr);
+
     } catch (err) {
       console.log(err);
     }
@@ -48,7 +51,7 @@ export const OrderHistory = () => {
   }, []);
 
   return (
-    <Box h="40rem" w="80%" m="auto" mt="2rem" mb="3rem">
+    <Box w="80%" m="auto" mt="2rem" mb="3rem">
       {Loading ? (
         <Box
           h="40rem"
@@ -83,10 +86,11 @@ export const OrderHistory = () => {
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                  {ele.arr.map((item) => {
+                <Grid gap="8px"   >
+                {ele.arr.map((item) => {
                     return (
-                      <Box key={Date.now() % Math.random()}>
-                      <Box>
+                      <Box   key={Date.now() % Math.random()}>
+                      <Box >
                         <Image w="55px" src={item.ImgUrl} />
                       </Box>
                       <Box>
@@ -96,6 +100,7 @@ export const OrderHistory = () => {
                       </Box>
                     );
                   })}
+                </Grid>
                 </AccordionPanel>
               </AccordionItem>
             </Box>
