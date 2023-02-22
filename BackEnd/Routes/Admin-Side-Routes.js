@@ -1,4 +1,5 @@
 const express = require("express");
+const { ModelAdminTask } = require("../models/AdminTask");
 const { ModelUserAuth } = require("../models/UserAuth.Models");
 const { ModelOrderDetails } = require("../models/UserOrderDetails");
 const AdminSideRoutes = express.Router();
@@ -85,54 +86,6 @@ AdminSideRoutes.post("/GetOrderForUser", async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 AdminSideRoutes.get("/OrderGet", async (req, res) => {
   const { page = 1, limit = 1 } = req.query;
 
@@ -151,7 +104,6 @@ AdminSideRoutes.get("/OrderGet", async (req, res) => {
   });
   } catch (err) {
     console.log(err, "err line 20");
-
     res
       .status(200)
       .send({ msg: "Something went wrong please try again", status: "error" });
@@ -173,8 +125,122 @@ AdminSideRoutes.post("/Admin-get", async (req, res) => {
 });
 
 
+AdminSideRoutes.post("/Get-Admin-TaskList", async (req, res) => {
+  let { UserId } = req.body
+  try {
+    let list =  await ModelAdminTask.findOne({ AdminId: UserId });
+      res
+      .status(200)
+      .send({ list: list.AdminTask })
+  } catch (err) {
+    console.log(err, "err line 20");
+    res
+      .status(200)
+      .send({ msg: "Something went wrong please try again", status: "error" });
+  }
+});
+
+AdminSideRoutes.post("/Delete-Admin-TaskList", async (req, res) => {
+  let { UserId , id} = req.body
+  try {
+    let list =  await ModelAdminTask.find({ AdminId: UserId });
+    list = list[0]
+    const d = list.AdminTask.filter((ele) => `${ele["_id"]}` !==  id)
+    list.AdminTask = d
+    await ModelAdminTask.updateOne({ AdminId: UserId }, list);
+      res
+      .status(200)
+      .send({ msg: "Task is deleted", status: "success" })
+  } catch (err) {
+    console.log(err, "err line 20");
+    res
+      .status(200)
+      .send({ msg: "Something went wrong please try again", status: "error" });
+  }
+});
+
+AdminSideRoutes.post("/Toggle-Admin-TaskList", async (req, res) => {
+
+  let { UserId , id} = req.body
+
+  try {
+    let list =  await ModelAdminTask.find({ AdminId: UserId });
+    list = list[0]
+    list.AdminTask.filter((ele, i) => {
+      if(`${ele["_id"]}` ==  id){
+        ele.Status = !ele.Status
+        console.log(`${ele["_id"]}` ==  id,ele)
+      }
+    })
+    await ModelAdminTask.updateOne({ AdminId: UserId }, list);
+      res
+      .status(200)
+      .send({ msg: "Task is updates", status: "success" })
+  } catch (err) {
+    console.log(err, "err line 20");
+    res
+      .status(200)
+      .send({ msg: "Something went wrong please try again", status: "error" });
+  }
+});
+
+AdminSideRoutes.post("/Update-Admin-TaskList", async (req, res) => {
+  let { UserId , data, id} = req.body
+  try {
+    let list =  await ModelAdminTask.find({ AdminId: UserId });
+    list = list[0]
+    list.AdminTask.filter((ele, i) => {
+      if(`${ele["_id"]}` ==  id){
+        list.AdminTask[i] = data
+      }
+    })
+    await ModelAdminTask.updateOne({ AdminId: UserId }, list);
+      res
+      .status(200)
+      .send({ msg: "Task is updates", status: "success" })
+  } catch (err) {
+    console.log(err, "err line 20");
+    res
+      .status(200)
+      .send({ msg: "Something went wrong please try again", status: "error" });
+  }
+});
 
 
+
+AdminSideRoutes.post("/Admin-TaskList", async (req, res) => {
+  let { UserId, data } = req.body
+
+  data.Status = false
+  try {
+    let list =  await ModelAdminTask.findOne({ AdminId: UserId });
+
+    if(typeof(list) == "object"){
+      let list =  await ModelAdminTask.updateOne({ AdminId: UserId }, {$push: {AdminTask: data}});
+      res
+      .status(200)
+      .send({ msg: "task is already", status: "success" })
+    }
+
+    if(list == null){
+     const AdminList = {
+      AdminId: UserId, 
+      AdminTask: [data]
+     }
+      let pata =  new ModelAdminTask(AdminList);
+      pata.save()
+      res
+      .status(200)
+      .send({ msg: "task is added", status: "success" })
+    }
+
+  } catch (err) {
+    console.log(err, "err line 20");
+    res
+      .status(200)
+      .send({ msg: "Something went wrong please try again", status: "error" });
+  }
+});
 
 
 

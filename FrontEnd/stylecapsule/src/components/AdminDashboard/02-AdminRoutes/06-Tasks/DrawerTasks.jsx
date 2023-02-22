@@ -28,37 +28,41 @@ import { BsStar } from "react-icons/bs";
 import React, { useRef, useState } from "react";
 import axios from "axios";
 
-export const DrawerTasks = () => {
+export const DrawerTasks = ({HandelGetTask}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const firstField = useRef();
   const toast = useToast();
-
 
   const [Subject, setSubject] = useState("")
   const [Date, setDate] = useState("")
   const [Assigned, setAssigned] = useState("")
   const [Target, setTarget] = useState("")
 
+  const HandelAddTask = async () => {
+    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null";
+    UserId = UserId.UserId;
 
-
-
-
-
-
-
-
-
-
-
-  const HandelAddProduct = async () => {
+    console.log(UserId)
+    const data = {
+      UserId,
+      data:{
+        Subject, 
+        Date,
+        Assigned,
+        Target
+      }
+    }
     try {
       let x = await axios.post(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/AddProduct`
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/Admin-TaskList`, data
       );
-      console.log(x);
+
+      onClose()
+      HandelGetTask()
     } catch (err) {
       console.log(err);
     }
+    HandelGetTask()
   };
 
   return (
@@ -66,7 +70,6 @@ export const DrawerTasks = () => {
       <Button colorScheme="green" onClick={onOpen}>
         Task
       </Button>
-
       <Drawer
         isOpen={isOpen}
         placement="right"
@@ -80,7 +83,6 @@ export const DrawerTasks = () => {
           <DrawerHeader borderBottomWidth="1px">Add task</DrawerHeader>
           <DrawerBody>
             <Grid gap="10px">
-
                 <Box>
                   <Text fontFamily={"cursive"}>Subject</Text>
                 </Box>
@@ -92,7 +94,7 @@ export const DrawerTasks = () => {
                   <Text fontFamily={"cursive"}>Date</Text>
                 </Box>
                 <Box>
-                  <Input value={Date} onChange={(e) => setDate(e.target.value)} />
+                  <Input type="Date" value={Date} onChange={(e) => setDate(e.target.value)} />
                 </Box>
 
                 <Box>
@@ -108,15 +110,13 @@ export const DrawerTasks = () => {
                 <Box>
                   <Input value={Target} onChange={(e) => setTarget(e.target.value)} />
                 </Box>
-
-
             </Grid>
           </DrawerBody>
           <DrawerFooter borderTopWidth="0.2px">
             <Button variant="outline" mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button onClick={HandelAddProduct} colorScheme="blue">
+            <Button onClick={HandelAddTask} colorScheme="blue">
               Submit
             </Button>
           </DrawerFooter>
