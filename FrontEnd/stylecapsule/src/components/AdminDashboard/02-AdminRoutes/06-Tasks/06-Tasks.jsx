@@ -1,20 +1,85 @@
 import {
   Box,
   Button,
+  Flex,
   Table,
   TableCaption,
   TableContainer,
   Tbody,
   Td,
-  Tfoot,
   Th,
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { DrawerTasks } from "./DrawerTasks";
+import { DrawerUpdate } from "./DrawerUpdate";
 
 export const Tasks = () => {
+  const [TaskList, setTaskList] = useState([])
+
+
+  const [Subject, setSubject] = useState(false)
+  const [DueDate, setDueDate] = useState(false)
+  const [Assigned, setAssigned] = useState(false)
+  const [Target, setTarget] = useState(false)
+
+
+  const HandelGetTask = async () => {
+    let UserId =
+      JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null";
+    UserId = UserId.UserId;
+    const data = { UserId}
+    try {
+      let x = await axios.post(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/Get-Admin-TaskList`, data
+      );
+      setTaskList(x.data.list)
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+  const HandelDelete = async(id) => {
+    let UserId =
+      JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null";
+    UserId = UserId.UserId;
+    const data = { UserId , id}
+    try {
+      let x = await axios.post(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/Delete-Admin-TaskList`, data
+      );
+      HandelGetTask()
+    } catch (err) {
+      console.log(err);
+    } 
+  }
+
+  const HandelToggle = async(id) => {
+    console.log("Handeltoogle")
+    let UserId =
+      JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null";
+    UserId = UserId.UserId;
+    const data = { UserId , id}
+
+    try {
+      let x = await axios.post(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/Toggle-Admin-TaskList`, data
+      );
+      HandelGetTask()
+    } catch (err) {
+      console.log(err);
+    } 
+  }
+
+useEffect(() => {
+  HandelGetTask()
+}, [])
+
+console.log(TaskList, "TaskList")
+
   return (
     <Box
       h="40rem"
@@ -36,21 +101,35 @@ export const Tasks = () => {
                   <Th>Due Date</Th>
                   <Th>Assigned to</Th>
                   <Th>Target</Th>
+                  <Th>Delete / Update / Toggle</Th>
                 </Tr>
               </Thead>
               <Tbody>
-                <Tr>
-                  <Td>Application Review</Td>
-                  <Td>none</Td>
-                  <Td>Megaiel</Td>
-                  <Td>App Abarca, Huberto, usniversity</Td>
-                </Tr>
+                {TaskList && TaskList.map((ele) => {
+                  return(
+                    <Tr  border={`2px solid ${ele.Status ?  "green" : "red"}`} >
+                    <Td>{ele.Subject}</Td>
+                    <Td>{ele.Date}</Td>
+                    <Td>{ele.Assigned}</Td>
+                    <Td>{ele.Target}</Td>
+                    <Td>
+                    <Flex gap="5px">
+                    <Button onClick={()=>HandelDelete(ele["_id"])}>Delete</Button>
+                    <DrawerUpdate HandelGetTask={HandelGetTask} data={ele} />
+                      <Button onClick={()=>HandelToggle(ele["_id"])}>{!ele.Status ? "Done" : "Pending"}</Button>
+
+                    </Flex>
+                    </Td>
+                  </Tr>
+                  )
+                })}
+               
               </Tbody>
             </Table>
           </TableContainer>
         </Box>
         <Box mt="5rem" textAlign={"center"}>
-          <DrawerTasks />
+          <DrawerTasks  HandelGetTask={HandelGetTask} />
         </Box>
       </Box>
     </Box>

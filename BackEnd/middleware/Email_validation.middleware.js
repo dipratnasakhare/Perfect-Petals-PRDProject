@@ -5,9 +5,11 @@ const Email_Validation = (req, res, next) => {
     const UserDetails = req.body;
     const { email, password, first_name, mobile_no } = UserDetails
 
+
     if (email === undefined || password === undefined || first_name === undefined || mobile_no === undefined) {
 
         return res.status(200).send("Please enter all require fields")
+        
 
     } else {
 
