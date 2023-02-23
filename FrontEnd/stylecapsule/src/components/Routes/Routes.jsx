@@ -4,6 +4,7 @@ import { AdminDashboard } from "../AdminDashboard/AdminDashboard";
 import { Home } from "../HomePage/Home/Home";
 import PaymentPage from "../page/Add To Cart/PaymentPage/PaymentPage";
 import { BirthdayPage } from "../page/Birthday Flower/BirthdayPage";
+import { ErrorPage } from "../page/Error/ErrorPage";
 import { GiftBasketsFood } from "../page/Gift Baskets Food/Gift Baskets Food";
 import { LavenderGifts } from "../page/Leavender Gifts/Leavender Gifts";
 import { ForgotPasswordPage } from "../page/Login/ForgotPassword/ForgotPasswordBox";
@@ -23,7 +24,7 @@ export const RoutesOfAllPages = () => {
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/Forgot_Password" element={<ForgotPasswordPage />} />
         <Route exact path="/Valentine_Flowers" element={<ValentinePage />} />
-        <Route path="/Flower/:url" element={<SingleFilterBox />} />
+        <Route exact path="/Flower/:url" element={<SingleFilterBox />} />
         <Route exact path="/Birthday_FLowers" element={<BirthdayPage />} />
         <Route exact path="/Gift_Baskets_Food" element={<GiftBasketsFood />} />
         <Route exact path="/Lavender_Gifts" element={<LavenderGifts />} />
@@ -32,7 +33,7 @@ export const RoutesOfAllPages = () => {
         <Route exact path="/Wishlist" element={<WishlistPage />} />
         <Route exact path="/AdminDashboard" element={<AdminDashboard />} />
         <Route exact path="/Notification" element={<OrderHistory />} />
-
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );
