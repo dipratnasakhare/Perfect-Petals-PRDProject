@@ -29,6 +29,7 @@ import { BsCart } from "react-icons/bs";
 
 // import { useSelector } from "react-redux";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export const SingleProductBox = () => {
   const [ProductData, setProductData] = useState("");
@@ -37,7 +38,7 @@ export const SingleProductBox = () => {
   const [buttonText, setButtonText] = useState("Comment");
   const [commentText, setCommentText] = useState("");
   const [ProductRating, setProductRating] = useState(5);
-
+  const { url } = useParams()
   const toast = useToast();
   // const data = useSelector((state) => state.prodManager.data);
 
@@ -75,7 +76,7 @@ export const SingleProductBox = () => {
       return 
     }
       
-    
+  
      // checking here user have added comment before 
     let x = ProductData.Comment.filter((ele)=>ele.UserId == UserId)
     if(x.length >= 1){
@@ -132,7 +133,7 @@ export const SingleProductBox = () => {
   const getDataForSingleProduct = async () => {
     // geting id from from localstorage
     let ProductData = JSON.parse(localStorage.getItem("SingleProductOfFlowerryShop")) || "null";
-     const data = {ProductId: ProductData["_id"]}
+     const data = {ProductId: url}
 
     try {
       let x = await axios.post(

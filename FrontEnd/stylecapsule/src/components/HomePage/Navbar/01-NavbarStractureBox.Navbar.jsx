@@ -17,6 +17,7 @@ import {
   import { AiOutlineShoppingCart } from "react-icons/ai";
   import { FiMenu, FiBell, FiChevronDown } from "react-icons/fi";
   import { useNavigate } from "react-router-dom";
+import { Debouncing } from "../../page/Debouncing/Debouncing";
   
   export const NavbarStractureBox = ({ onOpen }) => {
     const [User_Login, setUser_Login] = useState(false);
@@ -112,6 +113,7 @@ import {
         >
           Perfect Petals
         </Text>
+        <Debouncing />
   
         <HStack spacing={{ base: "0", md: "6" }}>
           {User_Login ? (
