@@ -20,6 +20,8 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { GoSearch } from "react-icons/go"
+import { BsBoxArrowDownLeft } from "react-icons/bs";
 
 export const Debouncing = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,13 +36,12 @@ export const Debouncing = () => {
     localStorage.setItem("SingleProductOfFlowerryShop", JSON.stringify(data));
   };
 
-
   useEffect(() => {
     const getData = setTimeout(async () => {
       try {
         setLoading(true);
         let res = await axios.get(
-          `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/Debouncing?search=${SearchText}`
+          `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/Debouncing?search=${SearchText}`
         );
         if (SearchText !== "") {
           setList(res.data.data);
@@ -69,9 +70,9 @@ export const Debouncing = () => {
 
   return (
     <Box>
-      <Button colorScheme="green" onClick={HandelSearch}>
-        Serach
-      </Button>
+      <Box colorScheme="green" onClick={HandelSearch}>
+        <GoSearch />
+      </Box>
       <Drawer
         isOpen={isOpen}
         placement="top"
@@ -144,7 +145,7 @@ export const Debouncing = () => {
                             <Button
                               onClick={() => {
                                 HandelAddSinglePage(ele);
-                                navigate("/Single_Product_Box");
+                                navigate("/Single_Product_Box/" + ele["_id"]);
                                 onClose();
                               }}
                               w="5rem"

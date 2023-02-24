@@ -69,8 +69,8 @@ import {
   
     return (
       <>
-        <Button colorScheme="green" onClick={onOpen}>
-          Update
+        <Button onClick={onOpen}>
+          <Text>Update</Text>
         </Button>
         <Drawer
           isOpen={isOpen}

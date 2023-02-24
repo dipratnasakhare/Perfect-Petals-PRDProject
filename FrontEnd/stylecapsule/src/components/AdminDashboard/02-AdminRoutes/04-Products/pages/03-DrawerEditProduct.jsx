@@ -53,11 +53,9 @@ export const DrawerEditProduct = ({ productEdit, GetData }) => {
       ProductName,
       ProductPrice,
     };
-
-    console.log(data)
     try {
       let x =  await axios.patch(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/edit`, data
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/edit`, data
       );
       toast({
         position: "top",
@@ -80,7 +78,7 @@ export const DrawerEditProduct = ({ productEdit, GetData }) => {
     };
     try {
       let x =  await axios.post(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/delete`, data
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/delete`, data
       );
       toast({
         position: "top",

@@ -20,6 +20,7 @@ ValentineDay.get("/", async (req, res) => {
   const { page = 1, limit = 20 } = req.query;
   try {
     let length = await ModelValentineDay.find();
+    console.log(length)
     let valentine = await ModelValentineDay.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);
@@ -34,6 +35,26 @@ ValentineDay.get("/", async (req, res) => {
       .send({ msg: "Something went wrong please try again", status: "error" });
   }
 });
+
+
+ValentineDay.get("/Debouncing", async (req, res) => {
+  const { search } = req.query;
+  try {
+    let valentine = await ModelValentineDay.find({Name: {'$regex': search,
+    "$options": "i"}});    
+    res.send({
+      data: valentine,
+    });
+  } catch (err) {
+    console.log(err, "err line 20");
+    res
+      .status(200)
+      .send({ msg: "Something went wrong please try again", status: "error" });
+  }
+});
+
+
+
 
 ValentineDay.patch("/edit", async (req, res) => {
   const { ProductName, ProductPrice, productId, ProductImg } = req.body;
@@ -102,12 +123,14 @@ ValentineDay.post("/delete", async (req, res) => {
 
 ValentineDay.post("/comment", async (req, res) => {
   const { ProductId, UserId } = req.body;  
-  try {
 
+  try {
     let valentine = await ModelValentineDay.updateOne(
       { _id: ProductId },
       { $push: { Comment: req.body } }
     );
+
+    console.log(valentine, ProductId)
 
     res.send({ msg: "Comment is added", status: "success" });
   } catch (err) {
@@ -122,18 +145,14 @@ ValentineDay.post("/comment", async (req, res) => {
 ValentineDay.post("/edit-contmme", async (req, res) => {
   const { ProductId, UserId, commentText, ProductRating } = req.body;  
   try {
-
     let valentine = await ModelValentineDay.find({ _id: ProductId});
-
     valentine[0].Comment.map((ele, i) => {
       if(ele.UserId === UserId){
         ele.comment = commentText
         ele.Rating = ProductRating
       }
     })
-
     await ModelValentineDay.updateOne({ _id: ProductId}, valentine[0]);
-
     res.send({ msg: "Comment is updated", status: "success" });
   } catch (err) {
     console.log(err, "err line 20");
@@ -165,6 +184,7 @@ ValentineDay.get("/Sunflowers", async (req, res) => {
 
   try {
     let length = await Modelsunflowers.find();
+    console.log(length)
     let Sunflowers = await Modelsunflowers.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);
@@ -183,6 +203,7 @@ ValentineDay.get("/Lilies", async (req, res) => {
 
   try {
     let length = await ModelLilies.find();
+    console.log(length)
     let Lilies = await ModelLilies.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);
@@ -201,6 +222,7 @@ ValentineDay.get("/Exotic", async (req, res) => {
 
   try {
     let length = await ModelExotic.find();
+    console.log(length)
     let Exotic = await ModelExotic.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);
@@ -219,6 +241,7 @@ ValentineDay.get("/Sweet_Flower", async (req, res) => {
 
   try {
     let length = await ModelSweetFlower.find();
+    console.log(length)
     let Sweet_Flower = await ModelSweetFlower.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);
@@ -237,6 +260,8 @@ ValentineDay.get("/Bright_Flower", async (req, res) => {
 
   try {
     let length = await ModelBright.find();
+    console.log(length)
+
     let Bright_Flower = await ModelBright.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);
@@ -273,6 +298,7 @@ ValentineDay.get("/Gardenia_Plants", async (req, res) => {
 
   try {
     let length = await ModelGardeniaPlants.find();
+    console.log(length)
     let Gardenia_Plants = await ModelGardeniaPlants.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);
@@ -293,6 +319,7 @@ ValentineDay.get("/Red", async (req, res) => {
 
   try {
     let length = await ModelRed.find();
+    console.log(length)
     let Red = await ModelRed.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);
@@ -311,6 +338,7 @@ ValentineDay.get("/Purple", async (req, res) => {
 
   try {
     let length = await ModelPurple.find();
+    console.log(length)
     let Purple = await ModelPurple.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);
@@ -329,6 +357,7 @@ ValentineDay.get("/Green", async (req, res) => {
 
   try {
     let length = await ModelGreen.find();
+    console.log(length)
     let Green = await ModelGreen.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);
@@ -347,6 +376,7 @@ ValentineDay.get("/Blue", async (req, res) => {
 
   try {
     let length = await ModelBlue.find();
+
     let Blue = await ModelBlue.find()
       .limit(limit * 1)
       .skip((page - 1) * limit);

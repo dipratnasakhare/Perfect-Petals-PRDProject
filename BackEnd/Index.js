@@ -6,24 +6,18 @@ require('dotenv').config();
 
 // Routes here 
 const { UserAuthRoutes } = require("./Routes/UserAuth.Routes")
-const { ValentineDay } = require("./Routes/Valentine-Day.Routes")
-const { GiftBasketsFood } = require("./Routes/Gift-Baskets-Food.Routes");
-const { LavenderGifts } = require("./Routes/Lavender-Gifts.Routes");
-const { BirthdayFlowers } = require("./Routes/Birthday-Flowers.Routes");
 const { UserCartData } = require("./Routes/UserCartData.Routes");
 const { UserWishlist } = require("./Routes/UserWishlist.Routes");
 const { AdminSideRoutes } = require("./Routes/Admin-Side-Routes");
+const { FlowersData } = require("./Routes/FlowersData");
 
 const app = express()
 app.use(cors())
 
 app.use(express.json());
 
-// product routes here 
-app.use("/valentine_Day",ValentineDay)
-app.use("/Gift_Baskets_Food",GiftBasketsFood)
-app.use("/Lavender_Gifts",LavenderGifts)
-app.use("/Birthday_Flowers",BirthdayFlowers)
+app.use("/flower-data", FlowersData)
+
 
 // user data routes here
 app.use("/User_Cart_Data", UserCartData)

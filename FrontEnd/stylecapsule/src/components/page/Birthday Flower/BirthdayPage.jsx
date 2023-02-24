@@ -15,7 +15,7 @@ export const BirthdayPage = () => {
   const getData = async (page) => {
     try {
       return await axios.get(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/Birthday_Flowers/??page=${page}&limit=8`
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/?page=${page}&limit=8&Type=Birthday Flowers`
       );
     } catch (err) {
       console.log(err);
@@ -26,7 +26,7 @@ export const BirthdayPage = () => {
     setLoading(true);
     getData()
       .then((res) => {
-        setList(res.data.BirthdayFlowers);
+        setList(res.data.data);
         setTotal(res.data.totalPages);
         setLoading(false);
       })

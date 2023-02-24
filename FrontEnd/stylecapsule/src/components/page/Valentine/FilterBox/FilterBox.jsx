@@ -6,16 +6,12 @@ export const FilterBox = () => {
   let first = [
     {
       text: "Sunflowers",
-      route: "Sunflowers",
+      route: "Sunflower Flowers",
       data: "VALENTINE'S DAY FLOWERS BY TYPE",
     },
     {
-      text: "Lilies",
-      route: "Lilies",
-    },
-    {
       text: "Exotic",
-      route: "Exotic",
+      route: "Exotic Flowers",
     },
     {
       text: "Alstroemeria",
@@ -23,34 +19,31 @@ export const FilterBox = () => {
     },
     {
       text: "Gardenia Plants",
-      route: "Gardenia_Plants",
+      route: "Gardenia Plants",
     },
     {
       text: "Sweet Flower",
-      route: "Sweet_Flower",
+      route: "Sweet Flowers",
     },
     {
       text: "Bright Flower",
-      route: "Bright_Flower",
+      route: "Bright Flowers",
     },
   ];
+
   let second = [
     {
       text: "Red",
-      route: "Red",
+      route: "Red Colour",
       data: "FLOWERS BY COLOR",
     },
     {
       text: "Purple",
-      route: "Purple",
-    },
-    {
-      text: "Green",
-      route: "Green",
+      route: "Purple Colour",
     },
     {
       text: "Blue",
-      route: "Blue",
+      route: "Blue Colour",
     },
   ];
 

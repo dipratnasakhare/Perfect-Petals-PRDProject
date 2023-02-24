@@ -15,7 +15,7 @@ export const ImageBox = () => {
       }
     >
       <Center>
-        <Box w={["90%", "30%"]} backgroundImage={"https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} borderRadius={"10px"}
+        <Box w={["90%", "60%"]} backgroundImage={"https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"} borderRadius={"10px"}
         >
           <Center>
             <Heading

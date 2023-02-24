@@ -13,14 +13,8 @@ import {
   Flex,
   useDisclosure,
   Input,
-  Select,
-  FormLabel,
   DrawerBody,
   Stack,
-  InputGroup,
-  InputLeftAddon,
-  Textarea,
-  InputRightAddon,
   useToast,
 } from "@chakra-ui/react";
 import { BiEdit } from "react-icons/bi";
@@ -58,7 +52,7 @@ export const DrawerAddProduct = ({GetData}) => {
     };
     try {
       let x =  await axios.post(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/AddProduct`, data
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/AddProduct`, data
       );
       toast({
         position: "top",

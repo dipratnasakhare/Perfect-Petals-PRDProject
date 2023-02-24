@@ -68,7 +68,7 @@ export const DrawerTasks = ({HandelGetTask}) => {
   return (
     <>
       <Button colorScheme="green" onClick={onOpen}>
-        Task
+       <Text> Task</Text>
       </Button>
       <Drawer
         isOpen={isOpen}

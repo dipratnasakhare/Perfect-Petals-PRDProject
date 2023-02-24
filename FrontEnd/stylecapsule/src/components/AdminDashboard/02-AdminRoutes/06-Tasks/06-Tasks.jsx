@@ -9,6 +9,7 @@ import {
   Td,
   Th,
   Thead,
+  Text,
   Tr,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -27,8 +28,7 @@ export const Tasks = () => {
 
 
   const HandelGetTask = async () => {
-    let UserId =
-      JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null";
+    let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null";
     UserId = UserId.UserId;
     const data = { UserId}
     try {
@@ -114,10 +114,13 @@ console.log(TaskList, "TaskList")
                     <Td>{ele.Target}</Td>
                     <Td>
                     <Flex gap="5px">
-                    <Button onClick={()=>HandelDelete(ele["_id"])}>Delete</Button>
+                    <Button onClick={()=>HandelDelete(ele["_id"])}>
+                      <Text>Delete</Text>
+                    </Button>
                     <DrawerUpdate HandelGetTask={HandelGetTask} data={ele} />
-                      <Button onClick={()=>HandelToggle(ele["_id"])}>{!ele.Status ? "Done" : "Pending"}</Button>
-
+                      <Button onClick={()=>HandelToggle(ele["_id"])}>
+                        <Text>{!ele.Status ? "Done" : "Pending"}</Text>
+                      </Button>
                     </Flex>
                     </Td>
                   </Tr>
