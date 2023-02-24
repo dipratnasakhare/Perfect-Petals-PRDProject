@@ -18,10 +18,11 @@ export const Products = () => {
     try {
       setLoading(true)
       let res = await axios.get(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/?page=${page}&limit=8`
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/?page=${page}&limit=8&Type=Valentine Flowers`
       );
       setLoading(false)
-      setList(res.data.valentine);
+      console.log(res)
+      setList(res.data.data);
       setTotal(res.data.totalPages);
     } catch (err) {
       console.log(err);
@@ -35,9 +36,11 @@ export const Products = () => {
       productId,
     };
 
+    console.log(data)
+
     try {
       return await axios.post(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/edit`,
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/edit`,
         data
       );
     } catch (err) {

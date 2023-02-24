@@ -16,7 +16,7 @@ export const LavenderGifts = () => {
   const getData = async (page) => {
     try {
       return await axios.get(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/Lavender_Gifts/?page=${page}&limit=8`
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/?page=${page}&limit=8&Type=Lavender Gifts`
       );
     } catch (err) {
       console.log(err);
@@ -27,7 +27,7 @@ export const LavenderGifts = () => {
     setLoading(true);
     getData(page)
       .then((res) => {
-        setList(res.data.LavenderGifts);
+        setList(res.data.data);
         setTotal(res.data.totalPages);
         setLoading(false);
       })

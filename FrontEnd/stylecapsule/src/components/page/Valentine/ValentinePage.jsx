@@ -19,7 +19,7 @@ export const ValentinePage = () => {
   const GetData = async (page) => {
     try {
       return await axios.get(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/?page=${page}&limit=8`
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/?page=${page}&limit=8&Type=Valentine Flowers`
       );
     } catch (err) {
       console.log(err);
@@ -29,7 +29,8 @@ export const ValentinePage = () => {
     setLoading(true);
     GetData(page)
       .then((res) => {
-        setList(res.data.valentine);
+        console.log(res)
+        setList(res.data.data);
         setTotal(res.data.totalPages);
         setLoading(false);
       })

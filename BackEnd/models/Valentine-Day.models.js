@@ -15,7 +15,6 @@ const ValentineDaySchema = mongoose.Schema({
       productId:{type:String},
       Rating:{type:Number}, 
       Like:{type:Number},
-      UserId:{type:String}, 
     }]
 
 });

@@ -18,18 +18,20 @@ export const SingleFilterBox = () => {
   const getData = async (url, page) => {
     try {
       return await axios.get(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/${url}/?page=${page}&limit=8`
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/?page=${page}&limit=8&Type=${url}`
       );
     } catch (err) {
       console.log(err);
     }
   };
   useEffect(() => {
+    console.log(url)
     setLoading(true);
     getData(url, page)
       .then((res) => {
         setTotal(res.data.totalPages);
-        setList(res.data[url]);
+        console.log(res.data.data)
+        setList(res.data.data);
         setLoading(false);
       })
       .catch((err) => console.log(err));
@@ -68,7 +70,7 @@ export const SingleFilterBox = () => {
             </Box>
           ) : (
             <SimpleGrid columns={[1, 2, 2, 4]} spacing={10} display="grid">
-              {list.map((product, i) => (
+              {list && list.map((product, i) => (
                 <SingleProductAddToCartBox product={product} i={i} />
               ))}
             </SimpleGrid>

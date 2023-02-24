@@ -16,7 +16,7 @@ export const GiftBasketsFood = () => {
   const GetData = async (page) => {
     try {
       return await axios.get(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/Gift_Baskets_Food/?page=${page}&limit=8`
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/?page=${page}&limit=8&Type=Gift Baskets Food`
       );
     } catch (err) {
       console.log(err);
@@ -27,7 +27,8 @@ export const GiftBasketsFood = () => {
     setLoading(true);
     GetData(page)
       .then((res) => {
-        setList(res.data.GiftBasketsFood);
+        setList(res.data.data);
+        // console.log(res.data)
         setTotal(res.data.totalPages);
         setLoading(false);
       })

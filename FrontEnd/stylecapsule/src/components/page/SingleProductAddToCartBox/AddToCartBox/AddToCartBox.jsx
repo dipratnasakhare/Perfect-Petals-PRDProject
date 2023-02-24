@@ -19,7 +19,6 @@ export const AddToCartBox = ({ data }) => {
   };
 
   // User_Wishlist_Data
-
   const HandelAddToCart = async (CartData) => {
     let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken")) || "null"
     if(UserId == "null"){
@@ -135,7 +134,7 @@ export const AddToCartBox = ({ data }) => {
         gap="3"
         onClick={() => {
           HandelAddSinglePage(data);
-          navigate("/Single_Product_Box");
+          navigate("/Single_Product_Box/" + data["_id"]);
         }}
       >
         <Text textAlign={"start"}>

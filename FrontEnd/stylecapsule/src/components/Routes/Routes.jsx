@@ -16,6 +16,14 @@ import { SingleProductBox } from "../page/SingleProductBox/SingleProductBox";
 import { ValentinePage } from "../page/Valentine/ValentinePage";
 import { WishlistPage } from "../page/WishListPage/WishlistPage"
 export const RoutesOfAllPages = () => {
+
+
+
+
+
+
+
+  
   return (
     <div>
       <Routes>
@@ -28,7 +36,7 @@ export const RoutesOfAllPages = () => {
         <Route exact path="/Birthday_FLowers" element={<BirthdayPage />} />
         <Route exact path="/Gift_Baskets_Food" element={<GiftBasketsFood />} />
         <Route exact path="/Lavender_Gifts" element={<LavenderGifts />} />
-        <Route exact path="/Single_Product_Box" element={<SingleProductBox />} />
+        <Route path="/Single_Product_Box/:url" element={<SingleProductBox />} />
         <Route exact path="/Payment_Page" element={<PaymentPage />} />
         <Route exact path="/Wishlist" element={<WishlistPage />} />
         <Route exact path="/AdminDashboard" element={<AdminDashboard />} />

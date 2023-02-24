@@ -58,7 +58,7 @@ export const SingleProductBox = () => {
     if (buttonText == "Update") {
       try {
         let x = await axios.post(
-          `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/edit-contmme`,
+          `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/edit-comment`,
           data1
         );
         toast({
@@ -75,7 +75,7 @@ export const SingleProductBox = () => {
       setButtonText("Comment");
       return 
     }
-      
+
   
      // checking here user have added comment before 
     let x = ProductData.Comment.filter((ele)=>ele.UserId == UserId)
@@ -100,12 +100,14 @@ export const SingleProductBox = () => {
       comment: commentText,
       Rating: ProductRating,
       Like: 0,
+      DisLike: 0,
+      Replay: []
     };
 
     if (buttonText == "Submit") {
       try {
         let x = await axios.post(
-          `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/comment`,
+          `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/comment`,
           data
         );
 
@@ -120,10 +122,8 @@ export const SingleProductBox = () => {
         console.log(err);
       }
       getDataForSingleProduct()
-
     }
     setButtonText("Submit")
-   
   };
 
 
@@ -132,18 +132,10 @@ export const SingleProductBox = () => {
 
   const getDataForSingleProduct = async () => {
     // geting id from from localstorage
-    let ProductData = JSON.parse(localStorage.getItem("SingleProductOfFlowerryShop")) || "null";
-     const data = {ProductId: url}
-
     try {
-      let x = await axios.post(
-        `${process.env.REACT_APP_MAIN_SERVER_URL}/valentine_Day/single-product`,
-        data
-      );
-      setProductData(x.data.data)
-      if(x.data.data === undefined){
-        setProductData(ProductData)
-      }
+      let x = await axios.get(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/single-page?product=${url}`);
+        setProductData(x.data.data[0])
     } catch (err) {
       console.log(err);
     }

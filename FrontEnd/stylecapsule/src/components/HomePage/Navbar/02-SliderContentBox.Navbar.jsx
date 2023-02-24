@@ -19,7 +19,6 @@ export const SliderContentBox = ({ onClose, ...rest }) => {
   const LinkItems = [
     { name: "Home", icon: FiHome, route:"/" },
     { name: "Valentine", icon: GiRose , route:"/Valentine_Flowers"},
-    { name: "BirthDay", icon: FaBirthdayCake, route:"/Birthday_Flowers" },
     { name: "Gift Baskets", icon: FaGift, route:"/Gift_Baskets_Food" },
     { name: "Lavender Gifts", icon: GiSpotedFlower, route:"/Lavender_Gifts" },
   ];
@@ -35,7 +34,7 @@ export const SliderContentBox = ({ onClose, ...rest }) => {
         {...rest}>
         <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
           <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-            Flowrry Shop
+            Perfect Petals
           </Text>
           <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
         </Flex>
