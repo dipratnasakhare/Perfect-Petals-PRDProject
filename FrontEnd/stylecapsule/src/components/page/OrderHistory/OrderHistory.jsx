@@ -19,20 +19,23 @@ export const OrderHistory = () => {
         `${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/GetOrderForUser`,
         data
       );
-
+      setLoading(false);
       const list = x.data.Order_Details[0].OrderDetails;
 
       let obj = {};
       for (let i = 0; i < list.length; i++) {
 
-       let char = list[i].Date.trim().split(" ")
-       let x = `${char[0]}  ${char[1]}  ${char[3]}`
-
-       if (obj[x] == undefined) {
-          obj[x] = [list[i]];
-        } else {
-          obj[x].push(list[i]);
-        }
+      if(list[i].Date !== undefined){
+        let char = list[i].Date.trim().split(" ")
+        let x = `${char[0]}  ${char[1]}  ${char[3]}`
+ 
+        if (obj[x] == undefined) {
+           obj[x] = [list[i]];
+         } else {
+           obj[x].push(list[i]);
+         }
+      }
+      
       }
       let arr = [];
       for (let i in obj) {
