@@ -29,7 +29,7 @@ import { BsCart } from "react-icons/bs";
 
 // import { useSelector } from "react-redux";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const SingleProductBox = () => {
   const [ProductData, setProductData] = useState("");
@@ -40,6 +40,7 @@ export const SingleProductBox = () => {
   const [ProductRating, setProductRating] = useState(5);
   const { url } = useParams()
   const toast = useToast();
+  const naviagte = useNavigate()
   // const data = useSelector((state) => state.prodManager.data);
 
   const HandelCommentBox = async (ProductId) => {
@@ -88,6 +89,7 @@ export const SingleProductBox = () => {
         isClosable: true,
       });
       setCommentText(x[0].comment)
+      setProductRating(5)
       setButtonText("Update")
       return
     }
@@ -122,7 +124,10 @@ export const SingleProductBox = () => {
         console.log(err);
       }
       getDataForSingleProduct()
+      setButtonText("Comment")
+
     }
+
     setButtonText("Submit")
   };
 
@@ -214,43 +219,10 @@ export const SingleProductBox = () => {
               {/* Catogery Box here  */}
               <Box>
                 <Box p="10px" bg="gray.300">
-                  <Text>1. Pick Your Items</Text>
+                  <Text>Price {ProductData.Price}</Text>
                 </Box>
 
-                <Box>
-                  <RadioGroup onChange={setValue} value={value}>
-                    <Stack>
-                      <Flex>
-                        <Radio value="1">
-                          <Text> Extra Large </Text>
-                        </Radio>
-                        <Spacer />
-                        <Text>$ {Math.floor(price + 30)}</Text>
-                      </Flex>
-                      <Flex>
-                        <Radio value="2">
-                          <Text> Large </Text>
-                        </Radio>
-                        <Spacer />
-                        <Text>$ {Math.floor(price + 20)}</Text>
-                      </Flex>{" "}
-                      <Flex>
-                        <Radio value="3">
-                          <Text> Medium </Text>
-                        </Radio>
-                        <Spacer />
-                        <Text>$ {Math.floor(price + 10)}</Text>
-                      </Flex>
-                      <Flex>
-                        <Radio value="4">
-                          <Text> Small </Text>
-                        </Radio>
-                        <Spacer />
-                        <Text>$ {price}</Text>
-                      </Flex>{" "}
-                    </Stack>
-                  </RadioGroup>
-                </Box>
+        
               </Box>
 
               <Flex gap="8px">
@@ -289,7 +261,7 @@ export const SingleProductBox = () => {
                   <Spacer />
                   <Box>
                     {" "}
-                    <Text>Sign in to access your address book</Text>
+                    <Text onClick={()=> naviagte("/login")}>Sign in to access your address book</Text>
                   </Box>{" "}
                 </Box>
 

@@ -4,12 +4,12 @@ import { Box, Spacer, Text } from "@chakra-ui/react";
 import OrderSummary from "./pages/OrderSummary/OrderSummary";
 import PaymentOption from "./pages/PaymentOption/PaymentOption";
 import { PaymentSucces } from "./PaymentSucces/PaymentSucces";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 const PaymentPage = () => {
   const [CartData, setCartData] = useState([]);
   const [orderPlace, setOrderPlace] = useState(false);
   const [OrderTotal, setOrderTotal] = useState(0);
-  const navigation = useNavigate();
+  // const navigation = useNavigate();
   // const toast = useToast();
 
 
@@ -41,21 +41,41 @@ const PaymentPage = () => {
   const SetOrderDetails = async () => {
     let UserId = JSON.parse(localStorage.getItem("styleCapsuleToken"));
     UserId = UserId.UserId;
+    
     let data = {
       UserId,
       TotalPrice: OrderTotal,
       OrderDetails: CartData,
     };
 
+    console.log(CartData, "post data for bougt")
+
     try {
       let x = await axios.post(
         `${process.env.REACT_APP_MAIN_SERVER_URL}/AdminSideRoutes/OrderPost`,
         data
       );
-      console.log(x, "orderlist post or not")
     } catch (err) {
       console.log(err);
     }
+
+    let obj = []
+    CartData.map((ele)=> obj.push(ele["_id"]))
+    data.OrderDetails = obj
+
+    try {
+       await axios.post(
+        `${process.env.REACT_APP_MAIN_SERVER_URL}/flower-data/Bought`,
+        data
+      );
+    } catch (err) {
+      console.log(err);
+    }
+
+
+
+
+
   };
 
   return (
