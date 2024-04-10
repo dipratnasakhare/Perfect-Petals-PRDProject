@@ -7,6 +7,8 @@
   - chakra ui
   - Deploy in Vercel
  ### `Admin Side`
+ rickyAdmin@gmail.com
+ 123456
  By this project admin can see all details of user track orders edit products 
   server
   - Express
